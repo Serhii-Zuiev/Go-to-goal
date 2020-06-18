@@ -1,6 +1,6 @@
 import React from 'react'
 import {useDispatch,useSelector} from 'react-redux'
-import {registerUser} from '../redux/operations'
+import {registerUser, newGoal} from '../redux/operations'
 import {loginUser} from '../redux/operations' 
 import {logoutUser} from '../redux/operations' 
 
@@ -12,7 +12,7 @@ export  const TestRedux=()=>{
     const testUserRegister={
       name: "ffffaaassssa",
       age: 33,
-      email: "OldanewdsdsOne@gmail.com",
+      email: "OneTwo@gmail.com",
       password:"qwerty",
       isChild: true,
       scores: 0,
@@ -20,7 +20,7 @@ export  const TestRedux=()=>{
   
     }
     const testUserLogin={
-      email:"OldOne@gmail.com",
+      email:"One@gmail.com",
       password:'qwerty'
     }
      async function testRegisterUser(){
@@ -41,6 +41,11 @@ export  const TestRedux=()=>{
         console.log('dataLLOGOOUT', data)
         return data
         }
+    }
+    const goal='NewGoal'
+    async function createNewGoal(goal){
+      const data=dispatch(newGoal(goal))
+
     }
 
   

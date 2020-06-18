@@ -10,7 +10,7 @@ export const registerUser = (param) => async (dispatch) => {
   }
   return data;
 };
-export const loginUser = (param) => async (dispatch, getState) => {
+export const loginUser = (param) => async (dispatch) => {
   console.log("param", param);
 
   const data = await services.loginUser(param);
@@ -20,7 +20,13 @@ export const loginUser = (param) => async (dispatch, getState) => {
     dispatch({ type: Type.LOGIN_USER, payload: data });
   }
 };
-export const logoutUser = (token) => async (dispatch, getState) => {
+export const logoutUser = (token) => async (dispatch) => {
   const data = await services.logoutUser(token);
   dispatch({ type: Type.LOGOUT_USER,payload:{token:''} });
 };
+
+export const newGoal=(goal)=>async(dispatch)=>{
+const data=await services.CreateGoal(goal);
+dispatch({type:Type.CREATE_GOAL,payload:data})
+
+}
