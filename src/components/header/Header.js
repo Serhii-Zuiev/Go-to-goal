@@ -1,4 +1,5 @@
 import React from "react";
+import {NavLink} from  'react-router-dom'
 import styles from "./header.module.css";
 import logo from "../../assets/images/logo.png";
 
@@ -14,8 +15,12 @@ const Header = () => {
       <>
         <img src={logo} alt="Лого" />
         <div>
+          <NavLink to='/auth/login'>
           <button className={styles.logInBtn}>Логін</button>
+          </NavLink>
+          <NavLink to='/auth/register'>
           <button className={styles.registerBtn}>Реєстрація</button>
+          </NavLink>
         </div>
       </>
     );
