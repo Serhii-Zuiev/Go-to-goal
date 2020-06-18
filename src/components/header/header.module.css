@@ -1,0 +1,41 @@
+.header {
+  width: 100%;
+  background-color: rgb(255, 255, 255);
+}
+
+.registerBtn,
+.logInBtn {
+  height: 20px;
+  background-color: transparent;
+  border: none;
+  font-family: "Montserrat";
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  color: #858598;
+}
+.logInBtn {
+  margin-right: 20px;
+}
+
+@media (max-width: 767px) {
+  .header {
+    padding-top: 75px;
+    padding-bottom: 30px;
+  }
+}
+
+@media (min-width: 768px) {
+  .header {
+    
+  box-shadow: 2px 3.464px 23.2px 5.8px rgba(29, 29, 27, 0.1);
+    margin-top: 26px;
+    height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    padding: 0px 25px;
+  }
+}

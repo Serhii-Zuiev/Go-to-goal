@@ -2,16 +2,17 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import "./assets/styles/index.css";
 import App from './components/App';
+import { BrowserRouter, Route } from "react-router-dom";
 import * as serviceWorker from './serviceWorker';
 import RegisterForm from "./components/AuthModal/RegisterForm/RegisterForm";
 import AvatarPicker from "./components/AuthModal/AvatarPicker/AvatarPicker"
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-    {/* <AvatarPicker /> */}
-    <RegisterForm />
-  </React.StrictMode>,
+  <BrowserRouter>
+    {/* <Provider store={store}> */}
+      <Route component={App} />
+    {/* </Provider> */}
+  </BrowserRouter>,
   document.getElementById('root')
 );
 
