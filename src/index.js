@@ -3,10 +3,14 @@ import ReactDOM from 'react-dom';
 import "./assets/styles/index.css";
 import App from './components/App';
 import * as serviceWorker from './serviceWorker';
+import RegisterForm from "./components/AuthModal/RegisterForm/RegisterForm";
+import AvatarPicker from "./components/AuthModal/AvatarPicker/AvatarPicker"
 
 ReactDOM.render(
   <React.StrictMode>
     <App />
+    {/* <AvatarPicker /> */}
+    <RegisterForm />
   </React.StrictMode>,
   document.getElementById('root')
 );
@@ -15,3 +19,5 @@ ReactDOM.render(
 // unregister() to register() below. Note this comes with some pitfalls.
 // Learn more about service workers: https://bit.ly/CRA-PWA
 serviceWorker.unregister();
+
+
