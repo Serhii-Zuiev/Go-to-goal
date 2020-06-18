@@ -144,6 +144,8 @@ async function getGoals(token) {
 //   }
 async function CreateGoal(token, goal) {
   try {
+    console.log('token', token)
+    console.log('goal', goal)
     const response = await axios({
         url: `${BASE_URL}/goals`,
         method: "post",
@@ -153,6 +155,7 @@ async function CreateGoal(token, goal) {
          },
         data: goal,
       });
+  
       return response.data;
    } catch (error) {
     console.warn(error);

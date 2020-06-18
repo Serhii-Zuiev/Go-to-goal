@@ -26,9 +26,14 @@ export const userAuthReducer = createReducer(initialState, {
   },
 });
 export const goalAndTaskReducer=createReducer(initialGoalState,{
+  [action.createGoal]:(state,{payload})=>{
+    console.log('payload', payload)
+    return {...state,goals:[...state.goals,payload.goal]}
+  },
   [action.createTask]:(state,{payload})=>{
-    return {...state,...[state.goals,payload]}
-  }
+    console.log('payload', payload)
+    return {...state,tasks:[...state.tasks,payload.task]}
+  },
 
 }
 

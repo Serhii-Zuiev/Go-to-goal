@@ -25,8 +25,13 @@ export const logoutUser = (token) => async (dispatch) => {
   dispatch({ type: Type.LOGOUT_USER,payload:{token:''} });
 };
 
-export const newGoal=(goal)=>async(dispatch)=>{
-const data=await services.CreateGoal(goal);
+export const newGoal=(token,goal)=>async(dispatch)=>{
+const data=await services.CreateGoal(token,goal);
 dispatch({type:Type.CREATE_GOAL,payload:data})
 
+}
+export const newTask=(token,task)=>async (dispatch)=>{
+  const data=await services.CreateTask(token,task)
+  console.log('dataCREATETASK', data)
+  dispatch({type:Type.CREATE_TASK,payload:data})
 }

@@ -1,8 +1,7 @@
 import React from 'react'
 import {useDispatch,useSelector} from 'react-redux'
-import {registerUser, newGoal} from '../redux/operations'
-import {loginUser} from '../redux/operations' 
-import {logoutUser} from '../redux/operations' 
+import {registerUser, newGoal,loginUser,logoutUser,newTask} from '../redux/operations'
+
 
 
 export  const TestRedux=()=>{
@@ -42,9 +41,38 @@ export  const TestRedux=()=>{
         return data
         }
     }
-    const goal='NewGoal'
-    async function createNewGoal(goal){
-      const data=dispatch(newGoal(goal))
+    const goal={
+        title: "Купи слона,ну епта",
+        description: "Мамке купил шубу,а мне слона?",
+        dates: [
+          "2020-06-18T19:45:34.946Z"
+        ],
+        points:99
+      
+
+    }
+    const task={
+      title: "Купи слона,ну епта",
+      description: "Мамке купил шубу,а мне слона?",
+      dates: [
+        "2020-06-18T19:45:34.946Z"
+      ],
+      points:99,
+      deadline:'8.00-10.00'
+
+    }
+    async function createNewGoal(){
+        if(token){
+            const modifyToken=token.slice(7)
+      const data=dispatch(newGoal(modifyToken,goal))
+        }
+
+    }
+    async function createNewTask(){
+        if(token){
+            const modifyToken=token.slice(7)
+      const data=dispatch(newTask(modifyToken,task))
+        }
 
     }
 
@@ -54,6 +82,8 @@ export  const TestRedux=()=>{
     <button onClick={testRegisterUser}>TEST REGISTER</button>
     <button onClick={testLoginUser}>Login user</button>
     <button onClick={logoutuserTest}>LogOut user</button>
+    <button onClick={createNewGoal}>Create Goal</button>
+    <button onClick={createNewTask}>Create Task</button>
     </>
 
   )
