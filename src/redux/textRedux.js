@@ -35,11 +35,14 @@ export  const TestRedux=()=>{
     }
     async function logoutuserTest(){
         if(token){
-        const data=dispatch(logoutUser(token))
+            const modifyToken=token.slice(7)
+            console.log('modifyToken', modifyToken)
+        const data=dispatch(logoutUser(modifyToken))
+        console.log('dataLLOGOOUT', data)
         return data
         }
     }
-    console.log('token', token)
+
   
   return(
     <>  

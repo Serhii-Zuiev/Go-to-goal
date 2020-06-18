@@ -22,6 +22,5 @@ export const loginUser = (param) => async (dispatch, getState) => {
 };
 export const logoutUser = (token) => async (dispatch, getState) => {
   const data = await services.logoutUser(token);
-  console.log("dataLogOut", data);
   dispatch({ type: Type.LOGOUT_USER,payload:{token:''} });
 };
