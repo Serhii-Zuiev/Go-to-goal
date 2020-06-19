@@ -11,7 +11,7 @@ const BASE_URL = "https://go-to-goal.goit.co.ua/api";
 //   avatar: "https://gravatar.com/asgklasgw",
 //   isChild: true
 // }
-async function rgisterUser(user) {
+async function registerUser(user) {
   try {
     const response = await axios({
       url: `${BASE_URL}/auth/register`,
@@ -37,6 +37,7 @@ async function loginUser(user) {
         headers: { "content-type": "application/json" },
         data: user,
       });
+      console.log('response', response)
       return response.data;
   } catch (error) {
     console.warn(error);
@@ -143,6 +144,8 @@ async function getGoals(token) {
 //   }
 async function CreateGoal(token, goal) {
   try {
+    console.log('token', token)
+    console.log('goal', goal)
     const response = await axios({
         url: `${BASE_URL}/goals`,
         method: "post",
@@ -152,6 +155,7 @@ async function CreateGoal(token, goal) {
          },
         data: goal,
       });
+  
       return response.data;
    } catch (error) {
     console.warn(error);
@@ -214,8 +218,8 @@ async function deleteGoal(token, goalId) {
 // GOALS ********
 
 
-export const servisec = {
-  rgisterUser,
+export const services = {
+  registerUser,
   loginUser,
   logoutUser,
   getTasks,
