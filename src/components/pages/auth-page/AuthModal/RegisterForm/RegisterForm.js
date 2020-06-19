@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { NavLink } from "react-router-dom";
 import s from './RegisterForm.module.css';
 
 
@@ -93,9 +94,11 @@ export default  class RegistrationForm extends Component {
             </div>
            
             <div className={s.box_btn}>
-              <button type="button" >
-                Назад
-              </button>
+              <NavLink to="/">
+                <button type="button" >
+                  Назад
+                </button>
+              </NavLink>
               <button type="submit">
                 Ok
               </button>
