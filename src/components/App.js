@@ -9,7 +9,6 @@ function App() {
   const routing = router(false);
   return (
     <>
-<<<<<<< HEAD
       <div className={styles.appContainer}>
         <AuthPage />
        <TestRedux/>
@@ -17,9 +16,6 @@ function App() {
       <TasksPage />
     
       {routing}
-=======
-      <div className={styles.appContainer}>{routing}</div>
->>>>>>> dev
     </>
   );
 }
