@@ -9,7 +9,7 @@ function App() {
   const routing = router(false);
   return (
     <>
-    <TestRedux/>
+    {/* <TestRedux/> */}
       <div className={styles.appContainer}>{routing}</div>
     </>
   );
