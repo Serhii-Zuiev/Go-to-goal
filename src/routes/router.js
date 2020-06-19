@@ -1,9 +1,15 @@
 import React, { Suspense, lazy } from "react";
-import { Route, Switch, Redirect } from "react-router-dom";
-
+import {
+  BrowserRouter as Router,
+  Route,
+  Switch,
+  Redirect,
+} from "react-router-dom";
 
 const AuthPage = lazy(() =>
-  import("../components/pages/auth-page/AuthPage" /* webpackChunkName: 'AuthPage'*/)
+  import(
+    "../components/pages/auth-page/AuthPage" /* webpackChunkName: 'AuthPage'*/
+  )
 );
 export const router = (token) => {
   if (token) {
@@ -20,14 +26,14 @@ export const router = (token) => {
   }
   return (
     <>
-      <Suspense fallback={<div>Loading</div>}>
-        <Switch>
-          <Route exact path="/" component={AuthPage} />
-          <Route path="/auth/login" component={"LoginPageModal"} />
-          <Route path="/auth/register" component={"RegisterpageModal"} />
-          <Redirect to="/" />
-        </Switch>
-      </Suspense>
+      <Router>
+        <Suspense fallback={<div>Loading</div>}>
+          <Switch>
+            <Route path="/" component={AuthPage} />
+            <Redirect to="/" />
+          </Switch>
+        </Suspense>
+      </Router>
     </>
   );
 };
