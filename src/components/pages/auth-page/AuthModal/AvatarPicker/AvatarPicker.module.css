@@ -1,0 +1,54 @@
+.avatar_choose {
+    width: 177px;
+    height: fit-content;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .user_avatar_big {
+    width: 177px;
+    height: fit-content;
+    align-self: center;
+  }
+  
+  .avatar_txt {
+    font-size: 12px;
+    padding: 11px 0;
+    font-family: 'Montserrat', sans-serif;
+    color:#858598;
+    font-weight: 600;
+  }
+  
+  .avatar_little_div {
+    width: 177px;
+    height: 68px;
+    display: flex;
+    flex-flow: wrap;
+    align-content: space-between;
+    justify-content: space-between;
+    align-items: baseline;
+  }
+  
+  .user_avatar_small {
+    max-width: 21%;
+    max-height: auto;
+    margin: 0;
+    padding: 0;
+    align-self: center;
+  }
+  
+  .user_avatar_small:hover {
+    cursor: pointer;
+    transform: scale(1.2, 1.2);
+  }
+  
+  .active {
+    max-width: 21%;
+    max-height: auto;
+    outline: none;
+    transform: scale(1.1, 1.1);
+    border: 1px solid rgb(8, 141, 8);
+  }
+
