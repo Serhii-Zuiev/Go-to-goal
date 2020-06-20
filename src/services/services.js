@@ -64,6 +64,7 @@ async function logoutUser(token) {
 
 // TASKS ========
 async function getTasks(token) {
+  console.log('token', token)
 try {
     const response = await axios({
         url: `${BASE_URL}/tasks`,
@@ -123,6 +124,7 @@ async function deleteTask(token, taskId) {
 
 // GOALS ********
 async function getGoals(token) {
+
    try {
     const response = await axios({
         url: `${BASE_URL}/goals`,

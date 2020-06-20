@@ -8,5 +8,6 @@ export const deleteTask = createAction(`${Type.DELETE_TASK}`);
 export const createGoal = createAction(`${Type.CREATE_GOAL}`);
 export const updateGoal = createAction(`${Type.UPDATE_GOAL}`);
 export const deleteGoal = createAction(`${Type.DELETE_GOAL}`);
-
+export const getAllTasks=createAction(`${Type.GET_ALL_TASKS}`)
+export const getAllGoals=createAction(`${Type.GET_ALL_GOALS}`)
 
