@@ -1,0 +1,21 @@
+.bannerSection {
+  background-color: #f5d53b;
+  background-position-x: center;
+  background-repeat: no-repeat;
+}
+
+@media (min-width: 768px) {
+  .bannerSection {
+    height: 424px;
+    background-position-y: 118px;
+    background-image: url(../../../../assets/images/cards-t.png);
+  }
+}
+
+@media (min-width: 1200px) {
+  .bannerSection {
+    height: 338px;
+    background-position-y: 75px;
+    background-image: url(../../../../assets/images/cards-d.png);
+  }
+}

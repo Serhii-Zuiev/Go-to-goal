@@ -10,9 +10,10 @@ function App() {
   return (
     <>
     {/* <TestRedux/> */}
-      <div className={styles.appContainer}>{routing}</div>
+      {routing}
     </>
   );
 }
 
 export default App;
+{/* <div className={styles.appContainer}>{routing}</div> */}
