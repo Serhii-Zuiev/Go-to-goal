@@ -47,14 +47,23 @@
   margin: 0 auto;
 }
 
+@media (max-width: 767px) {
+  .greetingWrapper {
+    width: 250px;
+    margin: 0 auto;
+  }
+}
+
 @media (min-width: 768px) {
   .mainGreeting {
     text-align: center;
     line-height: 45px;
     margin-bottom: 22px;
   }
-  .greetingWrapper {
-    padding: 68px 44px 62px;
+  .greetingContainer {
+    width: 600px;
+    margin: 0 auto;
+    padding: 68px 0px 62px;
   }
   .greetingContentText {
     text-align: center;
@@ -65,13 +74,20 @@
   .greetingContent {
     margin-bottom: 50px;
   }
+  .greetingWrapper {
+    background-image: url(../../../../assets/images/icons/party/party.svg);
+    background-repeat: no-repeat;
+    background-size: 280px;
+    background-position: left bottom;
+  }
 }
 
 @media (min-width: 1200px) {
-    .greetingWrapper {
-      padding: 46px 230px 50px;
-    }
-    .greetingContent {
-      margin-bottom: 60px;
-    }
+  .greetingContainer {
+    width: 740px;
+    padding: 46px 0px 50px;
   }
+  .greetingContent {
+    margin-bottom: 60px;
+  }
+}
