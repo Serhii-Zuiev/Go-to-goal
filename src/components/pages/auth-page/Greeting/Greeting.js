@@ -25,7 +25,7 @@ const Greeting = () => {
   if (window.innerWidth > 767) {
     content = (
       <>
-        <div className={styles.greetingWrapper}>
+        <div className={styles.greetingContainer}>
           <h2 className={styles.mainGreeting}>Вітаємо вас у нашій програмі!</h2>
 
           <div className={styles.greetingContent}>
@@ -54,7 +54,7 @@ const Greeting = () => {
     );
   }
 
-  return <header className={styles.header}>{content}</header>;
+  return <section className={styles.greetingWrapper}>{content}</section>;
 };
 
 export default Greeting;
