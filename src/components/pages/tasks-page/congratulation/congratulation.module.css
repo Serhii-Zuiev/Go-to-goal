@@ -1,0 +1,164 @@
+*,
+*:before,
+*:after {
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  width: 100%;
+  height: 100%;
+  background: url('../../../../assets/images/congratulations/FlagsIcon.png') no-repeat -10px -100px;
+  background-size: 60% 60%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  z-index: 666;
+}
+
+.modal {
+  background-color: #aadd43;
+  width: 300px;
+  height: 265px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  align-content: center;
+  border-radius: 7px;
+  z-index: 6;
+  overflow: hidden;
+  padding: 0 20px 0px 20px;
+}
+
+.congrats {
+  color: white;
+  font-size: 18px;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-family: 'Montserrat';
+}
+
+.flagContainer {
+  background: url('../../../../assets/images/congratulations/BlueFlagIcon.png') center;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  display: block;
+  width: 110%;
+  height: 70px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 10px;
+  margin-bottom: 30px;
+}
+
+.textInform {
+  color: white;
+  font-size: 10px;
+  text-transform: uppercase;
+  font-weight: bold;
+  margin-bottom: 18px;
+  font-family: 'Montserrat';
+}
+
+.textPrise {
+  padding-top: 10px;
+  color: white;
+  font-size: 13px;
+  margin-bottom: 15px;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-family: 'Montserrat';
+}
+
+.textNewTask {
+  padding-top: 20px;
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: 9px;
+  color: #15356f;
+  width: 100px;
+  line-height: 10px;
+  text-align: center;
+  font-family: 'Montserrat';
+}
+
+.button {
+  background: #f1c640;
+  border: none;
+  outline: none;
+  width: 200px;
+  height: 50px;
+  border-radius: 30px;
+  font-size: 21px;
+  color: white;
+  cursor: pointer;
+  transition: all 0.3s;
+  font-weight: bold;
+  font-family: 'Montserrat';
+}
+
+.button:hover {
+  background: white;
+  color: #f1c640;
+  font-size: 21px;
+}
+
+@media (min-width: 768px) {
+  .container {
+    background: url('../../../../assets/images/congratulations/FlagsIcon.png') no-repeat -2% -5%;
+  }
+
+  .congrats {
+    font-size: 61px;
+  }
+
+  .textInform {
+    font-size: 14px;
+    margin-bottom: 10px;
+  }
+
+  .textPrise {
+    font-size: 28px;
+  }
+
+  .modal {
+    background: url('../../../../assets/images/congratulations/PipeParty.png') no-repeat 105% 105%;
+    background-color: #aadd43;
+    width: 660px;
+    height: 440px;
+  }
+
+  .flagContainer {
+    background: url('../../../../assets/images/congratulations/BlueFlagIcon.png') center;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    width: 100%;
+    height: 120px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px 0 10px 0;
+  }
+
+  .textNewTask {
+    font-size: 10px;
+    width: 100%;
+    line-height: 20px;
+    padding-top: 30px;
+  }
+
+  .button {
+    width: 200px;
+    height: 60px;
+  }
+
+  .textPrise {
+    padding-top: 21px;
+  }
+}
+
+@media (min-width: 1280px) {
+}
