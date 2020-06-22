@@ -10,4 +10,5 @@ export const updateGoal = createAction(`${Type.UPDATE_GOAL}`);
 export const deleteGoal = createAction(`${Type.DELETE_GOAL}`);
 export const getAllTasks=createAction(`${Type.GET_ALL_TASKS}`)
 export const getAllGoals=createAction(`${Type.GET_ALL_GOALS}`)
-
+export const isLoading=createAction(`${Type.LOADING_FLAG}`)
+export const isAlert=createAction(`${Type.ALERT_FLAG}`)
