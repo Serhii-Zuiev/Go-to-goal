@@ -5,10 +5,12 @@ import {
   Switch,
   Redirect,
 } from "react-router-dom";
+import TasksPage from './../components/pages/tasks-page/TasksPage';
+
 
 const AuthPage = lazy(() =>
   import(
-    "../components/pages/auth-page/AuthPage" /* webpackChunkName: 'AuthPage'*/
+  "../components/pages/auth-page/AuthPage" /* webpackChunkName: 'AuthPage'*/
   )
 );
 export const router = (token) => {
@@ -17,7 +19,7 @@ export const router = (token) => {
       <Switch>
         <Suspense fallback={<div> Loading</div>}>
           <Route exact path="/goals" component={"goals"} />
-          <Route path="/tasks" component={"Tasks"} />
+          <Route path="/tasks" component={TasksPage} />
           <Route path="/auth/logout" component={AuthPage} />
           <Redirect to="/goals" />
         </Suspense>
