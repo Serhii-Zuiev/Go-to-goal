@@ -47,11 +47,10 @@ class TaskModal extends Component {
                     <Select required 
                     options={options} 
                     onChange={this.onChangeSelect} 
-                    value={findOpt(selectData)}
-                    className={s.input_options}/>
+                    value={findOpt(this.state.selectData)}
+                    className={s.input_options}>
                     Час
                     </Select>
-                    {}
                 </div>
                 <button type="button" className={s.buttonOk}>OK</button>
 
