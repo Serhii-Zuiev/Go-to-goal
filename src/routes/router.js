@@ -14,7 +14,7 @@ const AuthPage = lazy(() =>
 );
 const TasksPage=lazy(()=>
 import(
-  './../components/pages/tasks-page/TasksPage' /* webpackChunkNAme: "TasksPage"*/
+  "../components/pages/tasks-page/TasksPage" /* webpackChunkNAme: "TasksPage"*/
 ))
 export const router = (token) => {
   if (token) {
@@ -24,7 +24,7 @@ export const router = (token) => {
           <Route exact path="/goals" component={"goals"} />
           <Route path="/tasks" component={TasksPage} />
           <Route path="/auth/logout" component={AuthPage} />
-          <Redirect to="/goals" />
+          {/* <Redirect to="/goals" /> */}
         </Suspense>
       </Switch>
     );
