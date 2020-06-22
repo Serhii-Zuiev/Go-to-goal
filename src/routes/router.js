@@ -5,7 +5,6 @@ import {
   Switch,
   Redirect,
 } from "react-router-dom";
-import TasksPage from './../components/pages/tasks-page/TasksPage';
 
 
 const AuthPage = lazy(() =>
@@ -13,6 +12,10 @@ const AuthPage = lazy(() =>
   "../components/pages/auth-page/AuthPage" /* webpackChunkName: 'AuthPage'*/
   )
 );
+const TasksPage=lazy(()=>
+import(
+  './../components/pages/tasks-page/TasksPage' /* webpackChunkNAme: "TasksPage"*/
+))
 export const router = (token) => {
   if (token) {
     return (
