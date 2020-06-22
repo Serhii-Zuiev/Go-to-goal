@@ -8,13 +8,8 @@ function App() {
   const routing = router(false);
   return (
     <>
-<<<<<<< HEAD
-    <TestRedux/>
-      <div className={styles.appContainer}>{routing}</div>
-=======
     {/* <TestRedux/> */}
       {routing}
->>>>>>> dev
     </>
   );
 }
