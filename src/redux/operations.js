@@ -35,3 +35,14 @@ export const newTask=(token,task)=>async (dispatch)=>{
   console.log('dataCREATETASK', data)
   dispatch({type:Type.CREATE_TASK,payload:data})
 }
+export const getTasks=(token)=>async(dispatch)=>{
+  const data=await services.getTasks(token)
+  dispatch({type:Type.GET_ALL_TASKS,payload:data})
+}
+
+
+export const getGoals=(token)=>async(dispatch)=>{
+  const data=await services.getGoals(token)
+  dispatch({type:Type.GET_ALL_GOALS,payload:data})
+
+}
