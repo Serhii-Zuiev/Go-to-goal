@@ -44,4 +44,11 @@
     left: 50%;
     margin-left: -45%;
   }
+
+  .authContainer{
+    /* width: 500px; */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
 }

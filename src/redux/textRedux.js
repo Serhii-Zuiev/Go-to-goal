@@ -1,6 +1,6 @@
 import React from 'react'
 import {useDispatch,useSelector} from 'react-redux'
-import {registerUser, newGoal,loginUser,logoutUser,newTask} from '../redux/operations'
+import {registerUser, newGoal,loginUser,logoutUser,newTask,getTasks, getGoals} from '../redux/operations'
 
 
 
@@ -75,7 +75,21 @@ export  const TestRedux=()=>{
         }
 
     }
-
+async function getAllTasks(){
+  if(token){
+    console.log('tokenTESXTREDUX', token)
+    const modifyToken=token.slice(7)
+  const data=dispatch(getTasks(modifyToken))
+  }
+}
+  
+async function getAllGoals(){
+  if(token){
+    console.log('tokenTESXTREDUX', token)
+    const modifyToken=token.slice(7)
+  const data=dispatch(getGoals(modifyToken))
+  }
+}
   
   return(
     <>  
@@ -84,6 +98,8 @@ export  const TestRedux=()=>{
     <button onClick={logoutuserTest}>LogOut user</button>
     <button onClick={createNewGoal}>Create Goal</button>
     <button onClick={createNewTask}>Create Task</button>
+    <button onClick={getAllTasks}>Get all tasks </button>
+    <button onClick={getAllGoals}>Get all goals </button>
     </>
 
   )
