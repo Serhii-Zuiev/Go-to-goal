@@ -6,7 +6,7 @@ import {store} from './redux/store'
 import { Provider } from "react-redux";
 import { BrowserRouter, Route } from "react-router-dom";
 import * as serviceWorker from "./serviceWorker";
-
+console.log('store', store)
 ReactDOM.render(
   <BrowserRouter>
     <Provider store={store}>
