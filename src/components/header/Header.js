@@ -14,10 +14,8 @@ const Header = () => {
     content = (
       <>
         <img src={logo} alt="Лого" />
-        <div>
-          <NavLink to="/auth/login">
-            <span className={styles.logInBtn}>Логін</span>
-          </NavLink>
+        <div className={styles.authContainer}>
+          <div>форма авторизаци</div>
           <NavLink to="/auth/register">
             <span className={styles.registerBtn}>Реєстрація</span>
           </NavLink>
