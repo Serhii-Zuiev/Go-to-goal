@@ -1,21 +1,15 @@
-.empty_task {
-  margin: 0 auto;
-  width: 280px;
-  height: 280px;
-  background: repeating-linear-gradient(
-    135deg,
-    #ffffff 0px,
-    #ffffff 2px,
-    #e0e0e0 2px,
-    #e0e0e0 4px
-  );
-  border-radius: 6px;
-  opacity: 0.7;
-  width: 280px;
-  height: 261px;
-}
+/* .arrow {
+  position: absolute;
+  width: 200px;
+  height: 250px;
+  top: 200px;
+  left: 200px;
+  background-image: url("../../../../assets/images/Arrow.png");
+  background-repeat: no-repeat;
+  z-index: 10;
+} */
 .startTaskWrapper {
-  display: flex;
+  display: block;
 }
 .startTaskTitle {
   font-family: "Montserrat", sans-serif;
@@ -84,6 +78,7 @@
 }
 .dailyTaskListTittle {
   font-family: "Montserrat", sans-serif;
+  color: #42414b;
   font-weight: 800;
   font-size: 12px;
   text-align: center;
@@ -92,8 +87,63 @@
   margin-bottom: 24px;
   letter-spacing: 1px;
 }
-
-@media (max-width: 767px) {
+.emptyTaskWrapper {
+  display: flex;
+  justify-content: start;
 }
-@media (min-width: 768px) {
+.empty_task {
+  margin: 0 auto;
+  background: repeating-linear-gradient(
+    135deg,
+    #ffffff 0px,
+    #ffffff 2px,
+    #e0e0e0 2px,
+    #e0e0e0 4px
+  );
+  border-radius: 6px;
+  opacity: 0.7;
+  width: 280px;
+  height: 261px;
+}
+
+@media (min-width: 767px) {
+  .startTaskTitle {
+    padding: 30px 0 0 0;
+  }
+  .startTaskQuestion {
+    font-size: 18px;
+    text-align: center;
+    padding: 38px 0 0 0;
+  }
+  /* .emptyTaskWrapper {
+    display: flex;
+    justify-content: start;
+  } */
+  .empty_task {
+    margin: 0;
+  }
+  .myTasksTittle {
+    text-align: left;
+  }
+  .dailyTaskListTittle {
+    text-align: left;
+  }
+}
+@media (min-width: 1200px) {
+  .startTaskWrapper {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .myTaskWrapper {
+    order: -2;
+    flex-basis: 100%;
+  }
+  .emptyTaskWrapper {
+    order: -1;
+  }
+  .dailyTaskListTittle {
+    padding: 15px 0 0 0;
+    margin-bottom: 33px;
+    letter-spacing: 1px;
+  }
 }
