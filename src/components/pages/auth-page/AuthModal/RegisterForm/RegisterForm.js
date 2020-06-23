@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { NavLink } from "react-router-dom";
 import s from './RegisterForm.module.css';
 import { connect } from 'react-redux';
 import AvatarPicker from '../AvatarPicker/AvatarPicker'
@@ -239,11 +240,21 @@ class RegisterForm extends Component {
             )}
 
             <div className={s.box_btn}>
+<<<<<<< HEAD:src/components/AuthModal/RegisterForm/RegisterForm.js
               <button type="button" onClick={this.handleCloseModal}>
                 Назад
               </button>
               <button type="submit" disabled={!formValid}>
                 Зареєструватися
+=======
+              <NavLink to="/">
+                <button type="button" >
+                  Назад
+                </button>
+              </NavLink>
+              <button type="submit">
+                Ok
+>>>>>>> dev:src/components/pages/auth-page/AuthModal/RegisterForm/RegisterForm.js
               </button>
             </div>
           </form>

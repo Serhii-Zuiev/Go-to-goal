@@ -1,0 +1,93 @@
+.mainGreeting {
+  font-family: "Montserrat";
+  font-size: 27px;
+  line-height: 31px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: #42414b;
+  margin-bottom: 28px;
+}
+
+.greetingContent {
+  font-family: "Montserrat";
+  font-size: 14px;
+  line-height: 23px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  color: #a8a8b5;
+}
+.greetingContentWrapper {
+  margin-bottom: 212px;
+}
+
+.greetingLoginLink {
+  text-decoration: underline;
+  margin-left: 6px;
+}
+
+.toRegisterBtn {
+  font-family: "Montserrat";
+  font-size: 14px;
+  line-height: 23px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  color: #fff;
+  background: linear-gradient(
+    90deg,
+    rgb(245, 213, 59) 0%,
+    rgb(241, 195, 65) 55%,
+    rgb(236, 177, 70) 100%
+  );
+  box-shadow: 0px 8px 29px 0px rgba(178, 138, 61, 0.31);
+  width: 200px;
+  height: 48px;
+  border-radius: 24px;
+  border: none;
+  display: block;
+  margin: 0 auto;
+}
+
+@media (max-width: 767px) {
+  .greetingWrapper {
+    width: 250px;
+    margin: 0 auto;
+  }
+}
+
+@media (min-width: 768px) {
+  .mainGreeting {
+    text-align: center;
+    line-height: 45px;
+    margin-bottom: 22px;
+  }
+  .greetingContainer {
+    width: 600px;
+    margin: 0 auto;
+    padding: 68px 0px 62px;
+  }
+  .greetingContentText {
+    text-align: center;
+  }
+  .greetingContentText:not(:last-child) {
+    margin-bottom: 20px;
+  }
+  .greetingContent {
+    margin-bottom: 50px;
+  }
+  .greetingWrapper {
+    background-image: url(../../../../assets/images/icons/party/party.svg);
+    background-repeat: no-repeat;
+    background-size: 280px;
+    background-position: left bottom;
+  }
+}
+
+@media (min-width: 1200px) {
+  .greetingContainer {
+    width: 740px;
+    padding: 46px 0px 50px;
+  }
+  .greetingContent {
+    margin-bottom: 60px;
+  }
+}
