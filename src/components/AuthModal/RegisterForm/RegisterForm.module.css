@@ -84,14 +84,6 @@
     font-weight: 600;
   }
   
-  .box_showPassword {
-    margin: 0;
-    padding: 0;
-    position: relative;
-    display: flex;
-  }
-  
-  
   .box_btn {
     width: 100%;
     display: flex;

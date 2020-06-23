@@ -17,6 +17,18 @@ class AvatarPicker extends Component {
     avatar: 'https://go-to-goal.goit.co.ua/image/avatar_001.png',
   };
 
+  componentDidMount() {
+    const { avatar } = this.state;
+    const { changeAvatar } = this.props;
+    changeAvatar(avatar);
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    const { avatar } = this.state;
+    const { changeAvatar } = this.props;
+    if (avatar === prevState.avatar) return;
+    changeAvatar(avatar);
+  }
 
   changeUserPic = e => {
     this.setState({ avatar: e.target.src });
