@@ -19,13 +19,16 @@ import(
 export const router = (token) => {
   if (token) {
     return (
+      
       <Switch>
         <Suspense fallback={<div> Loading</div>}>
-          <Route exact path="/goals" component={"goals"} />
-          <Route path="/tasks" component={TasksPage} />
-          <Route path="/auth/logout" component={AuthPage} />
-          {/* <Redirect to="/goals" /> */}
+          <Route   path="/goals" component={'goals'} />
+          <Route  path="/tasks" component={TasksPage} />
+          <Route  path="/auth/logout" component={AuthPage} />
+          <Redirect to="/goals" />
+      
         </Suspense>
+  
       </Switch>
     );
   }
