@@ -17,7 +17,7 @@ const initialFlagState = {
 };
 export const userAuthReducer = createReducer(initialState, {
   [action.registerUser]: (state, { payload }) => {
-    return { ...state, userData: { ...payload, token: "" } };
+    return { ...state, userData: { ...payload } };
   },
   [action.loginUser]: (state, { payload }) => {
     return { ...state, userData: payload.user, status: payload.status };
