@@ -240,13 +240,6 @@ class RegisterForm extends Component {
             )}
 
             <div className={s.box_btn}>
-<<<<<<< HEAD:src/components/AuthModal/RegisterForm/RegisterForm.js
-              <button type="button" onClick={this.handleCloseModal}>
-                Назад
-              </button>
-              <button type="submit" disabled={!formValid}>
-                Зареєструватися
-=======
               <NavLink to="/">
                 <button type="button" >
                   Назад
@@ -254,7 +247,6 @@ class RegisterForm extends Component {
               </NavLink>
               <button type="submit">
                 Ok
->>>>>>> dev:src/components/pages/auth-page/AuthModal/RegisterForm/RegisterForm.js
               </button>
             </div>
           </form>
@@ -272,4 +264,4 @@ class RegisterForm extends Component {
 }
 
 
-export default RegisrerForm;
+export default RegisterForm;
