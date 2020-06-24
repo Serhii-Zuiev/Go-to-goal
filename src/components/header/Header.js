@@ -19,7 +19,7 @@ const Header = ({ pageOfHeader }) => {
     </>
   );
 
-  if (pageOfHeader === AUTH_PAGE && IS_BIG_VERSION) {
+  if ((pageOfHeader === AUTH_PAGE) && IS_BIG_VERSION) {
     content = (
       <>
         <img src={logo} alt="Лого" />
@@ -33,7 +33,7 @@ const Header = ({ pageOfHeader }) => {
     );
   }
 
-  if (pageOfHeader === GOALS_PAGE && IS_BIG_VERSION) {
+  if ((pageOfHeader === GOALS_PAGE) && IS_BIG_VERSION) {
     content = (
       <>
         <img src={logo} alt="Лого" />
@@ -42,7 +42,8 @@ const Header = ({ pageOfHeader }) => {
     );
   }
 
-  if (pageOfHeader === TSASKS_PAGE && IS_BIG_VERSION) {
+  if ((pageOfHeader === TSASKS_PAGE) && IS_BIG_VERSION) {
+    // console.log((pageOfHeader === TSASKS_PAGE) && IS_BIG_VERSION)
     content = (
       <>
         <img src={logo} alt="Лого" />
@@ -53,7 +54,7 @@ const Header = ({ pageOfHeader }) => {
     );
   }
 
-  if (pageOfHeader === TSASKS_PAGE || GOALS_PAGE && !IS_BIG_VERSION) {
+  if ((pageOfHeader === TSASKS_PAGE || pageOfHeader === GOALS_PAGE) && !IS_BIG_VERSION) {
     content = (
       <>
         <img src={logo} alt="Лого" />
