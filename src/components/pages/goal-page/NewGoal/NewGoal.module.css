@@ -1,0 +1,213 @@
+.new_goal_section {
+    width: 840px;
+    margin: 0 auto 50px;
+    padding-top: 50px;
+    font-family: 'Montserrat';
+  }
+  
+  .new_goal_title {
+    font-weight: bold;
+    font-size: 20px;
+    color: #42414b;
+    margin: 0 0 46px;
+  }
+  
+  .container {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .new_goal_info {
+    font-size: 18px;
+    line-height: 32px;
+    color: #858598;
+    padding: 30px 0 0 0;
+  }
+  
+  .p {
+    margin: 0 0 20px;
+    line-height: 32px;
+  }
+  
+  .button {
+    box-sizing: content-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    width: 280px;
+    height: 262px;
+    margin-right: 70px;
+    border: none;
+    border-radius: 5px;
+    padding: 0;
+    background-color: #e0e0e0;
+    color: #fff;
+    text-transform: uppercase;
+    position: relative;
+    cursor: pointer;
+  }
+  
+  .button:hover .button_overlay {
+    background-color: #f5d53b;
+    border-radius: 5px;
+  }
+  
+  .button_overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 280px;
+    height: 262px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+  }
+  
+  .button_icon {
+    display: block;
+    width: 46px;
+    height: 46px;
+  }
+  
+  .button_text {
+    width: 280px;
+    text-align: left;
+    text-indent: 30px;
+    margin: 0 0 20px;
+  }
+  
+  .arrow_icon {
+    display: inline-block;
+    font-weight: bold;
+    color: #42414b;
+  }
+  
+  .arrow_icon::before {
+    content: '';
+    display: inline-block;
+    width: 85px;
+    height: 50px;
+    background-image: url(../../../../assets/images/arrow.png);
+    background-size: cover;
+    margin-right: 20px;
+    margin-bottom: 10px;
+    vertical-align: middle;
+  }
+  
+  /* MEDIA PAD 768PX */
+  
+  @media (max-width: 1279px) {
+    .new_goal_section {
+      width: 100%;
+      display: flex;
+      flex-direction: column-reverse;
+      align-items: center;
+      background-image: url(../../../../assets/images/big-arrow.png);
+      background-repeat: no-repeat;
+      background-position: 0% 50%;
+      padding: 100px 0 0;
+      margin: 0 auto;
+    }
+  
+    .container {
+      width: 738px;
+      /* margin: 0 auto; */
+      flex-direction: column-reverse;
+      align-items: center;
+      text-align: center;
+    }
+  
+    .button {
+      margin-right: 0;
+      margin-bottom: 30px;
+    }
+  
+    .button,
+    .button_overlay {
+      width: 220px;
+      height: 200px;
+    }
+  
+    .arrow_icon {
+      margin-bottom: 80px;
+    }
+  
+    .arrow_icon::before {
+      display: none;
+    }
+  
+    .new_goal_info {
+      padding: 0;
+    }
+  
+    .new_goal_title {
+      display: inline-block;
+      width: 104px;
+      padding: 0 316px 230px;
+      background-image: url(../../../../assets/images/decor.png);
+      background-repeat: no-repeat;
+      background-position: 100% 0%;
+    }
+  }
+  
+  /* MEDIA MOBILE 320PX */
+  
+  @media (max-width: 767px) {
+    .new_goal_section {
+      background: none;
+      padding: 0;
+    }
+  
+    .container {
+      width: 240px;
+      margin: 0 auto 32px;
+    }
+  
+    .new_goal_title {
+      display: none;
+    }
+  
+    .arrow_icon {
+      margin: 0;
+      padding-bottom: 60px;
+      position: relative;
+    }
+  
+    .arrow_icon::after {
+      content: '';
+      display: inline-block;
+      margin: 0;
+      width: 16px;
+      height: 30px;
+      background-image: url(../../../../assets/images/arrow-down.png);
+      background-size: cover;
+      position: absolute;
+      bottom: 0;
+      top: unset;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+  
+    .button,
+    .button_overlay {
+      width: 220px;
+      height: 200px;
+      margin: 0;
+      cursor: pointer;
+    }
+  
+    .button_text {
+      font-size: 14px;
+      text-indent: 26px;
+      margin: 0 0 20px;
+      width: 220px;
+    }
+  
+    .new_goal_info {
+      font-size: 16px;
+      line-height: 26px;
+    }
+  }
+  

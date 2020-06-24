@@ -10,7 +10,7 @@ import Banner from "./Banner/Banner";
 const AuthPage = () => {
   return (
     <>
-      <Header />
+      <Header pageOfHeader={'auth'}/>
       <Banner/>
       <Greeting />
       <Switch>

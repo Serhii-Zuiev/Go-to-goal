@@ -4,8 +4,9 @@
   background-color: rgb(255, 255, 255);
 }
 
-.registerBtn,
-.logInBtn {
+.registerBtn {
+  display: flex;
+  align-items: center;
   height: 20px;
   background-color: transparent;
   border: none;
@@ -15,9 +16,7 @@
   letter-spacing: 1px;
   color: #858598;
 }
-.logInBtn {
-  margin-right: 20px;
-}
+
 
 @media (max-width: 767px) {
   .header {
