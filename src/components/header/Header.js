@@ -3,6 +3,9 @@ import { NavLink } from "react-router-dom";
 import styles from "./header.module.css";
 import logo from "../../assets/images/logo.png";
 import LoginForm from "../LoginForm/LoginForm";
+import CurrentGoal from "../pages/tasks-page/current-goal/CurrentGoal";
+import ProgressBar from "../pages/tasks-page/progress-bar/ProgressBar";
+import UserInfoCard from "../userInfoCard/UserInfoCard";
 
 const Header = ({ pageOfHeader }) => {
   const AUTH_PAGE = "auth";
@@ -34,6 +37,7 @@ const Header = ({ pageOfHeader }) => {
     content = (
       <>
         <img src={logo} alt="Лого" />
+        <UserInfoCard />
       </>
     );
   }
@@ -42,6 +46,18 @@ const Header = ({ pageOfHeader }) => {
     content = (
       <>
         <img src={logo} alt="Лого" />
+        <CurrentGoal />
+        <ProgressBar />
+        <UserInfoCard />
+      </>
+    );
+  }
+
+  if (pageOfHeader === TSASKS_PAGE || GOALS_PAGE && !IS_BIG_VERSION) {
+    content = (
+      <>
+        <img src={logo} alt="Лого" />
+        <UserInfoCard />
       </>
     );
   }

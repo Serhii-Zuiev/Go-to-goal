@@ -12,6 +12,11 @@ const AuthPage = lazy(() =>
   "../components/pages/auth-page/AuthPage" /* webpackChunkName: 'AuthPage'*/
   )
 );
+const GoalPage = lazy(() =>
+  import(
+  "../components/pages/goal-page/NewGoal/NewGoal.js" /* webpackChunkName: 'GoalPage'*/
+  )
+);
 const TasksPage=lazy(()=>
 import(
   "../components/pages/tasks-page/TasksPage" /* webpackChunkNAme: "TasksPage"*/
@@ -21,7 +26,7 @@ export const router = (token) => {
     return (
       <Switch>
         <Suspense fallback={<div> Loading</div>}>
-          <Route exact path="/goals" component={"goals"} />
+          <Route exact path="/goals" component={GoalPage} />
           <Route path="/tasks" component={TasksPage} />
           <Route path="/auth/logout" component={AuthPage} />
           {/* <Redirect to="/goals" /> */}
