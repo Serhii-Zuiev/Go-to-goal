@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
-import { NavLink } from "react-router-dom";
 import s from './RegisterForm.module.css';
 import { connect } from 'react-redux';
 import AvatarPicker from '../AvatarPicker/AvatarPicker'
-
+import { registerUser } from '../../../../../redux/operations'
 
 class RegisterForm extends Component {
   
@@ -34,9 +33,9 @@ class RegisterForm extends Component {
     e.preventDefault();
 
     const { name, age, email, password, rePassword, avatar } = this.state;
-    const { onSignUp } = this.props;
+    const { registerUser } = this.props;
     if (password === rePassword) {
-      onSignUp({
+      registerUser({
         name,
         email,
         password,
@@ -122,9 +121,9 @@ class RegisterForm extends Component {
     });
   };
 
-  // handleCloseModal = () => {
-  //   closeModal();
-  // };
+  handleCloseModal = () => {
+    this.props.history.push('/')
+  };
 
   changeUserPic = avatar => {
     return this.setState({ avatar });
@@ -240,6 +239,7 @@ class RegisterForm extends Component {
             )}
 
             <div className={s.box_btn}>
+<<<<<<< HEAD
               <NavLink to="/">
                 <button type="button" >
                   Назад
@@ -247,6 +247,13 @@ class RegisterForm extends Component {
               </NavLink>
               <button type="submit">
                 Ok
+=======
+              <button type="button" onClick={this.handleCloseModal}>
+                Назад
+              </button>
+              <button type="submit" disabled={!formValid}>
+                Зареєструватися
+>>>>>>> dev
               </button>
             </div>
           </form>
@@ -264,4 +271,9 @@ class RegisterForm extends Component {
 }
 
 
-export default RegisterForm;
+
+const mapDTP = {
+  registerUser
+}
+
+export default connect(null, mapDTP)(RegisterForm);
