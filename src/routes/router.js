@@ -5,6 +5,7 @@ import {
   Switch,
   Redirect,
 } from "react-router-dom";
+import { LoaderUi } from "./loader/Loader";
 
 
 const AuthPage = lazy(() =>
@@ -21,7 +22,7 @@ export const router = (token) => {
     return (
       
       <Switch>
-        <Suspense fallback={<div> Loading</div>}>
+        <Suspense fallback={<LoaderUi/>}>
           <Route   path="/goals" component={'goals'} />
           <Route  path="/tasks" component={TasksPage} />
           <Route  path="/auth/logout" component={AuthPage} />
@@ -35,7 +36,7 @@ export const router = (token) => {
   return (
     <>
       <Router>
-        <Suspense fallback={<div>Loading</div>}>
+        <Suspense fallback={<LoaderUi/>}>
           <Switch>
             <Route path="/" component={AuthPage} />
             <Redirect to="/" />
