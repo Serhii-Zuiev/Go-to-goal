@@ -1,13 +1,3 @@
-/* .arrow {
-  position: absolute;
-  width: 200px;
-  height: 250px;
-  top: 200px;
-  left: 200px;
-  background-image: url("../../../../assets/images/Arrow.png");
-  background-repeat: no-repeat;
-  z-index: 10;
-} */
 .startTaskWrapper {
   display: block;
 }

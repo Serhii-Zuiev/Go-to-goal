@@ -4,7 +4,9 @@ import ProgressBar from "./progress-bar/ProgressBar";
 import CurrentGoal from "./current-goal/CurrentGoal";
 import TaskModal from "./task-modal/TaskModal";
 import Congratulation from "./congratulation/Congratulation";
-import CurrentTasks from "./currentTasks/currentTasks";
+import CurrentTasks from "./currentTasks/CurrentTasks";
+import CardList from "./cardList/CardList";
+import CompletedTasks from "./completedTasks/CompletedTasks";
 
 class TasksPage extends Component {
   state = {};
@@ -15,10 +17,9 @@ class TasksPage extends Component {
         <AddTaskBtn />
         <ProgressBar planing={150} fact={15} />
         <CurrentGoal target={"Слон"} />
-        <CurrentTasks
-          cardlist={[{ name: "Карточка-1" }, { name: "Карточка-2" }]}
-        />
+        <CurrentTasks cardlist={true} />
         <Congratulation target={"Слон"} />
+        <CompletedTasks />
       </>
     );
   }
