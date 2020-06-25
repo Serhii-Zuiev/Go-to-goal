@@ -1,11 +1,17 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import { router } from "../routes/router";
+// import { TestRedux } from "../redux/textRedux";
 
 function App() {
-  const token = useSelector((state) => state.userAuthReducer.userData.token);
+  const token = useSelector((state) => state.userAuthReducer.token);
   const routing = router(token);
-  return <>{routing}</>;
+  return (
+    <>
+      {/* <TestRedux></TestRedux> */}
+      {routing}
+    </>
+  );
 }
 
 export default App;

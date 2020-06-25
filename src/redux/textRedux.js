@@ -1,6 +1,7 @@
 import React from 'react'
 import {useDispatch,useSelector} from 'react-redux'
 import {registerUser, newGoal,loginUser,logoutUser,newTask,getTasks, getGoals} from '../redux/operations'
+import { NavLink } from 'react-router-dom'
 
 
 
@@ -100,6 +101,9 @@ async function getAllGoals(){
     <button onClick={createNewTask}>Create Task</button>
     <button onClick={getAllTasks}>Get all tasks </button>
     <button onClick={getAllGoals}>Get all goals </button>
+    <NavLink to='/tasks'>TASKS</NavLink>
+    <NavLink to='/auth/logout'>LogOut</NavLink>
+
     </>
 
   )

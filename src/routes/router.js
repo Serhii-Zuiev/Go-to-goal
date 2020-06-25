@@ -1,44 +1,51 @@
 import React, { Suspense, lazy } from "react";
 import {
-  BrowserRouter as Router,
+
   Route,
   Switch,
   Redirect,
 } from "react-router-dom";
-
+import { LoaderUi } from "./loader/Loader";
 
 const AuthPage = lazy(() =>
   import(
-  "../components/pages/auth-page/AuthPage" /* webpackChunkName: 'AuthPage'*/
+    "../components/pages/auth-page/AuthPage" /* webpackChunkName: 'AuthPage'*/
   )
 );
-const TasksPage=lazy(()=>
-import(
-  "../components/pages/tasks-page/TasksPage" /* webpackChunkNAme: "TasksPage"*/
-))
+const TasksPage = lazy(() =>
+  import(
+    "../components/pages/tasks-page/TasksPage" /* webpackChunkNAme: "TasksPage"*/
+  )
+);
+const GoalPage = lazy(() =>
+  import(
+  "../components/pages/goal-page/NewGoal/NewGoal.js" /* webpackChunkName: 'GoalPage'*/
+  )
+);
 export const router = (token) => {
   if (token) {
     return (
-      <Switch>
-        <Suspense fallback={<div> Loading</div>}>
-          <Route exact path="/goals" component={"goals"} />
+      
+      <Suspense fallback={<LoaderUi />}>
+        <Switch>
+          <Route path="/goals" component={GoalPage} />
           <Route path="/tasks" component={TasksPage} />
           <Route path="/auth/logout" component={AuthPage} />
-          {/* <Redirect to="/goals" /> */}
-        </Suspense>
-      </Switch>
+          <Redirect to="/goals" />
+        </Switch>
+      </Suspense>
     );
   }
-  return (
-    <>
-      <Router>
-        <Suspense fallback={<div>Loading</div>}>
-          <Switch>
+  
+    return (
+      <>
+      
+          <Suspense fallback={<LoaderUi />}>
             <Route path="/" component={AuthPage} />
             <Redirect to="/" />
-          </Switch>
-        </Suspense>
-      </Router>
-    </>
-  );
+          </Suspense>
+   
+      </>
+    );
+  
 };

@@ -7,12 +7,14 @@ import Congratulation from "./congratulation/Congratulation";
 import CurrentTasks from "./currentTasks/сurrentTasks";
 import CardList from "./cardList/CardList";
 import CompletedTasks from "./completedTasks/CompletedTasks";
+import Header from "../../header/Header";
 
 class TasksPage extends Component {
   state = {};
   render() {
     return (
       <>
+        <Header pageOfHeader={"tasks"} />
         <TaskModal />
         <AddTaskBtn />
         <ProgressBar planing={150} fact={15} />
