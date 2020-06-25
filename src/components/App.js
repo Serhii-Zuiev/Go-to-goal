@@ -4,7 +4,7 @@ import { router } from "../routes/router";
 // import { TestRedux } from "../redux/textRedux";
 
 function App() {
-  const token = useSelector((state) => state.userAuthReducer.userData.token);
+  const token = useSelector((state) => state.userAuthReducer.token);
   const routing = router(token);
   return (
     <>
