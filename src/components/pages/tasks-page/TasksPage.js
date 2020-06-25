@@ -4,7 +4,7 @@ import ProgressBar from "./progress-bar/ProgressBar";
 import CurrentGoal from "./current-goal/CurrentGoal";
 import TaskModal from "./task-modal/TaskModal";
 import Congratulation from "./congratulation/Congratulation";
-import CurrentTasks from "./currentTasks/CurrentTasks";
+import CurrentTasks from "./currentTasks/сurrentTasks";
 import CardList from "./cardList/CardList";
 import CompletedTasks from "./completedTasks/CompletedTasks";
 
