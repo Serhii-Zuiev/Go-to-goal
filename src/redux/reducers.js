@@ -17,10 +17,11 @@ const initialFlagState = {
 };
 export const userAuthReducer = createReducer(initialState, {
   [action.registerUser]: (state, { payload }) => {
-    return { ...state, userData: { ...payload } };
+    console.log('payload', payload)
+    return { ...state, userData: { ...payload },token:payload.token.slice(7) };
   },
   [action.loginUser]: (state, { payload }) => {
-    return { ...state, userData: payload.user, status: payload.status };
+    return { ...state, userData: payload.user,token:payload.user.token.slice(7), status: payload.status };
   },
   [action.logoutUser]: (state, { payload }) => {
     return { ...state, userData: payload };
