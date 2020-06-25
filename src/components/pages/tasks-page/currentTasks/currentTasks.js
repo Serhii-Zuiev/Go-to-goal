@@ -1,5 +1,6 @@
 import React from "react";
 import css from "./currentTasks.module.css";
+import CardList from "../cardList/CardList";
 
 const currentTasks = (props) => {
   return (
@@ -24,11 +25,13 @@ const currentTasks = (props) => {
         <p className={css.dailyTaskListTittle}>СЬОГОДНІ</p>
       </div>
       <div className={css.empty_task}></div>
-      {props.cardlist.map((elem) => (
-        <div>{elem.name}</div>
-      ))}
-    </div>
-  );
-};
-
-export default currentTasks;
+      <CardList />
+      </div>
+      );
+    };
+    
+    export default currentTasks;
+    
+    // {props.cardlist.map((elem) => (
+    //   <div>{elem.name}</div>
+    // ))}
