@@ -29,6 +29,7 @@ export const userAuthReducer = createReducer(initialState, {
 });
 export const goalAndTaskReducer = createReducer(initialGoalState, {
   [action.createGoal]: (state, { payload }) => {
+    console.log('state', state)
     return { ...state, goals: [...state.goals, payload.goal] };
   },
   [action.createTask]: (state, { payload }) => {
@@ -40,7 +41,21 @@ export const goalAndTaskReducer = createReducer(initialGoalState, {
   [action.getAllGoals]: (state, { payload }) => {
     return { ...state, goals: payload };
   },
+  [action.modifyTask]: (state, { payload }) => {
+    console.log('payload.id', payload)
+    return { ...state, tasks: state.tasks.map((task)=>{
+
+      if(task._id===payload._id){
+        task=payload
+      }
+      return task
+    }) };
+  },
 });
+
+
+
+
 
 export const flag = createReducer(initialFlagState, {
   [action.isLoading]: (state, payload) => {

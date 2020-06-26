@@ -218,7 +218,22 @@ async function deleteGoal(token, goalId) {
    }     
 }
 // GOALS ********
-
+async function updateTask(token, taskid, task) {
+  try {
+    const response = await axios({
+      url: `${BASE_URL}/tasks/${taskid}`,
+      method: 'patch',
+      headers: {
+        'content-type': 'application/json',
+        Authorization: `${token}`,
+      },
+      data: task,
+    });
+    return response.data;
+  } catch (error) {
+    console.warn(error);
+  }
+}
 
 export const services = {
   registerUser,
@@ -231,5 +246,6 @@ export const services = {
   CreateGoal,
   getGoalById,
   updateGoal,
-  deleteGoal
+  deleteGoal,
+  updateTask
 };
