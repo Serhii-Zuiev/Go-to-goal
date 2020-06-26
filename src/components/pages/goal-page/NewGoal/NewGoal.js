@@ -1,10 +1,12 @@
 import React from 'react';
 import styles from './NewGoal.module.css';
 import { ReactComponent as AddPlusButton } from '../../../../assets/images/icons/plus/add-plus-button.svg';
-
+import Header from '../../../header/Header'
 
 const NewGoal = ({ openModal }) => {
   return (
+    <>
+    <Header pageOfHeader={"goals"}/>
     <div className={styles.new_goal_section}>
       <h2 className={styles.new_goal_title}>Моя ціль</h2>
       <div className={styles.container}>
@@ -28,6 +30,7 @@ const NewGoal = ({ openModal }) => {
         </div>
       </div>
     </div>
+    </>
   );
 };
 
