@@ -10,13 +10,21 @@ import CompletedTasks from "./completedTasks/CompletedTasks";
 import Header from "../../header/Header";
 
 class TasksPage extends Component {
-  state = {};
+  state = {
+    isOpenModalWindow:false
+  };
+  handleChangeModalWindow=e=>{
+    const {isOpenModalWindow}=this.state
+    this.setState({isOpenModalWindow:!isOpenModalWindow})
+  }
   render() {
+    const {isOpenModalWindow}=this.state
     return (
       <>
         <Header pageOfHeader={"tasks"} />
-        <TaskModal />
-        <AddTaskBtn />
+        {isOpenModalWindow  &&<TaskModal/>}
+        {/* <TaskModal /> */}
+        <AddTaskBtn handleChangeModalWindow={this.handleChangeModalWindow}/>
         <ProgressBar planing={150} fact={15} />
         <CurrentGoal target={"Слон"} />
         <CurrentTasks cardlist={true} />
