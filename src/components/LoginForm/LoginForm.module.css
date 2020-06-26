@@ -1,9 +1,18 @@
-  .form {
-    display: flex;
-  }
-  
-  .log_btn {
-    width: 56px;
-  }
-  
-  
+.form {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-right: 18px;
+}
+
+.log_btn {
+  height: 20px;
+  background-color: transparent;
+  border: none;
+  font-family: "Montserrat";
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  color: #858598;
+  margin-left: 18px;
+}

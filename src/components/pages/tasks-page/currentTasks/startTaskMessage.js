@@ -2,7 +2,7 @@ import React from "react";
 import css from "./currentTasks.module.css";
 import CardList from "../cardList/CardList";
 
-const currentTasks = (props) => {
+const startTaskMessage = () => {
   return (
     <div>
       <div className={css.startTaskWrapper}>
@@ -11,6 +11,7 @@ const currentTasks = (props) => {
             Немає завдань? Тоді їх треба створити!
           </h2>
           <p className={css.startTaskQuestion}>Бачиш кнопку внизу?</p>
+          {/* <div className={css.arrow}></div> */}
           <p className={css.startTaskText}>
             Натискай її, вибирай, що і коли треба зробити і&nbsp;
             <span className={css.goalLine}>вперед до мети</span>!
@@ -19,19 +20,17 @@ const currentTasks = (props) => {
             Пам'ятай, що бали нараховуються тільки за виконані завдання!
           </p>
         </div>
+
+        <div className={css.myTaskWrapper}>
+          <h3 className={css.myTasksTittle}>Мої завдання:</h3>
+          <p className={css.dailyTaskListTittle}>СЬОГОДНІ</p>
+        </div>
+        <div className={css.emptyTaskWrapper}>
+          <div className={css.empty_task}></div>
+        </div>
       </div>
-      <div>
-        <h3 className={css.myTasksTittle}>Мої завдання:</h3>
-        <p className={css.dailyTaskListTittle}>СЬОГОДНІ</p>
-      </div>
-      <div className={css.empty_task}></div>
-      <CardList />
-      </div>
-      );
-    };
-    
-    export default currentTasks;
-    
-    // {props.cardlist.map((elem) => (
-    //   <div>{elem.name}</div>
-    // ))}
+    </div>
+  );
+};
+
+export default startTaskMessage;
