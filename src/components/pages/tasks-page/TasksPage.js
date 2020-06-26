@@ -16,6 +16,7 @@ class TasksPage extends Component {
   state = {
     isOpenModalWindow:false,
     addTasks:[],
+    isTake:false,
   };
   handleChangeModalWindow=e=>{
     const {isOpenModalWindow}=this.state
@@ -29,17 +30,14 @@ class TasksPage extends Component {
   
   };
   render() {
-    const {isOpenModalWindow}=this.state
+    const {isOpenModalWindow, isTake}=this.state
     return (
       <>
         <Header pageOfHeader={"tasks"} />
         {isOpenModalWindow  && <TaskModal handleFormforUsers={this.handleFormforUsers}/>}
-        {/* <TaskModal /> */}
         <AddTaskBtn handleChangeModalWindow={this.handleChangeModalWindow}/>
-        <ProgressBar planing={150} fact={15} />
-        <CurrentGoal target={"Слон"} />
         <CurrentTasks cardlist={true} />
-        <Congratulation target={"Слон"} />
+        {isTake && <Congratulation target={"ckjy"}/>}
         <CompletedTasks />
       </>
     );
