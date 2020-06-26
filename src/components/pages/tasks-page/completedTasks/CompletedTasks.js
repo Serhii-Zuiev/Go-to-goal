@@ -2,6 +2,7 @@ import React from "react";
 import CardList from "../cardList/CardList";
 import css from "./completedTasks.module.css";
 const CompletedTasks = (props) => {
+  console.log('props', props)
   return (
     <>
       <div className={css.btnContainer}>

@@ -6,8 +6,7 @@ import CardList from "../cardList/CardList";
 import StartTaskMessage from "./startTaskMessage";
 
 const currentTasks = (props) => {
-  console.log(props);
-  console.log(props.state.goalAndTaskReducer.userData);
+  console.log("props", props);
   return (
     <>
       {props.cardlist ? (
@@ -22,8 +21,6 @@ const currentTasks = (props) => {
     </>
   );
 };
-
-// getTasks  получить все таки редюсер
 
 const mapStateToProps = (state) => ({
   state: state,

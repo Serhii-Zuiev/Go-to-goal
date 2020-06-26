@@ -1,5 +1,6 @@
 import React from "react";
 import css from "./currentTasks.module.css";
+import CardList from "../cardList/CardList";
 
 const startTaskMessage = () => {
   return (

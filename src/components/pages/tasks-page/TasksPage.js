@@ -1,34 +1,50 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import AddTaskBtn from "./add-button/AddTaskBtn";
-import ProgressBar from "./progress-bar/ProgressBar";
-import CurrentGoal from "./current-goal/CurrentGoal";
 import TaskModal from "./task-modal/TaskModal";
 import Congratulation from "./congratulation/Congratulation";
 import CurrentTasks from "./currentTasks/сurrentTasks";
-import CardList from "./cardList/CardList";
 import CompletedTasks from "./completedTasks/CompletedTasks";
 import Header from "../../header/Header";
-import { newTask } from "./../../../redux/operations";
+import { newTask, getTasks } from "./../../../redux/operations";
 
 class TasksPage extends Component {
   state = {
     isOpenModalWindow: false,
     addTasks: [],
     isTake: false,
+    tasks: [],
   };
+
+  componentDidMount() {
+    this.props.getTasks(this.props.token);
+    this.setState({ tasks: this.props.tasksFromRedux });
+  }
+
   handleChangeModalWindow = (e) => {
-    const { isOpenModalWindow } = this.state;
     this.setState({ isOpenModalWindow: true });
   };
-  handleFormforUsers = (e, tasks) => {
-    e.preventDefault();
+  handleFormforUsers = (tasks) => {
+    console.log("task", tasks);
     const { newTask } = this.props;
     const { token } = this.props;
+    console.log("token", token);
     newTask(token, tasks);
   };
+
+  currentTasksFilter() {
+    const tasks = this.state.tasks;
+    const currentTasks = tasks.filter((task) => task.isComplete === false);
+    return currentTasks;
+  }
+
+  completeTasksFilter() {
+    const tasks = this.state.tasks;
+    const completeTasks = tasks.filter((task) => task.isComplete === true);
+    return completeTasks;
+  }
+
   render() {
-    console.log(this.state);
     const { isOpenModalWindow, isTake } = this.state;
     return (
       <>
@@ -37,15 +53,16 @@ class TasksPage extends Component {
           <TaskModal handleFormforUsers={this.handleFormforUsers} />
         )}
         <AddTaskBtn handleChangeModalWindow={this.handleChangeModalWindow} />
-        <CurrentTasks cardlist={true} />
+        <CurrentTasks cardlist={this.currentTasksFilter()} />
         {isTake && <Congratulation target={"ckjy"} />}
-        <CompletedTasks />
+        <CompletedTasks cardlist={this.completeTasksFilter()} />
       </>
     );
   }
 }
 const mapsStateToProps = (state) => ({
   token: state.userAuthReducer.token,
+  tasksFromRedux: state.goalAndTaskReducer.tasks.tasks,
 });
-const tasksNew = { newTask };
+const tasksNew = { newTask, getTasks };
 export default connect(mapsStateToProps, tasksNew)(TasksPage);
