@@ -7,7 +7,7 @@ import StartTaskMessage from "./startTaskMessage";
 
 const currentTasks = (props) => {
   console.log(props);
-  console.log(props.prop.userAuthReducer.userData);
+  console.log(props.state.goalAndTaskReducer.userData);
   return (
     <>
       {props.cardlist ? (
@@ -26,10 +26,10 @@ const currentTasks = (props) => {
 // getTasks  получить все таки редюсер
 
 const mapStateToProps = (state) => ({
-  prop: state,
+  state: state,
 });
 const mapDispatchToProps = {
   getTasks,
 };
 
-export default connect(mapStateToProps, null)(currentTasks);
+export default connect(mapStateToProps, mapDispatchToProps)(currentTasks);
