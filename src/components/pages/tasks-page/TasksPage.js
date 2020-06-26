@@ -22,7 +22,7 @@ class TasksPage extends Component {
     return (
       <>
         <Header pageOfHeader={"tasks"} />
-        {isOpenModalWindow  &&<TaskModal/>}
+        {isOpenModalWindow  && <TaskModal/>}
         {/* <TaskModal /> */}
         <AddTaskBtn handleChangeModalWindow={this.handleChangeModalWindow}/>
         <ProgressBar planing={150} fact={15} />
