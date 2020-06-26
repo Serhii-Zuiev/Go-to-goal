@@ -3,7 +3,6 @@ import css from "../card/Card.module.css";
 import gift from "../../../../assets/images/icons/present box/gift-box.svg";
 
 function Card(props) {
-  const card = props.card
   const [checked, setChecked] = useState(true);
 
   const onClick = () => {

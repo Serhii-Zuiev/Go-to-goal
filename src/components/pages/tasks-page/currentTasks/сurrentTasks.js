@@ -4,6 +4,7 @@ import CardList from "../cardList/CardList";
 import StartTaskMessage from "./startTaskMessage";
 
 const currentTasks = (props) => {
+  console.log('props', props)
   return (
     <>
       {props.cardlist ? (
