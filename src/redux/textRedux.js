@@ -1,18 +1,20 @@
 import React from 'react'
 import {useDispatch,useSelector} from 'react-redux'
-import {registerUser, newGoal,loginUser,logoutUser,newTask,getTasks, getGoals} from '../redux/operations'
+import {registerUser, newGoal,loginUser,logoutUser,newTask,getTasks, getGoals,modifyTaskInner} from '../redux/operations'
 import { NavLink } from 'react-router-dom'
 
 
 
 export  const TestRedux=()=>{
 
+ 
+  const taskId="5ef5f9f0a38c720d8b9837e8"
     const dispatch=useDispatch()
     const token = useSelector((state) => state.userAuthReducer.userData.token);
     const testUserRegister={
       name: "ffffaaassssa",
       age: 33,
-      email: "OneTwo@gmail.com",
+      email: "OneTwoThree@gmail.com",
       password:"qwerty",
       isChild: true,
       scores: 0,
@@ -52,14 +54,19 @@ export  const TestRedux=()=>{
       
 
     }
+    const modtask={
+      title:'KERAT'
+      ,
+      points:7
+    }
     const task={
-      title: "Купи слона,ну епта",
-      description: "Мамке купил шубу,а мне слона?",
+      title: "NEED MORE ZIGGURATES",
+      description: "WTF?",
       dates: [
         "2020-06-18T19:45:34.946Z"
       ],
-      points:99,
-      deadline:'8.00-10.00'
+      points:2,
+      deadline:'10.00-12.00'
 
     }
     async function createNewGoal(){
@@ -73,6 +80,7 @@ export  const TestRedux=()=>{
         if(token){
             const modifyToken=token.slice(7)
       const data=dispatch(newTask(modifyToken,task))
+      console.log('dataCreaterTask', data)
         }
 
     }
@@ -91,6 +99,14 @@ async function getAllGoals(){
   const data=dispatch(getGoals(modifyToken))
   }
 }
+async function modifyTask(){
+  if(token){
+
+const data= await dispatch(modifyTaskInner(token,taskId,modtask))
+console.log('dataMODIFYTASK', data)
+  }
+
+}
   
   return(
     <>  
@@ -101,6 +117,7 @@ async function getAllGoals(){
     <button onClick={createNewTask}>Create Task</button>
     <button onClick={getAllTasks}>Get all tasks </button>
     <button onClick={getAllGoals}>Get all goals </button>
+    <button onClick={modifyTask}>ModifyTask </button>
     <NavLink to='/tasks'>TASKS</NavLink>
     <NavLink to='/auth/logout'>LogOut</NavLink>
 
