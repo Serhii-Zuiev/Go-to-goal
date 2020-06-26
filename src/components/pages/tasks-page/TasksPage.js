@@ -38,13 +38,12 @@ class TasksPage extends Component {
         <AddTaskBtn handleChangeModalWindow={this.handleChangeModalWindow}/>
         <CurrentTasks cardlist={true} />
         {isTake && <Congratulation target={"ckjy"}/>}
-        <CompletedTasks />
+        <CompletedTasks/>
       </>
     );
   }
 }
 const mapsStateToProps=state=>({
-
   token:state.userAuthReducer.token
 })
 const tasksNew={newTask}
