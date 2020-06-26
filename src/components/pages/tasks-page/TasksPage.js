@@ -1,50 +1,68 @@
 import React, { Component } from "react";
-import {connect} from "react-redux"
+import { connect } from "react-redux";
 import AddTaskBtn from "./add-button/AddTaskBtn";
-import ProgressBar from "./progress-bar/ProgressBar";
-import CurrentGoal from "./current-goal/CurrentGoal";
 import TaskModal from "./task-modal/TaskModal";
 import Congratulation from "./congratulation/Congratulation";
 import CurrentTasks from "./currentTasks/сurrentTasks";
-import CardList from "./cardList/CardList";
 import CompletedTasks from "./completedTasks/CompletedTasks";
 import Header from "../../header/Header";
-import { newTask } from './../../../redux/operations';
-
+import { newTask, getTasks } from "./../../../redux/operations";
 
 class TasksPage extends Component {
   state = {
-    isOpenModalWindow:false,
-    addTasks:[],
-    isTake:false,
+    isOpenModalWindow: false,
+    addTasks: [],
+    isTake: false,
+    tasks: [],
   };
-  handleChangeModalWindow=e=>{
-    const {isOpenModalWindow}=this.state
-    this.setState({isOpenModalWindow:true})
+
+  componentDidMount() {
+    this.props.getTasks(this.props.token);
+    this.setState({ tasks: this.props.tasksFromRedux });
   }
-  handleFormforUsers = (e, tasks) => {
-    e.preventDefault();
-    const { newTask } = this.props;
-    const{token}=this.props
-    newTask(token, tasks);
-  
+
+  handleChangeModalWindow = (e) => {
+    this.setState({ isOpenModalWindow: true });
   };
+  handleFormforUsers = (tasks) => {
+    console.log("task", tasks);
+    const { newTask } = this.props;
+    const { token } = this.props;
+    console.log("token", token);
+    newTask(token, tasks);
+  };
+
+  currentTasksFilter() {
+    const tasks = this.state.tasks;
+    const currentTasks = tasks.filter((task) => task.isComplete === false);
+    return currentTasks;
+  }
+
+  completeTasksFilter() {
+    const tasks = this.state.tasks;
+    const completeTasks = tasks.filter((task) => task.isComplete === true);
+    return completeTasks;
+  }
+
   render() {
-    const {isOpenModalWindow, isTake}=this.state
+    const { isOpenModalWindow, isTake } = this.state;
     return (
       <>
         <Header pageOfHeader={"tasks"} />
-        {isOpenModalWindow  && <TaskModal handleFormforUsers={this.handleFormforUsers}/>}
-        <AddTaskBtn handleChangeModalWindow={this.handleChangeModalWindow}/>
-        <CurrentTasks cardlist={true} />
-        {isTake && <Congratulation target={"ckjy"}/>}
-        <CompletedTasks/>
+        {isOpenModalWindow && (
+          <TaskModal handleFormforUsers={this.handleFormforUsers} />
+        )}
+        <AddTaskBtn handleChangeModalWindow={this.handleChangeModalWindow} />
+        <CurrentTasks cardlist={this.currentTasksFilter()} />
+        {isTake && <Congratulation target={"ckjy"} />}
+        <CompletedTasks cardlist={this.completeTasksFilter()}/>
       </>
     );
   }
 }
-const mapsStateToProps=state=>({
-  token:state.userAuthReducer.token
-})
-const tasksNew={newTask}
+const mapsStateToProps = (state) => ({
+  token: state.userAuthReducer.token,
+  tasksFromRedux: state.goalAndTaskReducer.tasks.tasks,
+});
+const tasksNew = { newTask, getTasks };
 export default connect(mapsStateToProps, tasksNew)(TasksPage);

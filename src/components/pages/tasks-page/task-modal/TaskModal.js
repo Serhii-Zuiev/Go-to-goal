@@ -21,23 +21,24 @@ const options = [
 ];
 const findOpt = (value) => options.find((opt) => opt.value === value);
 
-function TaskModal() {
+function TaskModal(props) {
+  const handleFormforUsers = props.handleFormforUsers
   const [state, setState] = useState({
     [IDS.INPUT_VALUE]: "",
     [IDS.INPUT_POINT]: "",
     [IDS.SELECT_DATA]: "",
   });
   console.log("state", state);
-  //   state = {
-  //     inputValue: "",
-  //     inputPoint: "",
-  //     selectData: "",
-  //     isEnterTime: false,
-  //     timeError: "",
-  //   };
-  //   handleChgange = (e) => {
-  //     this.setState({ [e.target.name]: e.target.value });
-  //   };
+
+  const handleForm = (e) => {
+    e.preventDefault()
+    const task ={
+      title: state.title,
+      points: state.points,
+      deadline: state.deadline,
+    }
+    handleFormforUsers(task)
+  } 
 
   const handleChgange = (e) => {
     const { id, value } = e.target;
@@ -48,30 +49,18 @@ function TaskModal() {
     }));
   };
 
-  const onFormSubmit = () => {
-    fetch("https://go-to-goal.goit.co.ua/api/tasks", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(state),
-    }).then((res) => console.log(res));
-  };
-
   const onChangeSelect = (opt) => {
     setState({
       [IDS.SELECT_DATA]: opt.value,
     });
   };
 
-  //   const { inputValue } = this.state;
   return (
     <div className={s.modal_container}>
-      <form className={s.form} onSubmit={onFormSubmit}>
+      <form className={s.form} onSubmit={handleForm}>
         <p className={s.title}>Що зробити?</p>
         <input
           type="text"
-          //   name="inputValue"
           placeholder="(Оберіть завдання або додай нове)"
           maxLength="20"
           minLength="3"
@@ -87,13 +76,12 @@ function TaskModal() {
             options={options}
             onChange={onChangeSelect}
             id={IDS.SELECT_DATA}
-            value={findOpt(state[IDS.SELECT_DATA])} //check
+            value={findOpt(state[IDS.SELECT_DATA])}
             className={s.input_options}
           />
         </div>
         <input
           type="text"
-          //   name="inputValue"
           placeholder="ВИНАГОРОДА (наприклад 1000)"
           maxLength="20"
           minLength="3"
