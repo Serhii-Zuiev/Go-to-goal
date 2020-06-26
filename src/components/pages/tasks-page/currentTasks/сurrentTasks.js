@@ -1,9 +1,13 @@
 import React from "react";
+import { connect } from "react-redux";
+import { getTasks } from "../../../../redux/operations";
 import css from "./currentTasks.module.css";
 import CardList from "../cardList/CardList";
 import StartTaskMessage from "./startTaskMessage";
 
 const currentTasks = (props) => {
+  console.log(props);
+  console.log(props.prop.userAuthReducer.userData);
   return (
     <>
       {props.cardlist ? (
@@ -19,4 +23,13 @@ const currentTasks = (props) => {
   );
 };
 
-export default currentTasks;
+// getTasks  получить все таки редюсер
+
+const mapStateToProps = (state) => ({
+  prop: state,
+});
+const mapDispatchToProps = {
+  getTasks,
+};
+
+export default connect(mapStateToProps, null)(currentTasks);
