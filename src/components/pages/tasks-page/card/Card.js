@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import css from "../card/Card.module.css";
 import gift from "../../../../assets/images/icons/present box/gift-box.svg";
 
-function Card(props) {
+function Card({ title, points, createdAt, isDone }) {
   const [checked, setChecked] = useState(true);
 
   const onClick = () => {
@@ -25,7 +25,7 @@ function Card(props) {
           <div>
             <img className={css.giftBox} alt="sdgsgsg" src={gift} />
             <p className={css.points}>
-              <span className={css.numberPoints}>500</span> балів
+              <span className={css.numberPoints}>{points}</span> балів
             </p>
             <div className={css.label}>
               <label className={css.checkbox}>
@@ -37,8 +37,8 @@ function Card(props) {
         </div>
         <div className={css.description}>
           <div>
-            <p className={css.title}>Прибрати у ...</p>
-            <p className={css.time}>20 02 20</p>
+            <p className={css.title}>{title}</p>
+            <p className={css.time}>{createdAt}</p>
           </div>
         </div>
       </div>
@@ -47,4 +47,3 @@ function Card(props) {
 }
 
 export default Card;
-

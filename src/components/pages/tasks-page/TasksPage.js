@@ -60,6 +60,7 @@ class TasksPage extends Component {
     );
   }
 }
+
 const mapsStateToProps = (state) => ({
   token: state.userAuthReducer.token,
   tasksFromRedux: state.goalAndTaskReducer.tasks.tasks,
