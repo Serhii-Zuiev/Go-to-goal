@@ -55,11 +55,12 @@ class TasksPage extends Component {
         <AddTaskBtn handleChangeModalWindow={this.handleChangeModalWindow} />
         <CurrentTasks cardlist={this.currentTasksFilter()} />
         {isTake && <Congratulation target={"ckjy"} />}
-        <CompletedTasks cardlist={this.completeTasksFilter()}/>
+        <CompletedTasks cardlist={this.completeTasksFilter()} />
       </>
     );
   }
 }
+
 const mapsStateToProps = (state) => ({
   token: state.userAuthReducer.token,
   tasksFromRedux: state.goalAndTaskReducer.tasks.tasks,
