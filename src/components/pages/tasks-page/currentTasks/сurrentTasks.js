@@ -4,7 +4,7 @@ import StartTaskMessage from "./startTaskMessage/startTaskMessage";
 import Card from "../card/Card";
 
 const currentTasks = ({ cardlist }) => {
-  console.log("props", cardlist);
+  // console.log("props", cardlist);
   return (
     <>
       {!cardlist.length ? (
@@ -15,17 +15,20 @@ const currentTasks = ({ cardlist }) => {
           <p className={css.dailyTaskListTittle}>СЬОГОДНІ</p>
         </div>
       )}
-      <ul>
-        {cardlist.map(({ title, points, isDone, createdAt, _id }) => (
-          <Card
-            key={_id}
-            title={title}
-            points={points}
-            createdAt={createdAt}
-            isDone={isDone}
-            id={_id}
-          />
-        ))}
+      <ul className={css.cardList}>
+        {cardlist.map(
+          ({ title, points, isDone, createdAt, _id, isComplete }) => (
+            <Card
+              key={_id}
+              title={title}
+              points={points}
+              createdAt={createdAt}
+              isDone={isDone}
+              id={_id}
+              isComplete={isComplete}
+            />
+          )
+        )}
       </ul>
     </>
   );
