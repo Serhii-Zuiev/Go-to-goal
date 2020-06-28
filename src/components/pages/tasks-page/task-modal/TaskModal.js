@@ -23,6 +23,7 @@ const findOpt = (value) => options.find((opt) => opt.value === value);
 
 function TaskModal(props) {
   const handleFormforUsers = props.handleFormforUsers
+  const handleCloseModalWindow = props.handleCloseModalWindow
   const [state, setState] = useState({
     [IDS.INPUT_VALUE]: "",
     [IDS.INPUT_POINT]: "",
@@ -37,6 +38,7 @@ function TaskModal(props) {
       deadline: state['deadline'],
     }
     handleFormforUsers(task)
+    handleCloseModalWindow()
   } 
 
   const handleChgange = (e) => {
@@ -66,6 +68,7 @@ function TaskModal(props) {
           value={state[IDS.INPUT_VALUE]}
           onChange={handleChgange}
           className={s.input_task}
+          required
         />
         <div className={s.input_options_section}>
           <Select
@@ -87,6 +90,7 @@ function TaskModal(props) {
           value={state[IDS.INPUT_POINT]}
           onChange={handleChgange}
           className={s.input_task}
+          required
         />
         <button type="submit" className={s.buttonOk}>
           OK

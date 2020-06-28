@@ -22,8 +22,11 @@ class TasksPage extends Component {
     this.setState({ tasks: this.props.tasksFromRedux });
   }
 
-  handleChangeModalWindow = (e) => {
+  handleOpenModalWindow = (e) => {
     this.setState({ isOpenModalWindow: true });
+  };
+  handleCloseModalWindow = (e) => {
+    this.setState({ isOpenModalWindow: false });
   };
   loadMoreCompleteTasks = () => {
     this.setState((prevState) => ({
@@ -60,9 +63,9 @@ class TasksPage extends Component {
       <>
         <Header pageOfHeader={"tasks"} />
         {isOpenModalWindow && (
-          <TaskModal handleFormforUsers={this.handleFormforUsers} />
+          <TaskModal handleFormforUsers={this.handleFormforUsers} handleCloseModalWindow={this.handleCloseModalWindow}/>
         )}
-        <AddTaskBtn handleChangeModalWindow={this.handleChangeModalWindow} />
+        <AddTaskBtn handleOpenModalWindow={this.handleOpenModalWindow} />
         <CurrentTasks cardlist={this.currentTasksFilter()} />
         {isTake && <Congratulation target={"ckjy"} />}
         <CompletedTasks
@@ -77,7 +80,7 @@ class TasksPage extends Component {
 
 const mapsStateToProps = (state) => ({
   token: state.userAuthReducer.token,
-  tasksFromRedux: state.goalAndTaskReducer.tasks.tasks,
+  tasksFromRedux: state.goalAndTaskReducer.tasks,
 });
 const tasksNew = { newTask, getTasks };
 export default connect(mapsStateToProps, tasksNew)(TasksPage);
