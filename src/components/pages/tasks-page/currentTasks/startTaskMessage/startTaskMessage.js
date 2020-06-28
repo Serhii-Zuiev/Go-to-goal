@@ -1,5 +1,5 @@
 import React from "react";
-import css from "../currentTasks.module.css";
+import css from "./startTaskMessage.module.css";
 
 const startTaskMessage = () => {
   return (
