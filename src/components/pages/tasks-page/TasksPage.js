@@ -32,26 +32,26 @@ class TasksPage extends Component {
   };
   handleFormforUsers = (tasks) => {
     const { newTask } = this.props;
-    const { token } = this.props; 
+    const { token } = this.props;
     newTask(token, tasks);
   };
 
   currentTasksFilter() {
-    const tasks = this.state.tasks || []
-    if(tasks.length > 0){
+    const tasks = this.state.tasks || [];
+    if (tasks.length > 0) {
       const currentTasks = tasks.filter((task) => task.isComplete === false);
       return currentTasks;
     }
-    return []
+    return [];
   }
 
   completeTasksFilter() {
-    const tasks = this.state.tasks || []
-    if(tasks.length > 0){
+    const tasks = this.state.tasks || [];
+    if (tasks.length > 0) {
       const completeTasks = tasks.filter((task) => task.isComplete === true);
       return completeTasks;
     }
-    return []
+    return [];
   }
 
   render() {
