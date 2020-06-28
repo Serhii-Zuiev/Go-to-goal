@@ -6,7 +6,7 @@ class AddTaskBtn extends Component {
     render() {
         return (
             <>
-            <button type="button" className={s.btn} onClick={this.props.handleChangeModalWindow}>+</button>
+            <button type="button" className={s.btn} onClick={this.props.handleOpenModalWindow}>+</button>
             </>
         );
     }
