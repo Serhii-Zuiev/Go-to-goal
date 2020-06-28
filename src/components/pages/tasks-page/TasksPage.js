@@ -14,6 +14,7 @@ class TasksPage extends Component {
     addTasks: [],
     isTake: false,
     tasks: [],
+    loadMoreCompletedTasks: false,
   };
 
   componentDidMount() {
@@ -23,6 +24,11 @@ class TasksPage extends Component {
 
   handleChangeModalWindow = (e) => {
     this.setState({ isOpenModalWindow: true });
+  };
+  loadMoreCompleteTasks = () => {
+    this.setState((prevState) => ({
+      loadMoreCompletedTasks: !prevState.loadMoreCompletedTasks,
+    }));
   };
   handleFormforUsers = (tasks) => {
     console.log("task", tasks);
@@ -55,7 +61,11 @@ class TasksPage extends Component {
         <AddTaskBtn handleChangeModalWindow={this.handleChangeModalWindow} />
         <CurrentTasks cardlist={this.currentTasksFilter()} />
         {isTake && <Congratulation target={"ckjy"} />}
-        <CompletedTasks cardlist={this.completeTasksFilter()} />
+        <CompletedTasks
+          cardlist={this.completeTasksFilter()}
+          loadMore={this.loadMoreCompleteTasks}
+          loadMoreFlag={this.state.loadMoreCompletedTasks}
+        />
       </>
     );
   }
