@@ -4,7 +4,6 @@ import StartTaskMessage from "./startTaskMessage/startTaskMessage";
 import Card from "../card/Card";
 
 const currentTasks = ({ cardlist }) => {
-  console.log("props", cardlist);
   return (
     <>
       {!cardlist.length ? (

@@ -3,7 +3,6 @@ import CardList from "../cardList/CardList";
 import css from "./completedTasks.module.css";
 import Card from "../card/Card";
 const CompletedTasks = ({ cardlist }) => {
-  console.log("props", cardlist);
   return (
     <>
       <div className={css.btnContainer}>

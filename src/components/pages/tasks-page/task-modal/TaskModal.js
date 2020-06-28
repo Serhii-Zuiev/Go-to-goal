@@ -28,21 +28,19 @@ function TaskModal(props) {
     [IDS.INPUT_POINT]: "",
     [IDS.SELECT_DATA]: "",
   });
-  console.log("state", state);
 
   const handleForm = (e) => {
     e.preventDefault()
     const task ={
-      title: state.title,
-      points: state.points,
-      deadline: state.deadline,
+      title: state['title'],
+      points: state['points'],
+      deadline: state['deadline'],
     }
     handleFormforUsers(task)
   } 
 
   const handleChgange = (e) => {
     const { id, value } = e.target;
-
     setState((currentState) => ({
       ...currentState,
       [id]: value,
