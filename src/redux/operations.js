@@ -11,8 +11,6 @@ export const registerUser = (param) => async (dispatch) => {
   return data;
 };
 export const loginUser = (param) => async (dispatch) => {
-  console.log("param", param);
-
   const data = await services.loginUser(param);
   if (!data) {
     dispatch({ type: Type.LOGOUT_USER, payload: {} });
@@ -22,7 +20,7 @@ export const loginUser = (param) => async (dispatch) => {
 };
 export const logoutUser = (token) => async (dispatch) => {
   const data = await services.logoutUser(token);
-  dispatch({ type: Type.LOGOUT_USER,payload:{token:''} });
+  dispatch({ type: Type.LOGOUT_USER,payload:null });
 };
 
 export const newGoal=(token,goal)=>async(dispatch)=>{
@@ -36,7 +34,7 @@ export const newTask=(token,task)=>async (dispatch)=>{
 }
 export const getTasks=(token)=>async(dispatch)=>{
   const data=await services.getTasks(token)
-  dispatch({type:Type.GET_ALL_TASKS,payload:data})
+  dispatch({type:Type.GET_ALL_TASKS,payload:data.tasks})
 }
 
 

@@ -23,12 +23,11 @@ export const userAuthReducer = createReducer(initialState, {
     return { ...state, userData: payload.user,token:payload.user.token.slice(7), status: payload.status };
   },
   [action.logoutUser]: (state, { payload }) => {
-    return { ...state, userData: payload };
+    return { ...state, userData: payload , token: ''};
   },
 });
 export const goalAndTaskReducer = createReducer(initialGoalState, {
   [action.createGoal]: (state, { payload }) => {
-    console.log('state', state)
     return { ...state, goals: [...state.goals, payload.goal] };
   },
   [action.createTask]: (state, { payload }) => {
@@ -41,7 +40,6 @@ export const goalAndTaskReducer = createReducer(initialGoalState, {
     return { ...state, goals: payload };
   },
   [action.modifyTask]: (state, { payload }) => {
-    console.log('payload.id', payload)
     return { ...state, tasks: state.tasks.map((task)=>{
 
       if(task._id===payload._id){

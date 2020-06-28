@@ -2,10 +2,14 @@ import React from "react";
 import styles from "./userInfoCard.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import { logoutUser } from "../../redux/operations";
+import { createBrowserHistory } from 'history';
+
+const history = createBrowserHistory();
+
 
 const UserInfoCard = () => {
   const dispatch = useDispatch();
-  const token = useSelector((state) => state.userAuthReducer.userData.token);
+  const token = useSelector((state) => state.userAuthReducer.token);
   const avatarURL = useSelector(
     (state) => state.userAuthReducer.userData.userData.avatar
   );
@@ -18,8 +22,8 @@ const UserInfoCard = () => {
 
   function handleLogOut() {
     dispatch(logoutUser(token));
+    history.push('/');
   }
-
   let content = (
     <>
       <span className={styles.userInfo}>{userName}</span>

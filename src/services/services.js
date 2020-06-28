@@ -37,7 +37,6 @@ async function loginUser(user) {
         headers: { "content-type": "application/json" },
         data: user,
       });
-      console.log('response', response)
       return response.data;
   } catch (error) {
     console.warn(error);
@@ -64,7 +63,6 @@ async function logoutUser(token) {
 
 // TASKS ========
 async function getTasks(token) {
-  console.log('token', token)
 try {
     const response = await axios({
         url: `${BASE_URL}/tasks`,
@@ -146,8 +144,6 @@ async function getGoals(token) {
 //   }
 async function CreateGoal(token, goal) {
   try {
-    console.log('token', token)
-    console.log('goal', goal)
     const response = await axios({
         url: `${BASE_URL}/goals`,
         method: "post",

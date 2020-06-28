@@ -2,14 +2,14 @@ import React from "react";
 import css from "./completedTasks.module.css";
 import Card from "../card/Card";
 const CompletedTasks = ({ cardlist, loadMore, loadMoreFlag }) => {
-  console.log(cardlist);
+ 
   cardlist.sort((a, b) => {
     let dateA = new Date(a.createdAt),
       dateB = new Date(b.createdAt);
     return dateB - dateA;
   });
   const cardlistPreview = [...cardlist].slice(0, 8);
-  console.log(cardlistPreview);
+  
   return (
     <>
       <div className={css.btnContainer}>

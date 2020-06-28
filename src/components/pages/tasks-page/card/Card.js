@@ -12,7 +12,7 @@ function Card({ title, points, createdAt, isDone, isComplete }) {
       setChecked(true);
     }
   };
-  console.log(isComplete, createdAt, isDone);
+  // console.log(isComplete, createdAt, isDone);
   return (
     <li className={css.listItem}>
       <div className={css.container}>

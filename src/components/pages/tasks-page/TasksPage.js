@@ -31,23 +31,27 @@ class TasksPage extends Component {
     }));
   };
   handleFormforUsers = (tasks) => {
-    console.log("task", tasks);
     const { newTask } = this.props;
-    const { token } = this.props;
-    console.log("token", token);
+    const { token } = this.props; 
     newTask(token, tasks);
   };
 
   currentTasksFilter() {
-    const tasks = this.state.tasks;
-    const currentTasks = tasks.filter((task) => task.isComplete === false);
-    return currentTasks;
+    const tasks = this.state.tasks || []
+    if(tasks.length > 0){
+      const currentTasks = tasks.filter((task) => task.isComplete === false);
+      return currentTasks;
+    }
+    return []
   }
 
   completeTasksFilter() {
-    const tasks = this.state.tasks;
-    const completeTasks = tasks.filter((task) => task.isComplete === true);
-    return completeTasks;
+    const tasks = this.state.tasks || []
+    if(tasks.length > 0){
+      const completeTasks = tasks.filter((task) => task.isComplete === true);
+      return completeTasks;
+    }
+    return []
   }
 
   render() {
