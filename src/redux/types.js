@@ -13,6 +13,7 @@ export  const Type = {
     MODIFY_TASK:'MODIFY_TASK',
     LOADING_FLAG:'LOADING_FLAG',
     ALERT_FLAG:'ALERT_FLAG',
-    IS_DONE_GOAL:'IS_DONE_GOAL'
+    IS_DONE_GOAL:'IS_DONE_GOAL',
+    
 
   };

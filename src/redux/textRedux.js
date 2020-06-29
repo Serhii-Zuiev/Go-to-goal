@@ -1,6 +1,6 @@
 import React from 'react'
 import {useDispatch,useSelector} from 'react-redux'
-import {registerUser, newGoal,loginUser,logoutUser,newTask,getTasks, getGoals,modifyTaskInner,doneGoal} from '../redux/operations'
+import {registerUser, newGoal,loginUser,logoutUser,newTask,getTasks, getGoals,modifyTaskInner,doneGoal,deleteGoal,deleteTaskInner} from '../redux/operations'
 import { NavLink } from 'react-router-dom'
 
 
@@ -8,10 +8,10 @@ import { NavLink } from 'react-router-dom'
 export  const TestRedux=()=>{
 
  
-  const taskId="5ef5f9f0a38c720d8b9837e8"
-  const goalId="5ef5f291e28c7f0d98024013"
+  const taskId="5ef5f755a38c720d8b9837e3"
+  const goalId="5ef5f76ea38c720d8b9837e4"
     const dispatch=useDispatch()
-    const token = useSelector((state) => state.userAuthReducer.userData.token);
+    const token = useSelector((state) => state.userAuthReducer.token);
     const testUserRegister={
       name: "ffffaaassssa",
       age: 33,
@@ -122,7 +122,19 @@ async function doneTest(){
      await console.log('DONETASK-----------------------------------', data)
   }
 }
-  
+  async function delGoal(){
+    if(token){
+      const data=await dispatch(deleteGoal(token,goalId))
+      console.log('dataDELETEGOAL TESTREDUX', data)
+    }
+  }
+  async function delTask(){
+    if(token){
+      const data=await dispatch(deleteTaskInner(token,taskId))
+   
+    }
+  }
+
   return(
     <>  
     <button onClick={testRegisterUser}>TEST REGISTER</button>
@@ -134,6 +146,8 @@ async function doneTest(){
     <button onClick={getAllGoals}>Get all goals </button>
     <button onClick={modifyTask}>ModifyTask </button>
     <button onClick={doneTest}>IS DONE </button>
+    <button onClick={delGoal}>DELETE GOAL </button>
+    <button onClick={delTask}>DELETE TASK </button>
     <NavLink to='/tasks'>TASKS</NavLink>
     <NavLink to='/auth/logout'>LogOut</NavLink>
 

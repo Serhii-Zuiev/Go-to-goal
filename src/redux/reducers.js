@@ -70,6 +70,20 @@ export const goalAndTaskReducer = createReducer(initialGoalState, {
       }),
     };
   },
+  [action.deleteGoal]: (state, { payload }) => {
+    console.log('payload.goalId', payload.goalId)
+    return {
+      ...state,
+      goals: state.goals.filter((goal) => goal._id !== payload.goalId),
+    };
+  },
+  [action.deleteTask]: (state, { payload }) => {
+    console.log('payload.goalId', payload.taskId)
+    return {
+      ...state,
+      tasks: state.tasks.filter((task) => task._id !== payload.taskId),
+    };
+  },
 });
 
 export const flag = createReducer(initialFlagState, {
