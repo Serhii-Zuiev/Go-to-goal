@@ -6,6 +6,7 @@ import {
   Redirect,
 } from "react-router-dom";
 import { LoaderUi } from "./loader/Loader";
+import  HandleLogOut  from './handleLogOut/HandleLogOut'
 
 const AuthPage = lazy(() =>
   import(
@@ -30,8 +31,8 @@ export const router = (token) => {
         <Switch>
           <Route path="/goals" component={GoalPage} />
           <Route path="/tasks" component={TasksPage} />
-          <Route path="/auth/logout" component={AuthPage} />
-          <Redirect to="/tasks" />
+          <Route path="/auth/logout" component={HandleLogOut} />
+          <Redirect to="/goals" />
         </Switch>
       </Suspense>
     );
