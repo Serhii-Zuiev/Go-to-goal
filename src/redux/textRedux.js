@@ -8,7 +8,7 @@ import { NavLink } from 'react-router-dom'
 export  const TestRedux=()=>{
 
  
-  const taskId="5ef5f755a38c720d8b9837e3"
+  const taskId="5efa4d6ca38c720d8b983810"
   const goalId="5ef5f76ea38c720d8b9837e4"
     const dispatch=useDispatch()
     const token = useSelector((state) => state.userAuthReducer.token);
@@ -51,7 +51,7 @@ export  const TestRedux=()=>{
         dates: [
           "2020-06-18T19:45:34.946Z"
         ],
-        points:99
+        points:10
       
 
     }
@@ -85,8 +85,8 @@ export  const TestRedux=()=>{
     }
     async function createNewTask(){
         if(token){
-            const modifyToken=token.slice(7)
-      const data=dispatch(newTask(modifyToken,task))
+     
+      const data=dispatch(newTask(token,task))
       console.log('dataCreaterTask', data)
         }
 
