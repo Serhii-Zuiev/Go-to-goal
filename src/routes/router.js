@@ -32,7 +32,7 @@ export const router = (token) => {
           <Route path="/goals" component={GoalPage} />
           <Route path="/tasks" component={TasksPage} />
           <Route path="/auth/logout" component={HandleLogOut} />
-          <Redirect to="/goals" />
+          <Redirect to="/tasks" />
         </Switch>
       </Suspense>
     );

@@ -7,6 +7,7 @@ import CurrentGoal from "../pages/tasks-page/current-goal/CurrentGoal";
 import ProgressBar from "../pages/tasks-page/progress-bar/ProgressBar";
 import UserInfoCard from "../userInfoCard/UserInfoCard";
 import CustomizedMenus from '../pages/goal-page/navLinkToTasks/CustomizedMenus'
+import NavLinkToTasks from '../pages/goal-page/navLinkToTasks/NavLinkToTasks'
 
 const Header = ({ pageOfHeader }) => {
   const AUTH_PAGE = "auth";
@@ -38,7 +39,10 @@ const Header = ({ pageOfHeader }) => {
     content = (
       <>
         <img src={logo} alt="Лого" />
+        <div className={styles.goalPageNavContainer}>
+        <NavLinkToTasks pageOfHeader={pageOfHeader}/>
         <UserInfoCard />
+        </div>
       </>
     );
   }
@@ -49,7 +53,10 @@ const Header = ({ pageOfHeader }) => {
         <img src={logo} alt="Лого" />
         <CurrentGoal />
         <ProgressBar />
+        <div className={styles.goalPageNavContainer}>
+        <NavLinkToTasks pageOfHeader={pageOfHeader}/>
         <UserInfoCard />
+        </div>
       </>
     );
   }

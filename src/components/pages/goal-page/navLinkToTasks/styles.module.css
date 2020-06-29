@@ -1,0 +1,14 @@
+.navLink {
+  display: block;
+  padding: 0px 6px;
+  font-family: "Montserrat";
+  font-size: 12px;
+  line-height: 34px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  color: #858598;
+  height: 34px;
+  border-radius: 20px;
+  background-color: #efefef;
+  margin-right: 30px;
+}
