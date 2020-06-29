@@ -2,8 +2,7 @@ import React, { useState } from "react";
 import css from "../card/Card.module.css";
 import gift from "../../../../assets/images/icons/present box/gift-box.svg";
 
-function Card(props) {
-  const card = props.card
+function Card({ title, points, createdAt, isDone, isComplete }) {
   const [checked, setChecked] = useState(true);
 
   const onClick = () => {
@@ -13,7 +12,7 @@ function Card(props) {
       setChecked(true);
     }
   };
-
+  // console.log(isComplete, createdAt, isDone);
   return (
     <li className={css.listItem}>
       <div className={css.container}>
@@ -22,11 +21,13 @@ function Card(props) {
             checked ? css.checkBoxContainerGray : css.checkBoxContainerGreen
           }
         >
-          <button className={css.deleteCard} type="button"></button>
+          {isComplete ? null : (
+            <button className={css.deleteCard} type="button"></button>
+          )}
           <div>
             <img className={css.giftBox} alt="sdgsgsg" src={gift} />
             <p className={css.points}>
-              <span className={css.numberPoints}>500</span> балів
+              <span className={css.numberPoints}>{points}</span> балів
             </p>
             <div className={css.label}>
               <label className={css.checkbox}>
@@ -38,8 +39,10 @@ function Card(props) {
         </div>
         <div className={css.description}>
           <div>
-            <p className={css.title}>Прибрати у ...</p>
-            <p className={css.time}>20 02 20</p>
+            <p className={css.title}>{title}</p>
+            <p className={css.time}>
+              {isComplete ? new Date(createdAt).toLocaleDateString() : null}
+            </p>
           </div>
         </div>
       </div>
@@ -48,4 +51,3 @@ function Card(props) {
 }
 
 export default Card;
-

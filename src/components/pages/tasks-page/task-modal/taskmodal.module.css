@@ -1,69 +1,14 @@
 .modal_container {
-  margin: 0 auto;
-  width: 280px;
+  width: 700px;
   border-radius: 6px;
   background-color: rgb(255, 255, 255);
   box-shadow: 2px 3.464px 23.2px 5.8px rgba(29, 29, 27, 0.1);
+  padding: 2rem;
+  margin: 0 auto;
+
 }
+
 .form {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
-.title {
-  align-self: flex-start;
-  padding-top: 32px;
-  padding-left: 24px;
-  font-family: "Montserrat";
-  font-size: 20px;
-  font-weight: bold;
-  color: #858598;
-}
-
-.input_task {
-  outline: none;
-  font-family: "Montserrat";
-  font-size: 12px;
-  font-weight: 400;
-  width: 235px;
-  margin-top: 15px;
-  margin-bottom: 12px;
-  border: none;
-}
-
-.input_options_section {
-  width: 235px;
-}
-
-.input_options {
-  border: none;
-  font-family: "Montserrat";
-  font-size: 12px;
-}
-
-.buttonOk {
-  outline: none;
-  color: #ffffff;
-  font-family: "Montserrat";
-  font-size: 14px;
-  font-weight: bolder;
-  background-image: linear-gradient(
-    90deg,
-    rgb(245, 213, 59) 0%,
-    rgb(241, 195, 65) 55%,
-    rgb(236, 177, 70) 100%
-  );
-  box-shadow: 0px 8px 29px 0px rgba(178, 138, 61, 0.31);
-  margin-bottom: 30px;
-  width: 200px;
-  height: 48px;
-  border: none;
-  border-radius: 30px;
-}
-
-/* .form {
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -135,38 +80,15 @@
   left: 90px;
   color: gray;
 }
-
-.errorParagraph {
-  width: 500px;
-  color: red;
-  position: absolute;
-  bottom: -20px;
-  left: 10px;
-  font-family: Montserrat;
-  font-size: 14px;
-  font-weight: 700;
-}
-
-.errorParagraphServer {
-  width: 500px;
-  color: red;
-  position: absolute;
-  bottom: 18px;
-  left: 5%;
-  font-family: Montserrat;
-  font-size: 14px;
-  font-weight: 700;
-}
-
 .input_options_input {
-  width: 45%;
+  width: 100%;
   border-width: 0px 0px 2px 0px;
   border-style: solid black 5px;
   font-family: 'Montserrat';
   outline: none;
   font-weight: 900;
   color: black;
-}
+  margin-bottom: 10px;}
 
 .button {
   border-radius: 20px 20px 20px 20px;
@@ -183,11 +105,13 @@
     rgb(236, 177, 70) 100%
   );
   outline: none;
-} */
 
-/* @media (max-width: 1279px) {
+}
+
+@media (max-width: 1279px) {
   .modal_container {
     width: 500px;
+    margin: 0 auto;
   }
 }
 
@@ -195,6 +119,7 @@
   .modal_container {
     width: 300px;
     padding: 1rem;
+    margin: 0 auto;
   }
 
   .input_options::before {
@@ -210,14 +135,4 @@
     width: 45%;
   }
 
-  .errorParagraph {
-    width: 250px;
-    color: red;
-    position: absolute;
-    bottom: -20px;
-    left: 10px;
-    font-family: Montserrat;
-    font-size: 10px;
-    font-weight: 500;
-  }
-} */
+}
