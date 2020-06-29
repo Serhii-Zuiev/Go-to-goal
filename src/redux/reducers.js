@@ -17,13 +17,22 @@ const initialFlagState = {
 };
 export const userAuthReducer = createReducer(initialState, {
   [action.registerUser]: (state, { payload }) => {
-    return { ...state, userData: { ...payload },token:payload.token.slice(7) };
+    return {
+      ...state,
+      userData: { ...payload },
+      token: payload.token.slice(7),
+    };
   },
   [action.loginUser]: (state, { payload }) => {
-    return { ...state, userData: payload.user,token:payload.user.token.slice(7), status: payload.status };
+    return {
+      ...state,
+      userData: payload.user,
+      token: payload.user.token.slice(7),
+      status: payload.status,
+    };
   },
   [action.logoutUser]: (state, { payload }) => {
-    return { ...state, userData: payload , token: ''};
+    return { ...state, userData: payload, token: "" };
   },
 });
 export const goalAndTaskReducer = createReducer(initialGoalState, {
@@ -40,19 +49,28 @@ export const goalAndTaskReducer = createReducer(initialGoalState, {
     return { ...state, goals: payload };
   },
   [action.modifyTask]: (state, { payload }) => {
-    return { ...state, tasks: state.tasks.map((task)=>{
-
-      if(task._id===payload._id){
-        task=payload
-      }
-      return task
-    }) };
+    return {
+      ...state,
+      tasks: state.tasks.map((task) => {
+        if (task._id === payload._id) {
+          task = payload;
+        }
+        return task;
+      }),
+    };
+  },
+  [action.doneGoal]: (state, { payload }) => {
+    return {
+      ...state,
+      goals: state.goals.map((goal) => {
+        if (goal._id === payload.goalId) {
+          goal = payload.data;
+        }
+        return goal;
+      }),
+    };
   },
 });
-
-
-
-
 
 export const flag = createReducer(initialFlagState, {
   [action.isLoading]: (state, payload) => {

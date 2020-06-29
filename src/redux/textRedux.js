@@ -1,6 +1,6 @@
 import React from 'react'
 import {useDispatch,useSelector} from 'react-redux'
-import {registerUser, newGoal,loginUser,logoutUser,newTask,getTasks, getGoals,modifyTaskInner} from '../redux/operations'
+import {registerUser, newGoal,loginUser,logoutUser,newTask,getTasks, getGoals,modifyTaskInner,doneGoal} from '../redux/operations'
 import { NavLink } from 'react-router-dom'
 
 
@@ -9,6 +9,7 @@ export  const TestRedux=()=>{
 
  
   const taskId="5ef5f9f0a38c720d8b9837e8"
+  const goalId="5ef5f291e28c7f0d98024013"
     const dispatch=useDispatch()
     const token = useSelector((state) => state.userAuthReducer.userData.token);
     const testUserRegister={
@@ -55,10 +56,16 @@ export  const TestRedux=()=>{
 
     }
     const modtask={
-      title:'KERAT'
-      ,
+      title:'KERAT',
+      isDone:true,
       points:7
     }
+    const DONETASK={
+    
+      isDone:true,
+      points:99
+    }
+ 
     const task={
       title: "NEED MORE ZIGGURATES",
       description: "WTF?",
@@ -106,6 +113,14 @@ const data= await dispatch(modifyTaskInner(token,taskId,modtask))
 console.log('dataMODIFYTASK', data)
   }
 
+
+}
+async function doneTest(){
+  if(token)
+  {
+    const data=await dispatch(doneGoal(token,goalId,DONETASK))
+     await console.log('DONETASK-----------------------------------', data)
+  }
 }
   
   return(
@@ -118,6 +133,7 @@ console.log('dataMODIFYTASK', data)
     <button onClick={getAllTasks}>Get all tasks </button>
     <button onClick={getAllGoals}>Get all goals </button>
     <button onClick={modifyTask}>ModifyTask </button>
+    <button onClick={doneTest}>IS DONE </button>
     <NavLink to='/tasks'>TASKS</NavLink>
     <NavLink to='/auth/logout'>LogOut</NavLink>
 
