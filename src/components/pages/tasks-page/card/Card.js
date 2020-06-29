@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import css from "../card/Card.module.css";
 import gift from "../../../../assets/images/icons/present box/gift-box.svg";
 
-function Card() {
+function Card(props) {
+  const card = props.card
   const [checked, setChecked] = useState(true);
 
   const onClick = () => {
@@ -37,8 +38,8 @@ function Card() {
         </div>
         <div className={css.description}>
           <div>
-            <p className={css.title}>прибрати у кімнаті</p>
-            <p className={css.time}>17:00 - 18:00</p>
+            <p className={css.title}>Прибрати у ...</p>
+            <p className={css.time}>20 02 20</p>
           </div>
         </div>
       </div>
@@ -47,3 +48,4 @@ function Card() {
 }
 
 export default Card;
+

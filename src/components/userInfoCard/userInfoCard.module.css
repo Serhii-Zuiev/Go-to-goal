@@ -1,0 +1,46 @@
+.UserInfoCard_container {
+  height: 56px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.userAvatar {
+  width: 56px;
+  height: 56px;
+}
+
+.userInfo {
+  font-family: "Montserrat";
+  font-size: 12px;
+  line-height: 36px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  color: #858598;
+}
+
+.logOutBtn {
+  width: 30px;
+  height: 30px;
+  border: none;
+  background-image: url(../../assets/images/icons/logout/logout.svg);
+  background-color: transparent;
+  background-size: 16px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+@media (max-width: 767px) {
+  .userInfo {
+    margin-right: 10px;
+  }
+}
+
+@media (min-width: 767px) {
+  .userAvatar {
+    margin-right: 12px;
+  }
+  .userInfo {
+    margin-right: 12px;
+  }
+}

@@ -1,0 +1,70 @@
+.CompletedTasksTittle {
+  font-family: "Montserrat", sans-serif;
+  color: #42414b;
+  font-weight: 800;
+  font-size: 12px;
+  text-align: center;
+  text-transform: uppercase;
+  padding: 30px 0 0 0;
+  margin-bottom: 24px;
+  letter-spacing: 1px;
+}
+hr {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: -10;
+  width: 100%;
+  background-color: #e0e0e0;
+  border: 0px none;
+  height: 1px;
+}
+.btnContainer {
+  position: relative;
+}
+.btn {
+  z-index: 10;
+  outline: none;
+  outline-style: 5px solid #e0e0e0;
+  width: 26px;
+  height: 26px;
+  background-color: white;
+  border: none;
+  border-radius: 50%;
+  box-shadow: 0px 3px 8.7px 1.3px rgba(3, 3, 3, 0.13);
+  /* background-image: url(../../../../assets/images/icons/dropdowndouble/thin-arrowheads-pointing-down.svg); */
+  background: url(../../../../assets/images/icons/dropdowndouble/thin-arrowheads-pointing-down.svg)
+    white no-repeat;
+  background-position: center;
+  background-size: 60%;
+  /* background-color: #e0e0e0; */
+  /* -webkit-mask-image: url(../../../../assets/images/icons/dropdowndouble/thin-arrowheads-pointing-down.svg);
+  mask-image: url(../../../../assets/images/icons/dropdowndouble/thin-arrowheads-pointing-down.svg);
+  -webkit-mask-size: cover;
+  mask-size: cover; */
+}
+.btnRotate {
+  transform: rotate(180deg);
+}
+
+.btnContainer {
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+@media (min-width: 767px) {
+  .CompletedTasksTittle {
+    text-align: left;
+  }
+
+  hr {
+    width: 75%;
+  }
+}
+
+@media (min-width: 1200px) {
+  hr {
+    width: 50%;
+  }
+}

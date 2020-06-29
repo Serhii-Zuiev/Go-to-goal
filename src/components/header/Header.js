@@ -3,6 +3,9 @@ import { NavLink } from "react-router-dom";
 import styles from "./header.module.css";
 import logo from "../../assets/images/logo.png";
 import LoginForm from "../LoginForm/LoginForm";
+import CurrentGoal from "../pages/tasks-page/current-goal/CurrentGoal";
+import ProgressBar from "../pages/tasks-page/progress-bar/ProgressBar";
+import UserInfoCard from "../userInfoCard/UserInfoCard";
 
 const Header = ({ pageOfHeader }) => {
   const AUTH_PAGE = "auth";
@@ -16,7 +19,7 @@ const Header = ({ pageOfHeader }) => {
     </>
   );
 
-  if (pageOfHeader === AUTH_PAGE && IS_BIG_VERSION) {
+  if ((pageOfHeader === AUTH_PAGE) && IS_BIG_VERSION) {
     content = (
       <>
         <img src={logo} alt="Лого" />
@@ -30,18 +33,32 @@ const Header = ({ pageOfHeader }) => {
     );
   }
 
-  if (pageOfHeader === GOALS_PAGE && IS_BIG_VERSION) {
+  if ((pageOfHeader === GOALS_PAGE) && IS_BIG_VERSION) {
     content = (
       <>
         <img src={logo} alt="Лого" />
+        <UserInfoCard />
       </>
     );
   }
 
-  if (pageOfHeader === TSASKS_PAGE && IS_BIG_VERSION) {
+  if ((pageOfHeader === TSASKS_PAGE) && IS_BIG_VERSION) {
+    // console.log((pageOfHeader === TSASKS_PAGE) && IS_BIG_VERSION)
     content = (
       <>
         <img src={logo} alt="Лого" />
+        <CurrentGoal />
+        <ProgressBar />
+        <UserInfoCard />
+      </>
+    );
+  }
+
+  if ((pageOfHeader === TSASKS_PAGE || pageOfHeader === GOALS_PAGE) && !IS_BIG_VERSION) {
+    content = (
+      <>
+        <img src={logo} alt="Лого" />
+        <UserInfoCard />
       </>
     );
   }

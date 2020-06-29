@@ -5,11 +5,10 @@ import { TestRedux } from "../redux/textRedux";
 
 function App() {
   const token = useSelector((state) => state.userAuthReducer.token);
-  console.log('token', token)
   const routing = router(token);
   return (
     <>
-    <TestRedux></TestRedux>
+      {/* <TestRedux></TestRedux> */}
       {routing}
     </>
   );
