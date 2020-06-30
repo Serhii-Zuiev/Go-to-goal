@@ -1,6 +1,7 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import styles from "./greeting.module.css";
+import LoginForm from "./../../../LoginForm/LoginForm";
 
 const Greeting = () => {
   let content = (
@@ -8,16 +9,15 @@ const Greeting = () => {
       <h2 className={styles.mainGreeting}>Вітаємо вас у нашій програмі!</h2>
       <div className={styles.greetingContentWrapper}>
         <span className={styles.greetingContent}>Вже є аккаунт?</span>
-        <NavLink to="/auth/login">
-          <span
+        <LoginForm />
+        {/* <span
             className={`${styles.greetingContent} ${styles.greetingLoginLink}`}
           >
             Log in
-          </span>
-        </NavLink>
+          </span> */}
       </div>
-      <NavLink to="/auth/register">
-        <button className={styles.toRegisterBtn}>Приєднатися!</button>
+      <NavLink to="/auth/register" className={styles.toRegisterBtn}>
+        Приєднатися!
       </NavLink>
     </>
   );
@@ -46,8 +46,8 @@ const Greeting = () => {
             </p>
           </div>
 
-          <NavLink to="/auth/register">
-            <button className={styles.toRegisterBtn}>Приєднатися!</button>
+          <NavLink to="/auth/register" className={styles.toRegisterBtn}>
+            Приєднатися!
           </NavLink>
         </div>
       </>
