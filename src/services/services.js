@@ -37,7 +37,6 @@ async function loginUser(user) {
         headers: { "content-type": "application/json" },
         data: user,
       });
-      console.log('response', response)
       return response.data;
   } catch (error) {
     console.warn(error);
@@ -64,7 +63,6 @@ async function logoutUser(token) {
 
 // TASKS ========
 async function getTasks(token) {
-  console.log('token', token)
 try {
     const response = await axios({
         url: `${BASE_URL}/tasks`,
@@ -146,8 +144,6 @@ async function getGoals(token) {
 //   }
 async function CreateGoal(token, goal) {
   try {
-    console.log('token', token)
-    console.log('goal', goal)
     const response = await axios({
         url: `${BASE_URL}/goals`,
         method: "post",
@@ -185,6 +181,27 @@ async function getGoalById(token, goalId) {
 //     points: 556,
 //     isDone: false,
 // }
+
+async function isDoneGoal(token,goalId,isDone){
+  try {
+    const response = await axios({
+        url: `${BASE_URL}/goals/${goalId}`,
+        method: "patch",
+        headers: { 
+          "content-type": "application/json",
+          Authorization : `${token}`
+         },
+
+        data: isDone,
+      }
+      );
+      console.log('responce', response)
+      return response.data;
+   } catch (error) {
+    console.warn(error);
+   }  
+}
+   
 async function updateGoal(token, goalId, goal) {
    try {
     const response = await axios({
@@ -196,6 +213,7 @@ async function updateGoal(token, goalId, goal) {
          },
         data: goal,
       });
+      
       return response.data;
    } catch (error) {
     console.warn(error);
@@ -209,7 +227,7 @@ async function deleteGoal(token, goalId) {
         method: "delete",
         headers: { 
           "content-type": "application/json",
-          "Authorization" : `Bearer ${token}`
+          "Authorization" : `${token}`
          },
       });
       return response.data;
@@ -218,7 +236,22 @@ async function deleteGoal(token, goalId) {
    }     
 }
 // GOALS ********
-
+async function updateTask(token, taskid, task) {
+  try {
+    const response = await axios({
+      url: `${BASE_URL}/tasks/${taskid}`,
+      method: 'patch',
+      headers: {
+        'content-type': 'application/json',
+        Authorization: `${token}`,
+      },
+      data: task,
+    });
+    return response.data;
+  } catch (error) {
+    console.warn(error);
+  }
+}
 
 export const services = {
   registerUser,
@@ -231,5 +264,7 @@ export const services = {
   CreateGoal,
   getGoalById,
   updateGoal,
-  deleteGoal
+  deleteGoal,
+  updateTask,
+  isDoneGoal
 };

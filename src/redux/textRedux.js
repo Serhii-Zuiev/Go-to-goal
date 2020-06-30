@@ -1,17 +1,21 @@
 import React from 'react'
 import {useDispatch,useSelector} from 'react-redux'
-import {registerUser, newGoal,loginUser,logoutUser,newTask,getTasks, getGoals} from '../redux/operations'
+import {registerUser, newGoal,loginUser,logoutUser,newTask,getTasks, getGoals,modifyTaskInner,doneGoal,deleteGoal,deleteTaskInner} from '../redux/operations'
+import { NavLink } from 'react-router-dom'
 
 
 
 export  const TestRedux=()=>{
 
+ 
+  const taskId="5efa4d6ca38c720d8b983810"
+  const goalId="5ef5f76ea38c720d8b9837e4"
     const dispatch=useDispatch()
-    const token = useSelector((state) => state.userAuthReducer.userData.token);
+    const token = useSelector((state) => state.userAuthReducer.token);
     const testUserRegister={
       name: "ffffaaassssa",
       age: 33,
-      email: "OneTwo@gmail.com",
+      email: "OneTwoThree@gmail.com",
       password:"qwerty",
       isChild: true,
       scores: 0,
@@ -47,31 +51,44 @@ export  const TestRedux=()=>{
         dates: [
           "2020-06-18T19:45:34.946Z"
         ],
-        points:99
+        points:10
       
 
     }
+    const modtask={
+      title:'KERAT',
+      isDone:true,
+      points:7
+    }
+    const DONETASK={
+    
+      isDone:true,
+      points:99
+    }
+ 
     const task={
-      title: "Купи слона,ну епта",
-      description: "Мамке купил шубу,а мне слона?",
+      title: "NEED MORE ZIGGURATES",
+      description: "WTF?",
       dates: [
         "2020-06-18T19:45:34.946Z"
       ],
-      points:99,
-      deadline:'8.00-10.00'
+      points:2,
+      deadline:'10.00-12.00'
 
     }
     async function createNewGoal(){
         if(token){
             const modifyToken=token.slice(7)
+            // eslint-disable-next-line
       const data=dispatch(newGoal(modifyToken,goal))
         }
 
     }
     async function createNewTask(){
         if(token){
-            const modifyToken=token.slice(7)
-      const data=dispatch(newTask(modifyToken,task))
+     
+      const data=dispatch(newTask(token,task))
+      console.log('dataCreaterTask', data)
         }
 
     }
@@ -79,6 +96,7 @@ async function getAllTasks(){
   if(token){
     console.log('tokenTESXTREDUX', token)
     const modifyToken=token.slice(7)
+    // eslint-disable-next-line
   const data=dispatch(getTasks(modifyToken))
   }
 }
@@ -87,10 +105,40 @@ async function getAllGoals(){
   if(token){
     console.log('tokenTESXTREDUX', token)
     const modifyToken=token.slice(7)
+    // eslint-disable-next-line
   const data=dispatch(getGoals(modifyToken))
   }
 }
-  
+async function modifyTask(){
+  if(token){
+
+const data= await dispatch(modifyTaskInner(token,taskId,modtask))
+console.log('dataMODIFYTASK', data)
+  }
+
+
+}
+async function doneTest(){
+  if(token)
+  {
+    const data=await dispatch(doneGoal(token,goalId,DONETASK))
+     await console.log('DONETASK-----------------------------------', data)
+  }
+}
+  async function delGoal(){
+    if(token){
+      const data=await dispatch(deleteGoal(token,goalId))
+      console.log('dataDELETEGOAL TESTREDUX', data)
+    }
+  }
+  async function delTask(){
+    if(token){
+      // eslint-disable-next-line
+      const data=await dispatch(deleteTaskInner(token,taskId))
+   
+    }
+  }
+
   return(
     <>  
     <button onClick={testRegisterUser}>TEST REGISTER</button>
@@ -100,6 +148,13 @@ async function getAllGoals(){
     <button onClick={createNewTask}>Create Task</button>
     <button onClick={getAllTasks}>Get all tasks </button>
     <button onClick={getAllGoals}>Get all goals </button>
+    <button onClick={modifyTask}>ModifyTask </button>
+    <button onClick={doneTest}>IS DONE </button>
+    <button onClick={delGoal}>DELETE GOAL </button>
+    <button onClick={delTask}>DELETE TASK </button>
+    <NavLink to='/tasks'>TASKS</NavLink>
+    <NavLink to='/auth/logout'>LogOut</NavLink>
+
     </>
 
   )

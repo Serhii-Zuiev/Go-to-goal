@@ -1,27 +1,108 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
 import AddTaskBtn from "./add-button/AddTaskBtn";
-import ProgressBar from "./progress-bar/ProgressBar";
-import CurrentGoal from "./current-goal/CurrentGoal";
 import TaskModal from "./task-modal/TaskModal";
 import Congratulation from "./congratulation/Congratulation";
-import CurrentTasks from "./currentTasks/currentTasks";
+import CurrentTasks from "./currentTasks/сurrentTasks";
+import CompletedTasks from "./completedTasks/CompletedTasks";
+import ModalDeleteTask from "./ModalDeleteTask/ModalDeleteTask";
+import Header from "../../header/Header";
+import { newTask, getTasks } from "./../../../redux/operations";
 
 class TasksPage extends Component {
-  state = {};
+  state = {
+    isOpenModalWindow: false,
+    addTasks: [],
+    isTake: false,
+    tasks: [],
+    loadMoreCompletedTasks: false,
+    isOpenModalDeleteTask: false,
+  };
+
+  componentDidMount() {
+    this.props.getTasks(this.props.token);
+    this.setState({ tasks: this.props.tasksFromRedux });
+  }
+
+  handleOpenModalWindow = (e) => {
+    this.setState({ isOpenModalWindow: true });
+  };
+  handleCloseModalWindow = (e) => {
+    this.setState({ isOpenModalWindow: false });
+  };
+  loadMoreCompleteTasks = () => {
+    this.setState((prevState) => ({
+      loadMoreCompletedTasks: !prevState.loadMoreCompletedTasks,
+    }));
+  };
+  handleFormforUsers = (tasks) => {
+    const { newTask } = this.props;
+    const { token } = this.props;
+    newTask(token, tasks);
+  };
+
+  currentTasksFilter() {
+    const tasks = this.props.tasksFromRedux;
+    if (tasks.length > 0) {
+      const currentTasks = tasks.filter((task) => task.isComplete === false);
+      return currentTasks;
+    }
+    return [];
+  }
+
+  completeTasksFilter() {
+    const tasks = this.props.tasksFromRedux;
+    if (tasks.length > 0) {
+      const completeTasks = tasks.filter((task) => task.isComplete === true);
+      return completeTasks;
+    }
+    return [];
+  }
+
+  handleModalDeleteTask = (id) => {
+    id && this.handleDeleteTask(id);
+    this.setState((prevState) => ({
+      isOpenModalDeleteTask: !prevState.isOpenModalDeleteTask,
+    }));
+  };
+  handleDeleteTask = (id) => {};
+
   render() {
+    const { isOpenModalWindow, isTake, isOpenModalDeleteTask } = this.state;
     return (
       <>
-        <TaskModal />
-        <AddTaskBtn />
-        <ProgressBar planing={150} fact={15} />
-        <CurrentGoal target={"Слон"} />
+        <Header pageOfHeader={"tasks"} />
+        {isOpenModalWindow && (
+          <TaskModal
+            handleFormforUsers={this.handleFormforUsers}
+            handleCloseModalWindow={this.handleCloseModalWindow}
+          />
+        )}
+        <AddTaskBtn handleOpenModalWindow={this.handleOpenModalWindow} />
         <CurrentTasks
-          cardlist={[{ name: "Карточка-1" }, { name: "Карточка-2" }]}
+          cardlist={this.currentTasksFilter()}
+          handleModalWindow={this.handleModalDeleteTask}
         />
-        <Congratulation target={"Слон"} />
+        {isTake && <Congratulation target={"ckjy"} />}
+        <CompletedTasks
+          cardlist={this.completeTasksFilter()}
+          loadMore={this.loadMoreCompleteTasks}
+          loadMoreFlag={this.state.loadMoreCompletedTasks}
+        />
+        {isOpenModalDeleteTask && (
+          <ModalDeleteTask
+            handleModalWindow={this.handleModalDeleteTask}
+            handleDeleteTask={this.handleDeleteTask}
+          />
+        )}
       </>
     );
   }
 }
 
-export default TasksPage;
+const mapsStateToProps = (state) => ({
+  token: state.userAuthReducer.token,
+  tasksFromRedux: state.goalAndTaskReducer.tasks,
+});
+const tasksNew = { newTask, getTasks };
+export default connect(mapsStateToProps, tasksNew)(TasksPage);

@@ -4,6 +4,8 @@
   background-color: rgb(255, 255, 255);
   box-shadow: 2px 3.464px 23.2px 5.8px rgba(29, 29, 27, 0.1);
   padding: 2rem;
+  margin: 0 auto;
+
 }
 
 .form {
@@ -78,38 +80,15 @@
   left: 90px;
   color: gray;
 }
-
-.errorParagraph {
-  width: 500px;
-  color: red;
-  position: absolute;
-  bottom: -20px;
-  left: 10px;
-  font-family: Montserrat;
-  font-size: 14px;
-  font-weight: 700;
-}
-
-.errorParagraphServer {
-  width: 500px;
-  color: red;
-  position: absolute;
-  bottom: 18px;
-  left: 5%;
-  font-family: Montserrat;
-  font-size: 14px;
-  font-weight: 700;
-}
-
 .input_options_input {
-  width: 45%;
+  width: 100%;
   border-width: 0px 0px 2px 0px;
   border-style: solid black 5px;
   font-family: 'Montserrat';
   outline: none;
   font-weight: 900;
   color: black;
-}
+  margin-bottom: 10px;}
 
 .button {
   border-radius: 20px 20px 20px 20px;
@@ -126,11 +105,13 @@
     rgb(236, 177, 70) 100%
   );
   outline: none;
+
 }
 
 @media (max-width: 1279px) {
   .modal_container {
     width: 500px;
+    margin: 0 auto;
   }
 }
 
@@ -138,6 +119,7 @@
   .modal_container {
     width: 300px;
     padding: 1rem;
+    margin: 0 auto;
   }
 
   .input_options::before {
@@ -153,14 +135,4 @@
     width: 45%;
   }
 
-  .errorParagraph {
-    width: 250px;
-    color: red;
-    position: absolute;
-    bottom: -20px;
-    left: 10px;
-    font-family: Montserrat;
-    font-size: 10px;
-    font-weight: 500;
-  }
 }

@@ -1,9 +1,39 @@
-.progressNumber{
-    margin-left: 10px;
-    margin-right: 10px;
-
-}
-.progress{
-    margin: 0 auto;
-        
-}
+.progress {
+    width: 360px;
+    padding-left: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .progressScore {
+    color: #858598;
+    font-family: 'Montserrat';
+    font-weight: 700;
+    font-size: 14px;
+    width: 100px;
+    margin: 0;
+  }
+  
+  .progresBar {
+    width: 250px;
+    color: #000;
+    overflow: hidden;
+    margin: 10px;
+  }
+  
+  .total {
+    color: #000;
+  }
+  
+  @media screen and (max-width: 1279px) {
+    .progress {
+      margin: 0 auto;
+    }
+  }
+  
+  @media screen and (max-width: 767px) {
+    .progress {
+      width: 250px;
+    }
+  }

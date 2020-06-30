@@ -239,21 +239,11 @@ class RegisterForm extends Component {
             )}
 
             <div className={s.box_btn}>
-<<<<<<< HEAD
-              <NavLink to="/">
-                <button type="button" >
-                  Назад
-                </button>
-              </NavLink>
-              <button type="submit">
-                Ok
-=======
               <button type="button" onClick={this.handleCloseModal}>
                 Назад
               </button>
               <button type="submit" disabled={!formValid}>
                 Зареєструватися
->>>>>>> dev
               </button>
             </div>
           </form>

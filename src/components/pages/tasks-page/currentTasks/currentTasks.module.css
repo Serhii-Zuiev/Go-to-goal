@@ -1,77 +1,8 @@
-.empty_task {
-  margin: 0 auto;
-  width: 280px;
-  height: 280px;
-  background: repeating-linear-gradient(
-    135deg,
-    #ffffff 0px,
-    #ffffff 2px,
-    #e0e0e0 2px,
-    #e0e0e0 4px
-  );
-  border-radius: 6px;
-  opacity: 0.7;
-  width: 280px;
-  height: 261px;
-}
-.startTaskWrapper {
+.cardList {
   display: flex;
-}
-.startTaskTitle {
-  font-family: "Montserrat", sans-serif;
-  font-weight: 700;
-  font-size: 18px;
-  text-align: center;
-  /* margin: 50px 0 0 0; */
-  padding: 50px 20px 0 20px;
-  letter-spacing: 1px;
-}
-
-.goalLine {
-  font-weight: 700;
-  color: black;
-  position: relative;
-}
-.goalLine::before {
-  display: block;
-  position: absolute;
-  content: "";
-  height: 6px;
-  width: 100%;
-  background: #9ecb45;
-  left: 0;
-  bottom: -6px;
-  border-radius: 4px;
-}
-
-.startTaskQuestion {
-  font-family: "Montserrat", sans-serif;
-  font-weight: 900;
-  font-size: 14px;
-  text-align: center;
-  /* margin: 50px 0 0 0; */
-  padding: 28px 0 0 0;
-  letter-spacing: 1px;
-}
-.startTaskText {
-  font-family: "Montserrat", sans-serif;
-  font-weight: 600;
-  font-size: 14px;
-  color: #858598;
-  text-align: center;
-  line-height: 20px;
-  padding: 28px 55px 0 55px;
-  letter-spacing: 1px;
-}
-.startTaskNotice {
-  font-family: "Montserrat", sans-serif;
-  font-weight: 600;
-  font-size: 14px;
-  color: #858598;
-  text-align: center;
-  line-height: 20px;
-  padding: 28px 5px 0 5px;
-  letter-spacing: 1px;
+  width: 300px;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 .myTasksTittle {
   font-family: "Montserrat", sans-serif;
@@ -84,6 +15,7 @@
 }
 .dailyTaskListTittle {
   font-family: "Montserrat", sans-serif;
+  color: #42414b;
   font-weight: 800;
   font-size: 12px;
   text-align: center;
@@ -93,7 +25,46 @@
   letter-spacing: 1px;
 }
 
-@media (max-width: 767px) {
+@media (min-width: 767px) {
+  .myTasksTittle {
+    text-align: left;
+  }
+  .dailyTaskListTittle {
+    text-align: left;
+  }
+  .cardList {
+    width: 760px;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+  }
+  .cardList li {
+    margin-right: 20px;
+  }
 }
-@media (min-width: 768px) {
+@media (min-width: 1200px) {
+  .myTaskWrapper {
+    order: -2;
+    flex-basis: 100%;
+  }
+
+  .dailyTaskListTittle {
+    padding: 15px 0 0 0;
+    margin-bottom: 33px;
+    letter-spacing: 1px;
+  }
+  .cardList {
+    width: 1000px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+  }
+  .cardList li {
+    justify-self: start;
+  }
+  .cardList li:nth-child(4n) {
+    margin-right: 0px;
+  }
+  .cardList li:nth-child(3n) {
+    margin-right: 20px;
+  }
 }
