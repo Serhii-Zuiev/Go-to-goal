@@ -52,3 +52,15 @@ export const doneGoal = (token, goalId, isDone) => async (dispatch) => {
     payload: { data: data, goalId: goalId },
   });
 };
+export const deleteGoal=(token,goalId)=> async(dispatch)=>{
+const data=await services.deleteGoal(token,goalId)
+dispatch({type:Type.DELETE_GOAL,payload:{data,goalId}})
+console.log('dataDELETE GOAL', data)
+
+}
+export const deleteTaskInner=(token,taskId)=> async(dispatch)=>{
+const data=await services.deleteTask(token,taskId)
+dispatch({type:Type.DELETE_TASK,payload:{data,taskId}})
+console.log('dataDELETE GOAL', data)
+
+}
