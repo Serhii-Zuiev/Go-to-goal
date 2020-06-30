@@ -72,14 +72,15 @@ hr {
   .cardList {
     width: 760px;
     flex-wrap: wrap;
+    justify-content: flex-start;
   }
   .cardList li {
     margin-right: 20px;
   }
 }
-.cardList li:nth-child(3n) {
+/* .cardList li:nth-child(3n) {
   margin-right: 0;
-}
+} */
 
 @media (min-width: 1200px) {
   hr {
@@ -89,7 +90,7 @@ hr {
     width: 1000px;
     display: flex;
     flex-wrap: wrap;
-    justify-content: start;
+    justify-content: flex-start;
   }
   .cardList li {
     justify-self: start;

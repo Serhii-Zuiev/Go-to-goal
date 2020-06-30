@@ -2,7 +2,16 @@ import React, { useState } from "react";
 import css from "../card/Card.module.css";
 import gift from "../../../../assets/images/icons/present box/gift-box.svg";
 
-function Card({ title, points, createdAt, isDone, isComplete }) {
+function Card({
+  title,
+  points,
+  createdAt,
+  isDone,
+  isComplete,
+  id,
+  deadline,
+  handleModalWindow,
+}) {
   const [checked, setChecked] = useState(true);
 
   const onClick = () => {
@@ -22,7 +31,12 @@ function Card({ title, points, createdAt, isDone, isComplete }) {
           }
         >
           {isComplete ? null : (
-            <button className={css.deleteCard} type="button"></button>
+            <button
+              id={id}
+              className={css.deleteCard}
+              type="button"
+              onClick={handleModalWindow}
+            ></button>
           )}
           <div>
             <img className={css.giftBox} alt="sdgsgsg" src={gift} />
@@ -43,6 +57,7 @@ function Card({ title, points, createdAt, isDone, isComplete }) {
             <p className={css.time}>
               {isComplete ? new Date(createdAt).toLocaleDateString() : null}
             </p>
+            <p>{!isComplete ? deadline : null}</p>
           </div>
         </div>
       </div>

@@ -79,7 +79,7 @@
 }
 .emptyTaskWrapper {
   display: flex;
-  justify-content: start;
+  justify-content: flex-start;
 }
 .empty_task {
   margin: 0 auto;

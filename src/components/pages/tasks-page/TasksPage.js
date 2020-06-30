@@ -5,6 +5,7 @@ import TaskModal from "./task-modal/TaskModal";
 import Congratulation from "./congratulation/Congratulation";
 import CurrentTasks from "./currentTasks/сurrentTasks";
 import CompletedTasks from "./completedTasks/CompletedTasks";
+import ModalDeleteTask from "./ModalDeleteTask/ModalDeleteTask";
 import Header from "../../header/Header";
 import { newTask, getTasks } from "./../../../redux/operations";
 
@@ -15,6 +16,7 @@ class TasksPage extends Component {
     isTake: false,
     tasks: [],
     loadMoreCompletedTasks: false,
+    isOpenModalDeleteTask: false,
   };
 
   componentDidMount() {
@@ -57,22 +59,42 @@ class TasksPage extends Component {
     return [];
   }
 
+  handleModalDeleteTask = (id) => {
+    id && this.handleDeleteTask(id);
+    this.setState((prevState) => ({
+      isOpenModalDeleteTask: !prevState.isOpenModalDeleteTask,
+    }));
+  };
+  handleDeleteTask = (id) => {};
+
   render() {
-    const { isOpenModalWindow, isTake } = this.state;
+    const { isOpenModalWindow, isTake, isOpenModalDeleteTask } = this.state;
     return (
       <>
         <Header pageOfHeader={"tasks"} />
         {isOpenModalWindow && (
-          <TaskModal handleFormforUsers={this.handleFormforUsers} handleCloseModalWindow={this.handleCloseModalWindow}/>
+          <TaskModal
+            handleFormforUsers={this.handleFormforUsers}
+            handleCloseModalWindow={this.handleCloseModalWindow}
+          />
         )}
         <AddTaskBtn handleOpenModalWindow={this.handleOpenModalWindow} />
-        <CurrentTasks cardlist={this.currentTasksFilter()} />
+        <CurrentTasks
+          cardlist={this.currentTasksFilter()}
+          handleModalWindow={this.handleModalDeleteTask}
+        />
         {isTake && <Congratulation target={"ckjy"} />}
         <CompletedTasks
           cardlist={this.completeTasksFilter()}
           loadMore={this.loadMoreCompleteTasks}
           loadMoreFlag={this.state.loadMoreCompletedTasks}
         />
+        {isOpenModalDeleteTask && (
+          <ModalDeleteTask
+            handleModalWindow={this.handleModalDeleteTask}
+            handleDeleteTask={this.handleDeleteTask}
+          />
+        )}
       </>
     );
   }
