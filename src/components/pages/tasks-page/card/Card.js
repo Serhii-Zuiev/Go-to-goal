@@ -39,7 +39,7 @@ function Card({
             ></button>
           )}
           <div>
-            <img className={css.giftBox} alt="sdgsgsg" src={gift} />
+            <img className={css.giftBox} alt="giftpic" src={gift} />
             <p className={css.points}>
               <span className={css.numberPoints}>{points}</span> балів
             </p>
