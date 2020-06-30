@@ -79,6 +79,7 @@ export  const TestRedux=()=>{
     async function createNewGoal(){
         if(token){
             const modifyToken=token.slice(7)
+            // eslint-disable-next-line
       const data=dispatch(newGoal(modifyToken,goal))
         }
 
@@ -95,6 +96,7 @@ async function getAllTasks(){
   if(token){
     console.log('tokenTESXTREDUX', token)
     const modifyToken=token.slice(7)
+    // eslint-disable-next-line
   const data=dispatch(getTasks(modifyToken))
   }
 }
@@ -103,6 +105,7 @@ async function getAllGoals(){
   if(token){
     console.log('tokenTESXTREDUX', token)
     const modifyToken=token.slice(7)
+    // eslint-disable-next-line
   const data=dispatch(getGoals(modifyToken))
   }
 }
@@ -130,6 +133,7 @@ async function doneTest(){
   }
   async function delTask(){
     if(token){
+      // eslint-disable-next-line
       const data=await dispatch(deleteTaskInner(token,taskId))
    
     }

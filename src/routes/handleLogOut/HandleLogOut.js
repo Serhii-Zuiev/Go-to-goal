@@ -12,7 +12,7 @@ const HandleLogOut = () => {
     dispatch(logoutUser(token));
     history.push("/");
   }
-
+// eslint-disable-next-line
   return handleLogOut(), (<></>);
 };
 
