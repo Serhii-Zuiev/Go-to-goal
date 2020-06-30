@@ -2,10 +2,10 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-right: 18px;
 }
 
 .log_btn {
+  width: 100px;
   height: 20px;
   background-color: transparent;
   border: none;
@@ -14,5 +14,19 @@
   font-weight: 600;
   letter-spacing: 1px;
   color: #858598;
-  margin-left: 18px;
+  margin-left: 10px;
+}
+.authContainer {
+  margin: 0 auto;
+  width: 280px;
+  display: flex;
+  justify-content: center;
+}
+
+
+
+@media (min-width: 768px) {
+  .authContainer {
+    width: 400px;
+  }
 }
