@@ -243,7 +243,7 @@ async function updateTask(token, taskid, task) {
       method: 'patch',
       headers: {
         'content-type': 'application/json',
-        Authorization: `${token}`,
+        Authorization: `Bearer ${token}`,
       },
       data: task,
     });

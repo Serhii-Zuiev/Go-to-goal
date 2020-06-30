@@ -8,7 +8,7 @@ import { NavLink } from 'react-router-dom'
 export  const TestRedux=()=>{
 
  
-  const taskId="5efa4d6ca38c720d8b983810"
+  const taskId="5efb7b1ce28c7f0d98024074"
   const goalId="5ef5f76ea38c720d8b9837e4"
     const dispatch=useDispatch()
     const token = useSelector((state) => state.userAuthReducer.token);
@@ -49,16 +49,15 @@ export  const TestRedux=()=>{
         title: "Купи слона,ну епта",
         description: "Мамке купил шубу,а мне слона?",
         dates: [
-          "2020-06-18T19:45:34.946Z"
+          "2020-07-20 19:45:34.946Z"
         ],
         points:10
       
 
     }
     const modtask={
-      title:'KERAT',
       isDone:true,
-      points:7
+      points:1000,
     }
     const DONETASK={
     
@@ -72,15 +71,14 @@ export  const TestRedux=()=>{
       dates: [
         "2020-06-18T19:45:34.946Z"
       ],
-      points:2,
+      points:25,
       deadline:'10.00-12.00'
 
     }
     async function createNewGoal(){
         if(token){
-            const modifyToken=token.slice(7)
             // eslint-disable-next-line
-      const data=dispatch(newGoal(modifyToken,goal))
+      const data=dispatch(newGoal(token,goal))
         }
 
     }
