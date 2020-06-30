@@ -1,14 +1,10 @@
 import React, { useState } from 'react';
 import s from "./current-goal.module.css";
 import { useSelector,useDispatch } from "react-redux";
-<<<<<<< HEAD
 import {deleteGoal} from '../../../../redux/operations'
 
 import { newScoreCreater } from "../../../../redux/operations";
 
-=======
-import {deleteGoal} from '../../../../redux/operations';
->>>>>>> 39ba47d33dcf05221a0b0dba7434e3a7f44fc3b8
 import Congratulation from "./../congratulation/Congratulation";
 
 const CurrentGoal = ({ tasks = "Ckju" }) => {
@@ -38,7 +34,6 @@ const CurrentGoal = ({ tasks = "Ckju" }) => {
 
   let buttonOff;
   let percent = (userValuePoints / goalPoints) * 100;
-<<<<<<< HEAD
   // if (percent > 100) {
   //   buttonOff = "disabled";
   // }
@@ -57,11 +52,6 @@ const CurrentGoal = ({ tasks = "Ckju" }) => {
 
 
 
-=======
-  if (percent > 100) {
-    buttonOff = "disabled";
-  }
->>>>>>> 39ba47d33dcf05221a0b0dba7434e3a7f44fc3b8
   console.log("isMenuOpen", isMenuOpen);
   if (userValuePoints < goalPoints) {
     //  alert('Недостатня кількість балів')
