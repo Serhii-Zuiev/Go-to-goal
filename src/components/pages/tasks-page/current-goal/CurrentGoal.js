@@ -1,14 +1,17 @@
 import React, { useState } from 'react';
 import s from "./current-goal.module.css";
-import { useSelector } from "react-redux";
-import {navLink} from "react-router-dom"
+import { useSelector,useDispatch } from "react-redux";
+import {deleteGoal} from '../../../../redux/operations';
 import Congratulation from "./../congratulation/Congratulation";
 
 const CurrentGoal = ({ tasks = "Ckju" }) => {
+  const  dispatch = useDispatch()
     const [isMenuOpen, setMenuState] = useState(false);
+    const token = useSelector((state) => state.userAuthReducer.token);
   const myGoalState = useSelector((state) => state.goalAndTaskReducer.goals[0]);
   const myGoal = myGoalState.title;
   const goalPoints = myGoalState.points;
+  const goalId=myGoalState._id
   const userValuePoints = useSelector(
     (state) => state.userAuthReducer.userData.userData.scores
   );
@@ -24,8 +27,6 @@ const CurrentGoal = ({ tasks = "Ckju" }) => {
   if (percent > 100) {
     buttonOff = "disabled";
   }
-
-
   console.log("isMenuOpen", isMenuOpen);
   if (userValuePoints < goalPoints) {
     //  alert('Недостатня кількість балів')
@@ -35,9 +36,15 @@ const CurrentGoal = ({ tasks = "Ckju" }) => {
   const openModal = () => {
     setMenuState(!isMenuOpen);
   };
+  const  goalOperation =async()=>{
+    if(token){
+      const data=await dispatch(deleteGoal(token,goalId))
+      console.log('dataDELETEGOAL TESTREDUX', data)
+    }
+  }
   return (
     <>
-      {isMenuOpen && <Congratulation target={"писюн и чипсы"} />}
+      {isMenuOpen && <Congratulation target={"писюн и чипсы"} goalOperation={goalOperation} />}
       <div className={s.goal}>
         <div className={s.goalLogo}>
         <p className={s.goalName}> Mоя ціль: </p>
