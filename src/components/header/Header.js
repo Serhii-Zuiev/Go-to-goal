@@ -27,8 +27,8 @@ const Header = ({ pageOfHeader }) => {
         <img src={logo} alt="Лого" />
         <div className={styles.authContainer}>
           <LoginForm />
-          <NavLink to="/auth/register">
-            <span className={styles.registerBtn}>Реєстрація</span>
+          <NavLink to="/auth/register" className={styles.registerBtn}>
+            Реєстрація
           </NavLink>
         </div>
       </>

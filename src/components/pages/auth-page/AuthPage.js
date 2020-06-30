@@ -4,6 +4,7 @@ import Header from "../../header/Header";
 import RegisterForm from "./AuthModal/RegisterForm/RegisterForm";
 import Greeting from "./Greeting/Greeting";
 import Banner from "./Banner/Banner";
+import Footer from "../../footer/Footer";
 
 const AuthPage = () => {
   return (
@@ -12,6 +13,7 @@ const AuthPage = () => {
       <Header pageOfHeader={"auth"} />
       <Banner />
       <Greeting />
+      <Footer />
     </>
   );
 };
