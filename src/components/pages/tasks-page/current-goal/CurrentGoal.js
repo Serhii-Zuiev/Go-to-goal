@@ -7,19 +7,21 @@ import { newScoreCreater } from "../../../../redux/operations";
 
 import Congratulation from "./../congratulation/Congratulation";
 
-const CurrentGoal = ({ tasks = "Ckju" }) => {
+const CurrentGoal = () => {
   const  dispatch = useDispatch()
     const [isMenuOpen, setMenuState] = useState(false);
     const token = useSelector((state) => state.userAuthReducer.token);
+    const donePointsStateInfo = useSelector(
+      (state) => state.goalAndTaskReducer.score
+    );
 
 
-  const myGoalState = useSelector((state) => state.goalAndTaskReducer.goals[0]);
+  const myGoalState = useSelector((state) => state.goalAndTaskReducer?.goals[0]);
+  if(myGoalState){
   const myGoal = myGoalState.title;
   const goalPoints = myGoalState.points;
   const goalId=myGoalState._id
-  const donePointsStateInfo = useSelector(
-    (state) => state.goalAndTaskReducer.score
-  );
+
   const userValuePoints = donePointsStateInfo;
   const newScore = userValuePoints - goalPoints;
 
@@ -83,6 +85,22 @@ const CurrentGoal = ({ tasks = "Ckju" }) => {
       </div>
     </>
   );
+  }
+  else{
+return(
+  <>
+ 
+  <div className={s.goal}>
+    <div className={s.goalLogo}>
+    <p className={s.goalName}> Обери ціль: </p>
+   
+    </div>
+  </div>
+</>
+
+)
+
+  }
   }
   export default CurrentGoal
   // <>
