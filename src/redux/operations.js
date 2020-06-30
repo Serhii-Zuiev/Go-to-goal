@@ -19,6 +19,7 @@ export const loginUser = (param) => async (dispatch) => {
   }
 };
 export const logoutUser = (token) => async (dispatch) => {
+  // eslint-disable-next-line
   const data = await services.logoutUser(token);
   dispatch({ type: Type.LOGOUT_USER, payload: null });
 };

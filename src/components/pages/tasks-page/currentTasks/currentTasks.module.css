@@ -1,6 +1,8 @@
 .cardList {
   display: flex;
-  justify-content: start;
+  width: 300px;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 .myTasksTittle {
   font-family: "Montserrat", sans-serif;
@@ -30,6 +32,14 @@
   .dailyTaskListTittle {
     text-align: left;
   }
+  .cardList {
+    width: 760px;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+  }
+  .cardList li {
+    margin-right: 20px;
+  }
 }
 @media (min-width: 1200px) {
   .myTaskWrapper {
@@ -41,5 +51,20 @@
     padding: 15px 0 0 0;
     margin-bottom: 33px;
     letter-spacing: 1px;
+  }
+  .cardList {
+    width: 1000px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+  }
+  .cardList li {
+    justify-self: start;
+  }
+  .cardList li:nth-child(4n) {
+    margin-right: 0px;
+  }
+  .cardList li:nth-child(3n) {
+    margin-right: 20px;
   }
 }

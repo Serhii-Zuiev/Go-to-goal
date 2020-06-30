@@ -3,7 +3,7 @@ import css from "./currentTasks.module.css";
 import StartTaskMessage from "./startTaskMessage/startTaskMessage";
 import Card from "../card/Card";
 
-const currentTasks = ({ cardlist }) => {
+const currentTasks = ({ cardlist, handleModalWindow }) => {
   return (
     <>
       {!cardlist.length ? (
@@ -16,7 +16,7 @@ const currentTasks = ({ cardlist }) => {
       )}
       <ul className={css.cardList}>
         {cardlist.map(
-          ({ title, points, isDone, createdAt, _id, isComplete }) => (
+          ({ title, points, isDone, createdAt, _id, isComplete, deadline }) => (
             <Card
               key={_id}
               title={title}
@@ -25,6 +25,8 @@ const currentTasks = ({ cardlist }) => {
               isDone={isDone}
               id={_id}
               isComplete={isComplete}
+              deadline={deadline}
+              handleModalWindow={() => handleModalWindow(_id)}
             />
           )
         )}
