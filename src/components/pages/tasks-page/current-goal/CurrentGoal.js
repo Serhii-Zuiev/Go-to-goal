@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import s from "./current-goal.module.css";
 import { useSelector } from "react-redux";
-
+import {navLink} from "react-router-dom"
 import Congratulation from "./../congratulation/Congratulation";
 
 const CurrentGoal = ({ tasks = "Ckju" }) => {

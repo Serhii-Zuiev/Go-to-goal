@@ -2,7 +2,8 @@ import React from 'react';
 // eslint-disable-next-line
 import {conect} from "react-redux";
 import s from "./congratulation.module.css"
-const Congratulation = ({target, token, goalOperation, tasks}) => {
+import { Switch, Route, Redirect, NavLink } from 'react-router-dom';
+const Congratulation = ({target, token, delete_goal, tasks}) => {
     // console.log(target)
     return(
         <div className={s.container}>
@@ -13,9 +14,13 @@ const Congratulation = ({target, token, goalOperation, tasks}) => {
                     <p className={s.textPrise}>{target}</p>
                     <p className={s.textNewTask}>Час обрати нову ціль</p>
                 </div>
-                <button 
+                <NavLink to="">
+                 <button 
                 type="button" className={s.button} 
-                onClick={()=>goalOperation(target._id, token, tasks)}>ЄЄє-Є-Є!</button>
+                onClick={()=>delete_goal(target._id, token, tasks)}>ЄЄє-Є-Є!</button>
+                </NavLink>
+
+               
             </div>
         </div>
     )
