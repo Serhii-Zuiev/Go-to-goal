@@ -149,7 +149,7 @@ async function CreateGoal(token, goal) {
         method: "post",
         headers: { 
           "content-type": "application/json",
-          "Authorization" : `Bearer ${token}`
+          "Authorization" :  `Bearer ${token}`
          },
         data: goal,
       });

@@ -10,13 +10,13 @@ import {
   REGISTER,
 } from "redux-persist";
 import { configureStore, getDefaultMiddleware } from "@reduxjs/toolkit";
-import { userAuthReducer,goalAndTaskReducer} from "./reducers";
-import { flag } from "./reducers";
+import { userAuthReducer,goalAndTaskReducer,flag} from "./reducers";
 import thunk from "redux-thunk";
 const rootReducer = combineReducers({
   userAuthReducer,
   flag,
-goalAndTaskReducer
+goalAndTaskReducer,
+
 });
 
 
