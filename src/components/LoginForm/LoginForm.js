@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useFormik } from "formik";
 
-import styles from "./Auth.module.css";
+import styles from "./loginForm.module.css";
 import { loginUser } from "../../redux/operations";
 
 const LoginForm = () => {

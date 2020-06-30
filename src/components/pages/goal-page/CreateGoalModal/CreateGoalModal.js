@@ -6,7 +6,7 @@ const initialState = {
   goalPoints: ""
 };
 
-export const CreateGoalModal = ({ closeModal, onHandleNewGoal  }) => {
+export const CreateGoalModal = ({ closeModal }) => {
   const backdropRef = useRef(null);
   const [state, setState] = useState(initialState);
 
