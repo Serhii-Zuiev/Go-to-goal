@@ -2,19 +2,32 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-right: 180px;
 }
-
-.log_btn {
-  width: 100px;
-  height: 20px;
-  background-color: transparent;
+.btn {
+  padding: 0;
   border: none;
-  font-family: "Montserrat";
+  margin: 0 0 0 18px;
+  text-align: center;
   font-size: 12px;
-  font-weight: 600;
   letter-spacing: 1px;
+  line-height: 18px;
+  background-color: transparent;
   color: #858598;
-  margin-left: 10px;
+  font-family: Montserrat,sans-serif;
+  font-weight: 600;
+}
+.input {
+  width: 200px;
+  padding: 0;
+  border: none;
+  border-bottom: 1px solid #e0e0e0;;
+  margin: 0 0 0 20px;
+  font-size: 12px;
+  line-height: 14px;
+  color: #858598;
+  font-family: Montserrat,sans-serif;
+  font-weight: 600;
 }
 .authContainer {
   margin: 0 auto;
@@ -28,5 +41,20 @@
 @media (min-width: 768px) {
   .authContainer {
     width: 400px;
+  }
+  .form {
+    margin-right: 60px;
+  }
+  .input {
+    width: 160px;
+  }
+}
+
+@media (min-width: 1279px) {
+  .authContainer {
+    width: 400px;
+  }
+  .form {
+    margin-right: 83px;
   }
 }

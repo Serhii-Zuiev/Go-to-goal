@@ -81,7 +81,7 @@ const LoginForm = () => {
             pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
             required
             placeholder={
-              formik.errors.email ? formik.errors.email : "Enter Email"
+              formik.errors.email ? formik.errors.email : "Введіть Email"
             }
             onChange={handleChange}
             value={email}
@@ -92,14 +92,13 @@ const LoginForm = () => {
             name="password"
             required
             placeholder={
-              formik.errors.password ? formik.errors.password : "Enter password"
+              formik.errors.password ? formik.errors.password : "Введіть password"
             }
             onChange={handleChange}
             value={password}
           />
             <div className={styles.log_btn}>
-              <button
-                className={styles.btn}
+              <button className={styles.btn}
                 type="button"
                 value="LOGIN_USER"
                 onClick={(e) => {
