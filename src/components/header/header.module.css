@@ -5,6 +5,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  position: relative;
 }
 
 .registerBtn {
@@ -20,6 +21,11 @@
   color: #858598;
 }
 
+.dropDownMenu{
+  position: absolute;
+  top: 75px;
+  right: -56px;
+}
 
 @media (max-width: 767px) {
   .header {
@@ -52,5 +58,11 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+  }
+
+  .goalPageNavContainer{
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 }

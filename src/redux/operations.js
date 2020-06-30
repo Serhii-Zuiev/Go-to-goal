@@ -20,30 +20,35 @@ export const loginUser = (param) => async (dispatch) => {
 };
 export const logoutUser = (token) => async (dispatch) => {
   const data = await services.logoutUser(token);
-  dispatch({ type: Type.LOGOUT_USER,payload:null });
+  dispatch({ type: Type.LOGOUT_USER, payload: null });
 };
 
-export const newGoal=(token,goal)=>async(dispatch)=>{
-const data=await services.CreateGoal(token,goal);
-dispatch({type:Type.CREATE_GOAL,payload:data})
+export const newGoal = (token, goal) => async (dispatch) => {
+  const data = await services.CreateGoal(token, goal);
+  dispatch({ type: Type.CREATE_GOAL, payload: data });
+};
+export const newTask = (token, task) => async (dispatch) => {
+  const data = await services.CreateTask(token, task);
+  dispatch({ type: Type.CREATE_TASK, payload: data });
+};
+export const getTasks = (token) => async (dispatch) => {
+  const data = await services.getTasks(token);
+  dispatch({ type: Type.GET_ALL_TASKS, payload: data.tasks });
+};
 
-}
-export const newTask=(token,task)=>async (dispatch)=>{
-  const data=await services.CreateTask(token,task)
-  dispatch({type:Type.CREATE_TASK,payload:data})
-}
-export const getTasks=(token)=>async(dispatch)=>{
-  const data=await services.getTasks(token)
-  dispatch({type:Type.GET_ALL_TASKS,payload:data.tasks})
-}
-
-
-export const getGoals=(token)=>async(dispatch)=>{
-  const data=await services.getGoals(token)
-  dispatch({type:Type.GET_ALL_GOALS,payload:data})
-
-}
-export const modifyTaskInner=(token,taskId,task)=>async(dispatch)=>{
-  const data=await services.updateTask(token,taskId,task)
-  dispatch({type:Type. MODIFY_TASK,payload:data})
-}
+export const getGoals = (token) => async (dispatch) => {
+  const data = await services.getGoals(token);
+  dispatch({ type: Type.GET_ALL_GOALS, payload: data });
+};
+export const modifyTaskInner = (token, taskId, task) => async (dispatch) => {
+  const data = await services.updateTask(token, taskId, task);
+  dispatch({ type: Type.MODIFY_TASK, payload: data });
+};
+export const doneGoal = (token, goalId, isDone) => async (dispatch) => {
+  const data = await services.isDoneGoal(token, goalId, isDone);
+  console.log("data", data);
+  dispatch({
+    type: Type.IS_DONE_GOAL,
+    payload: { data: data, goalId: goalId },
+  });
+};

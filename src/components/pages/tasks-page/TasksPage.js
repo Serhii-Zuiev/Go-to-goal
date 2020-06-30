@@ -42,7 +42,7 @@ class TasksPage extends Component {
   };
 
   currentTasksFilter() {
-    const tasks = this.state.tasks || [];
+    const tasks = this.props.tasksFromRedux;
     if (tasks.length > 0) {
       const currentTasks = tasks.filter((task) => task.isComplete === false);
       return currentTasks;
@@ -51,7 +51,7 @@ class TasksPage extends Component {
   }
 
   completeTasksFilter() {
-    const tasks = this.state.tasks || [];
+    const tasks = this.props.tasksFromRedux;
     if (tasks.length > 0) {
       const completeTasks = tasks.filter((task) => task.isComplete === true);
       return completeTasks;

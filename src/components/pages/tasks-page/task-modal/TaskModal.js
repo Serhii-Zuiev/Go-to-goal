@@ -58,7 +58,7 @@ function TaskModal(props) {
   return (
     <div className={s.modal_container}>
       <form className={s.form} onSubmit={handleForm}>
-        <p className={s.title}>Що зробити?</p>
+        <p className={s.title_form}>Що зробити?</p>
         <input
           type="text"
           placeholder="(Оберіть завдання або додай нове)"
@@ -86,13 +86,15 @@ function TaskModal(props) {
           placeholder="ВИНАГОРОДА (наприклад 1000)"
           maxLength="20"
           minLength="3"
+          max="1000"
+          min="1"
           id={IDS.INPUT_POINT}
           value={state[IDS.INPUT_POINT]}
           onChange={handleChgange}
-          className={s.input_task}
+          className={s.input_options_input}
           required
         />
-        <button type="submit" className={s.buttonOk}>
+        <button type="submit" className={s.button}>
           OK
         </button>
       </form>
