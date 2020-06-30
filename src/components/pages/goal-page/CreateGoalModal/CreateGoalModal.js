@@ -1,55 +1,61 @@
 import React, { useEffect, useState, useRef } from "react";
 import styles from "./CreateGoalModal.module.css";
+import { useSelector, useDispatch }  from "react-redux";
+import { newGoal } from "../../../../redux/operations";
+import ModalBackDrop from "../../../modalBackDrop/ModalBackDrop";
+
 
 const initialState = {
-  goal: "",
-  goalPoints: ""
+  title: "",
+  points: ""
 };
 
-export const CreateGoalModal = ({ closeModal, onHandleNewGoal  }) => {
-  const backdropRef = useRef(null);
+const CreateGoalModal = ({ handleCloseModal}) => {
+  // const backdropRef = useRef(null);
   const [state, setState] = useState(initialState);
+  const dispatch = useDispatch();
+  const token = useSelector((state) => state.userAuthReducer.token);
 
-  const keyDownHandler = e => {
-    if (e.code === "Escape") {
-      closeModal();
-    }
+  // const keyDownHandler = e => {
+  //   if (e.code === "Escape") {
+  //       handleCloseModal();
+  //   }
 
-    if (e.target !== e.currentTarget) {
-      return;
-    }
-    closeModal();
-  };
+  //   if (e.target !== e.currentTarget) {
+  //     return;
+  //   }
+  //   handleCloseModal();
+  // };
 
-  useEffect(() => {
-    window.addEventListener("keydown", keyDownHandler);
+  // useEffect(() => {
+  //   window.addEventListener("keydown", keyDownHandler);
 
-    return () => {
-      window.removeEventListener("keydown", keyDownHandler);
-    };
-  });
+  //   return () => {
+  //     window.removeEventListener("keydown", keyDownHandler);
+  //   };
+  // });
 
   const handleSubmit = e => {
-    e.preventDefault();
-    onHandleNewGoal(state)
-    closeModal();
+    e.preventDefault()
+    dispatch(newGoal(token, state));
+    handleCloseModal();
   };
 
   return (
-    <div ref={backdropRef} className={styles.backdrop} onClick={keyDownHandler}>
+   
       <div className={styles.modal}>
           <form className={styles.form} onSubmit={handleSubmit}>
             <label className={styles.label}>
                Що я хочу
             <input
               className={styles.input}
-              onChange={e => setState({ ...state, goal: e.target.value })}
+              onChange={e => setState({ ...state, title: e.target.value })}
               type="text"
               required
               pattern="^[A-Za-zА-Яа-яЁё\s]+$"
               name="goal"
               placeholder="Дай своїй цілі назву"
-              value={state.goal}
+              value={state.title}
               minLength="3"
               maxLength="20"
             />
@@ -59,7 +65,7 @@ export const CreateGoalModal = ({ closeModal, onHandleNewGoal  }) => {
             <input
               className={styles.input}
               onChange={e =>
-                setState({ ...state, goalPoints: Number(e.target.value) })
+                setState({ ...state, points: Number(e.target.value) })
               }
               type="number"
               min="1"
@@ -67,7 +73,7 @@ export const CreateGoalModal = ({ closeModal, onHandleNewGoal  }) => {
               name="goalPoints"
               placeholder="Наприклад: 1000"
               required
-              value={state.goalPoints}
+              value={state.points}
             />
             </label>
             <p className={styles.text}>
@@ -80,6 +86,8 @@ export const CreateGoalModal = ({ closeModal, onHandleNewGoal  }) => {
           </form>
     
       </div>
-    </div>
+    
   );
 };
+
+export default ModalBackDrop(CreateGoalModal)

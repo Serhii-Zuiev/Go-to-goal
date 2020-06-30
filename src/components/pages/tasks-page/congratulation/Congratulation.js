@@ -2,9 +2,8 @@ import React from 'react';
 // eslint-disable-next-line
 import {conect} from "react-redux";
 import s from "./congratulation.module.css"
-import { NavLink } from 'react-router-dom';
+import { Switch, Route, Redirect, NavLink } from 'react-router-dom';
 const Congratulation = ({target, token, goalOperation, tasks}) => {
-    // console.log(target)
     return(
         <div className={s.container}>
             <div className={s.modal}>
