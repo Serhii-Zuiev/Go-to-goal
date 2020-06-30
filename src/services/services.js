@@ -227,7 +227,7 @@ async function deleteGoal(token, goalId) {
         method: "delete",
         headers: { 
           "content-type": "application/json",
-          "Authorization" : `Bearer ${token}`
+          "Authorization" : `${token}`
          },
       });
       return response.data;
