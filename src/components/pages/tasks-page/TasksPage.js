@@ -7,6 +7,7 @@ import CurrentTasks from "./currentTasks/сurrentTasks";
 import CompletedTasks from "./completedTasks/CompletedTasks";
 import ModalDeleteTask from "./ModalDeleteTask/ModalDeleteTask";
 import Header from "../../header/Header";
+import Footer from "../../footer/Footer";
 import {
   newTask,
   getTasks,
@@ -109,6 +110,7 @@ class TasksPage extends Component {
             handleDeleteTask={this.handleDeleteTask}
           />
         )}
+        <Footer />
       </>
     );
   }

@@ -6,6 +6,7 @@ import { useState } from 'react';
 import CreateGoalModal from "../CreateGoalModal/CreateGoalModal";
 import GoalCard from '../goalCard/GoalCard';
 import { useSelector }  from "react-redux";
+import Footer from '../../../footer/Footer';
 
 
 const NewGoal = () => {
@@ -43,6 +44,7 @@ const NewGoal = () => {
         </div>}
       </div>
     </div>
+    <Footer/>
     </>
   );
 };

@@ -20,12 +20,11 @@
   margin-bottom: 212px;
 }
 
-.greetingLoginLink {
-  text-decoration: underline;
-  margin-left: 6px;
-}
 
 .toRegisterBtn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   font-family: "Montserrat";
   font-size: 14px;
   line-height: 23px;
@@ -43,8 +42,8 @@
   height: 48px;
   border-radius: 24px;
   border: none;
-  display: block;
   margin: 0 auto;
+  outline-color: #cfcfcf;
 }
 
 @media (max-width: 767px) {
