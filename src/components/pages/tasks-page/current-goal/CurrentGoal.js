@@ -5,7 +5,7 @@ import { useSelector } from "react-redux";
 import Congratulation from "./../congratulation/Congratulation";
 
 const CurrentGoal = ({ tasks = "Ckju" }) => {
-    const [isMenuOpen, setMenuState] = useState(true);
+    const [isMenuOpen, setMenuState] = useState(false);
   const myGoalState = useSelector((state) => state.goalAndTaskReducer.goals[0]);
   const myGoal = myGoalState.title;
   const goalPoints = myGoalState.points;
@@ -42,10 +42,11 @@ const CurrentGoal = ({ tasks = "Ckju" }) => {
           <p className={s.goalName}> Mоя ціль:</p>
           <button
             type="button"
-            className={percent < 100 ? s.goalBtn : s.goalBtnActive}
+            // className={percent < 100 ? s.goalBtn : s.goalBtnActive}
             onClick={openModal}
             disabled={buttonOff}
           >
+            click
             {/* {tasks} */}
           </button>
           {isMenuOpen && <Congratulation target={"писюн и чипсы"} />}
