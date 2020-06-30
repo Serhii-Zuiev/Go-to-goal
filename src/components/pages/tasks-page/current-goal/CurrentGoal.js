@@ -38,7 +38,7 @@ console.log('myGoalState',myGoalState)
 //  }
     return(
       <>
-        <Congratulation/>
+        {/* <Congratulation/> */}
     <div className={s.goal}>
       <div className={s.goalLogo}>
         <p className={s.goalName}> Mоя ціль:</p>
@@ -47,7 +47,7 @@ console.log('myGoalState',myGoalState)
           className={percent<100 ? s.goalBtn : s.goalBtnActive}
           onClick={openModal()}
           disabled={buttonOff}
-        >
+        > 
           {tasks}
         </button>
         {/* {isMenuOpen && (<Congratulation target={"hello"}/>)} */}
