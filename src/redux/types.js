@@ -14,6 +14,7 @@ export  const Type = {
     LOADING_FLAG:'LOADING_FLAG',
     ALERT_FLAG:'ALERT_FLAG',
     IS_DONE_GOAL:'IS_DONE_GOAL',
-    
+    NEW_SCORE:'NEW_SCORE',
+    SCORE:"SCORE"
 
   };

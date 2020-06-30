@@ -8,14 +8,14 @@ import { NavLink } from 'react-router-dom'
 export  const TestRedux=()=>{
 
  
-  const taskId="5efa4d6ca38c720d8b983810"
-  const goalId="5ef5f76ea38c720d8b9837e4"
+  const taskId="5efb7748a38c720d8b983838"
+  const goalId="5efb3ec8a38c720d8b98381f"
     const dispatch=useDispatch()
     const token = useSelector((state) => state.userAuthReducer.token);
     const testUserRegister={
       name: "ffffaaassssa",
       age: 33,
-      email: "OneTwoThree@gmail.com",
+      email: "first12@gmail.com",
       password:"qwerty",
       isChild: true,
       scores: 0,
@@ -23,7 +23,7 @@ export  const TestRedux=()=>{
   
     }
     const testUserLogin={
-      email:"One@gmail.com",
+      email:"first12@gmail.com",
       password:'qwerty'
     }
      async function testRegisterUser(){
@@ -46,41 +46,41 @@ export  const TestRedux=()=>{
         }
     }
     const goal={
-        title: "Купи слона,ну епта",
-        description: "Мамке купил шубу,а мне слона?",
+        title: "Купи работу за баллы",
+        description: "gjkk?",
         dates: [
-          "2020-06-18T19:45:34.946Z"
+          "2020-07-18T19:45:34.946Z"
         ],
-        points:10
+        points:100
       
 
     }
     const modtask={
-      title:'KERAT',
-      isDone:true,
-      points:7
+  isDone:true,
+      isComplete:true,
+    
     }
     const DONETASK={
     
       isDone:true,
-      points:99
+ 
     }
  
     const task={
-      title: "NEED MORE ZIGGURATES",
+      title: "Будь хорошим",
       description: "WTF?",
       dates: [
         "2020-06-18T19:45:34.946Z"
       ],
-      points:2,
+      points:110,
       deadline:'10.00-12.00'
 
     }
     async function createNewGoal(){
         if(token){
-            const modifyToken=token.slice(7)
+           
             // eslint-disable-next-line
-      const data=dispatch(newGoal(modifyToken,goal))
+      const data=dispatch(newGoal(token,goal))
         }
 
     }
@@ -94,10 +94,10 @@ export  const TestRedux=()=>{
     }
 async function getAllTasks(){
   if(token){
-    console.log('tokenTESXTREDUX', token)
-    const modifyToken=token.slice(7)
+
+
     // eslint-disable-next-line
-  const data=dispatch(getTasks(modifyToken))
+  const data=dispatch(getTasks(token))
   }
 }
   
