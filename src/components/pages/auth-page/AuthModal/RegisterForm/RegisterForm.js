@@ -3,6 +3,7 @@ import s from './RegisterForm.module.css';
 import { connect } from 'react-redux';
 import AvatarPicker from '../AvatarPicker/AvatarPicker'
 import { registerUser } from '../../../../../redux/operations'
+import ModalBackDrop from "../../../../modalBackDrop/ModalBackDrop";
 
 class RegisterForm extends Component {
   
@@ -266,4 +267,4 @@ const mapDTP = {
   registerUser
 }
 
-export default connect(null, mapDTP)(RegisterForm);
+export default ModalBackDrop(connect(null, mapDTP)(RegisterForm));
