@@ -32,6 +32,10 @@ const ModalBackDrop = WrappedComponent => {
       this.setState({
         isOpen: false,
       });
+      this.props.handleModalWindow && this.props.handleModalWindow()
+      this.props.handleCloseModal && this.props.handleCloseModal()
+      this.props.handleCloseModalWindow && this.props.handleCloseModalWindow()
+      this.props?.location?.pathname === "/auth/register" && this.props.history.push('/')
     };
 
     render() {

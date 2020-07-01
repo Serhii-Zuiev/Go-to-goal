@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-// import shortid from "shortid";
+import ModalBackDrop from '../../../modalBackDrop/ModalBackDrop'
 import s from "./taskmodal.module.css";
 import Select from "react-select";
 // const keyforElement = shortid.generate();
@@ -102,4 +102,4 @@ function TaskModal(props) {
   );
 }
 
-export default TaskModal;
+export default ModalBackDrop(TaskModal);

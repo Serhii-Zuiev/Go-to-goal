@@ -1,8 +1,8 @@
 import React from 'react';
-// eslint-disable-next-line
-import {conect} from "react-redux";
 import s from "./congratulation.module.css"
-import { Switch, Route, Redirect, NavLink } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
+import ModalBackDrop from '../../../modalBackDrop/ModalBackDrop'
+
 const Congratulation = ({target, token, goalOperation, tasks}) => {
     return(
         <div className={s.container}>
@@ -24,4 +24,4 @@ const Congratulation = ({target, token, goalOperation, tasks}) => {
     )
 };
 
-export default Congratulation;
+export default ModalBackDrop(Congratulation);
