@@ -2,11 +2,11 @@ import React, { useState } from "react";
 import s from "./current-goal.module.css";
 import { useSelector, useDispatch } from "react-redux";
 import { deleteGoal } from "../../../../redux/operations";
-
+import CustomizedMenus from './CustomizedMenus'
 import { newScoreCreater, progressPoints } from "../../../../redux/operations";
 
 import Congratulation from "./../congratulation/Congratulation";
-// import GoalList from "./GoalList";
+
 
 const CurrentGoal = () => {
   const dispatch = useDispatch();
@@ -18,7 +18,7 @@ const CurrentGoal = () => {
   );
 
   const myGoalState = goalNumber;
-  console.log("MyGoalState", myGoalState);
+  
   const allGoalsState = useSelector((state) => state.goalAndTaskReducer.goals);
 
   if (myGoalState) {
@@ -51,7 +51,7 @@ const CurrentGoal = () => {
     const getGoal = async (id) => {
       const targetGoal = allGoalsState.find((goal) => goal._id === id);
       await setGoalNumber(targetGoal);
-      await dispatch(progressPoints(targetGoal.points));
+      await dispatch(progressPoints(targetGoal?.points));
     };
 
     return (
@@ -75,14 +75,9 @@ const CurrentGoal = () => {
               {myGoal}
             </button>
           </div>
+        <CustomizedMenus goalsList={allGoalsState} getGoal={getGoal}/>
         </div>
-        {/* <GoalList goals={allGoalsState} /> */}
-        {allGoalsState.map((goal) => (
-          <button key={goal._id} onClick={() => getGoal(goal._id)}>
-            {" "}
-            {goal.title}
-          </button>
-        ))}
+
       </>
     );
   } else {
@@ -96,19 +91,11 @@ const CurrentGoal = () => {
           <div className={s.goalLogo}>
             <p className={s.goalName}> Обери ціль: </p>
           </div>
+        <CustomizedMenus goalsList={allGoalsState} getGoal={getGoal}/>
         </div>
-        {allGoalsState.map((goal) => (
-          <button key={goal._id} onClick={() => getGoal(goal._id)}>
-            {" "}
-            {goal.title}
-          </button>
-        ))}
+
       </>
     );
   }
 };
 export default CurrentGoal;
-// <>
-// <p >Моя мета:<button className={s.buttonCurrent} onClick={getPrize}>{myGoal}</button></p>
-// </>
-// )
