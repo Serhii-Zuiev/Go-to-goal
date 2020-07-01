@@ -6,7 +6,7 @@ import { deleteGoal } from "../../../../redux/operations";
 import { newScoreCreater, progressPoints } from "../../../../redux/operations";
 
 import Congratulation from "./../congratulation/Congratulation";
-import GoalList from "./GoalList";
+// import GoalList from "./GoalList";
 
 const CurrentGoal = () => {
   const dispatch = useDispatch();
