@@ -56,7 +56,7 @@ export  const TestRedux=()=>{
 
     }
     const modtask={
-  isDone:false,
+  isDone:true,
       isComplete:true,
     
     }

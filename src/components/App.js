@@ -9,7 +9,7 @@ function App() {
   const routing = router(token);
   return (
     <>
-      <TestRedux></TestRedux>
+      {/* <TestRedux></TestRedux> */}
       {routing}
     </>
   );
