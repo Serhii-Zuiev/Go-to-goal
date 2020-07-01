@@ -50,7 +50,6 @@ const CurrentGoal = () => {
       }
     };
 
-    console.log("isMenuOpen", isMenuOpen);
     if (userValuePoints < goalPoints) {
       //  alert('Недостатня кількість балів')
     } else {

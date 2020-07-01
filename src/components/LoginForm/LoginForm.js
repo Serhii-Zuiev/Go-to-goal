@@ -99,7 +99,7 @@ const LoginForm = () => {
           />
             <div className={styles.log_btn}>
               <button className={styles.btn}
-                type="button"
+                type="submit"
                 value="LOGIN_USER"
                 onClick={(e) => {
                   formik.handleSubmit();
