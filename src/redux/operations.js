@@ -25,7 +25,10 @@ export const logoutUser = (token) => async (dispatch) => {
 };
 
 export const newGoal = (token, goal) => async (dispatch) => {
+  console.log("token", token);
+  console.log("goal", goal);
   const data = await services.CreateGoal(token, goal);
+  console.log("dataOPERATIONS", data);
   dispatch({ type: Type.CREATE_GOAL, payload: data });
 };
 export const newTask = (token, task) => async (dispatch) => {
@@ -43,8 +46,10 @@ export const getGoals = (token) => async (dispatch) => {
 };
 export const modifyTaskInner = (token, taskId, task) => async (dispatch) => {
   const data = await services.updateTask(token, taskId, task);
+  console.log("dataTaskInner", data);
   dispatch({ type: Type.MODIFY_TASK, payload: data });
 };
+
 export const doneGoal = (token, goalId, isDone) => async (dispatch) => {
   const data = await services.isDoneGoal(token, goalId, isDone);
   console.log("data", data);
@@ -53,15 +58,16 @@ export const doneGoal = (token, goalId, isDone) => async (dispatch) => {
     payload: { data: data, goalId: goalId },
   });
 };
-export const deleteGoal=(token,goalId)=> async(dispatch)=>{
-const data=await services.deleteGoal(token,goalId)
-dispatch({type:Type.DELETE_GOAL,payload:{data,goalId}})
-console.log('dataDELETE GOAL', data)
-
-}
-export const deleteTaskInner=(token,taskId)=> async(dispatch)=>{
-const data=await services.deleteTask(token,taskId)
-dispatch({type:Type.DELETE_TASK,payload:{data,taskId}})
-console.log('dataDELETE GOAL', data)
-
-}
+export const deleteGoal = (token, goalId) => async (dispatch) => {
+  const data = await services.deleteGoal(token, goalId);
+  dispatch({ type: Type.DELETE_GOAL, payload: { data, goalId } });
+  console.log("dataDELETE GOAL", data);
+};
+export const deleteTaskInner = (token, taskId) => async (dispatch) => {
+  const data = await services.deleteTask(token, taskId);
+  dispatch({ type: Type.DELETE_TASK, payload: { data, taskId } });
+  console.log("dataDELETE GOAL", data);
+};
+export const newScoreCreater = (newScore) => async (dispatch) => {
+  dispatch({ type: Type.SCORE, payload: newScore });
+};

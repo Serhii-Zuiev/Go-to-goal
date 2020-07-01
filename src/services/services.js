@@ -149,7 +149,7 @@ async function CreateGoal(token, goal) {
         method: "post",
         headers: { 
           "content-type": "application/json",
-          "Authorization" : `Bearer ${token}`
+          "Authorization" :  `Bearer ${token}`
          },
         data: goal,
       });
@@ -243,7 +243,7 @@ async function updateTask(token, taskid, task) {
       method: 'patch',
       headers: {
         'content-type': 'application/json',
-        Authorization: `${token}`,
+        Authorization: `Bearer ${token}`,
       },
       data: task,
     });
