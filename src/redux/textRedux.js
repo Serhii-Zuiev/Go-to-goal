@@ -8,14 +8,14 @@ import { NavLink } from 'react-router-dom'
 export  const TestRedux=()=>{
 
  
-  const taskId="5efb7748a38c720d8b983838"
+  const taskId="5efc491de28c7f0d9802408d"
   const goalId="5efb3ec8a38c720d8b98381f"
     const dispatch=useDispatch()
     const token = useSelector((state) => state.userAuthReducer.token);
     const testUserRegister={
       name: "ffffaaassssa",
       age: 33,
-      email: "first12@gmail.com",
+      email: "first1234@gmail.com",
       password:"qwerty",
       isChild: true,
       scores: 0,
@@ -23,7 +23,7 @@ export  const TestRedux=()=>{
   
     }
     const testUserLogin={
-      email:"first12@gmail.com",
+      email:"first1234@gmail.com",
       password:'qwerty'
     }
      async function testRegisterUser(){
@@ -46,17 +46,17 @@ export  const TestRedux=()=>{
         }
     }
     const goal={
-        title: "Купи работу за баллы",
+        title: "Что то ssadasdas",
         description: "gjkk?",
         dates: [
           "2020-07-18T19:45:34.946Z"
         ],
-        points:100
+        points:10
       
 
     }
     const modtask={
-  isDone:true,
+  isDone:false,
       isComplete:true,
     
     }

@@ -46,7 +46,6 @@ export const getGoals = (token) => async (dispatch) => {
 };
 export const modifyTaskInner = (token, taskId, task) => async (dispatch) => {
   const data = await services.updateTask(token, taskId, task);
-  console.log("dataTaskInner", data);
   dispatch({ type: Type.MODIFY_TASK, payload: data });
 };
 
@@ -70,4 +69,7 @@ export const deleteTaskInner = (token, taskId) => async (dispatch) => {
 };
 export const newScoreCreater = (newScore) => async (dispatch) => {
   dispatch({ type: Type.SCORE, payload: newScore });
+};
+export const progressPoints = (points) => async (dispatch) => {
+  dispatch({ type: Type.PROGRESS_BAR_POINTS, payload: points });
 };
