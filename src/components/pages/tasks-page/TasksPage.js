@@ -8,7 +8,11 @@ import CompletedTasks from "./completedTasks/CompletedTasks";
 import ModalDeleteTask from "./ModalDeleteTask/ModalDeleteTask";
 import Header from "../../header/Header";
 import Footer from "../../footer/Footer";
-import { newTask, getTasks } from "./../../../redux/operations";
+import {
+  newTask,
+  getTasks,
+  deleteTaskInner,
+} from "./../../../redux/operations";
 
 class TasksPage extends Component {
   state = {
@@ -16,6 +20,7 @@ class TasksPage extends Component {
     addTasks: [],
     isTake: false,
     tasks: [],
+    taskIdForDelete: null,
     loadMoreCompletedTasks: false,
     isOpenModalDeleteTask: false,
   };
@@ -31,11 +36,13 @@ class TasksPage extends Component {
   handleCloseModalWindow = (e) => {
     this.setState({ isOpenModalWindow: false });
   };
+
   loadMoreCompleteTasks = () => {
     this.setState((prevState) => ({
       loadMoreCompletedTasks: !prevState.loadMoreCompletedTasks,
     }));
   };
+
   handleFormforUsers = (tasks) => {
     const { newTask } = this.props;
     const { token } = this.props;
@@ -61,12 +68,19 @@ class TasksPage extends Component {
   }
 
   handleModalDeleteTask = (id) => {
-    id && this.handleDeleteTask(id);
+    id && this.setState({ taskIdForDelete: id });
     this.setState((prevState) => ({
       isOpenModalDeleteTask: !prevState.isOpenModalDeleteTask,
     }));
   };
-  handleDeleteTask = (id) => {};
+
+  handleDeleteTask = () => {
+    const { token } = this.props;
+    const { deleteTaskInner } = this.props;
+    const taskId = this.state.taskIdForDelete;
+    deleteTaskInner(token, taskId);
+    this.handleModalDeleteTask();
+  };
 
   render() {
     const { isOpenModalWindow, isTake, isOpenModalDeleteTask } = this.state;
@@ -96,7 +110,7 @@ class TasksPage extends Component {
             handleDeleteTask={this.handleDeleteTask}
           />
         )}
-        <Footer/>
+        <Footer />
       </>
     );
   }
@@ -106,5 +120,5 @@ const mapsStateToProps = (state) => ({
   token: state.userAuthReducer.token,
   tasksFromRedux: state.goalAndTaskReducer.tasks,
 });
-const tasksNew = { newTask, getTasks };
+const tasksNew = { newTask, getTasks, deleteTaskInner };
 export default connect(mapsStateToProps, tasksNew)(TasksPage);
