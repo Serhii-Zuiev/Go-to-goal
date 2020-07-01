@@ -1,6 +1,71 @@
-.buttonCurrent{
-    width: 180px;
-    height: 34px;
-    border-radius: 20px;
-    border-color: rgba(0,0,0,0);
-}
+.goal {
+    display: flex;
+    justify-content: space-between;
+    margin: 0 auto;
+  }
+  
+  .goalLogo {
+    position: relative;
+    display: flex;
+    text-align: center;
+    align-items: center;
+  }
+  
+  .goalName {
+    font-family: 'Montserrat';
+    font-weight: bold;
+    color: #858598;
+    font-size: 12px;
+    line-height: 32px;
+    margin: 0;
+    width: 75px;
+  }
+  
+  .goalBtn {
+    display: block;
+    font-family: 'Montserrat';
+    font-weight: bold;
+    text-transform: uppercase;
+    min-width: 180px;
+    height: 32px;
+    line-height: 32px;
+    background-color: #e0e0e0;
+    border-radius: 16px;
+    margin: 0 20px;
+    border: none;
+    pointer-events: none;
+    padding: 0 15px;
+  }
+  
+  .goalBtnActive {
+    display: block;
+    font-family: 'Montserrat';
+    font-weight: bold;
+    text-transform: uppercase;
+    min-width: 180px;
+    height: 32px;
+    line-height: 32px;
+    border-radius: 16px;
+    margin-left: 10px;
+    padding: 0px 15px;
+    margin: 0 20px;
+    border: none;
+    background: linear-gradient(
+      rgb(236, 177, 70) 0%,
+      rgb(241, 195, 65) 55%,
+      rgb(245, 213, 59) 100%
+    );
+    box-shadow: 0px 8px 29px 0px rgba(178, 138, 61, 0.31);
+    transform: scale(1.05);
+    transition: all 0.5s ease-out;
+    outline: none;
+  }
+  
+  
+ 
+  @media screen and (max-width: 767px) {
+     
+    .goalName {
+      display: none;
+    }
+  }

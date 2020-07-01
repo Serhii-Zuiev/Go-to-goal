@@ -1,11 +1,105 @@
-import React from 'react'
-import s from './current-goal.module.css'
-const CurrentGoal = ({target}) => {
-    return(
-        <>
-        <p >Моя мета:<button className={s.buttonCurrent}>{target}</button></p>
-        </>
-    )
+import React, { useState } from "react";
+import s from "./current-goal.module.css";
+import { useSelector, useDispatch } from "react-redux";
+import { deleteGoal } from "../../../../redux/operations";
+
+import { newScoreCreater } from "../../../../redux/operations";
+
+import Congratulation from "./../congratulation/Congratulation";
+
+const CurrentGoal = () => {
+  const dispatch = useDispatch();
+  const [isMenuOpen, setMenuState] = useState(false);
+  const token = useSelector((state) => state.userAuthReducer.token);
+  const donePointsStateInfo = useSelector(
+    (state) => state.goalAndTaskReducer.score
+  );
+
+  const myGoalState = useSelector(
+    (state) => state.goalAndTaskReducer?.goals[0]
+  );
+  if (myGoalState) {
+    const myGoal = myGoalState.title;
+    const goalPoints = myGoalState.points;
+    const goalId = myGoalState._id;
+
+    const userValuePoints = donePointsStateInfo;
+    const newScore = userValuePoints - goalPoints;
+
+    async function createNewScore() {
+      if (token) {
+        const data = await dispatch(newScoreCreater(newScore));
+      }
+    }
+    const openModal = () => {
+      setMenuState(!isMenuOpen);
     };
 
+    let buttonOff;
+    let percent = (userValuePoints / goalPoints) * 100;
+    // if (percent > 100) {
+    //   buttonOff = "disabled";
+    // }
+
+    const getPrize = () => {
+      if (userValuePoints < goalPoints) {
+        alert("need more points");
+      } else {
+        createNewScore();
+        openModal();
+      }
+    };
+
+    console.log("isMenuOpen", isMenuOpen);
+    if (userValuePoints < goalPoints) {
+      //  alert('Недостатня кількість балів')
+    } else {
+      //  alert('you win')
+    }
+
+    const goalOperation = async () => {
+      if (token) {
+        const data = await dispatch(deleteGoal(token, goalId));
+        console.log("dataDELETEGOAL TESTREDUX", data);
+      }
+    };
+    return (
+      <>
+        {isMenuOpen && (
+          <Congratulation
+            target={"писюн и чипсы"}
+            goalOperation={goalOperation}
+          />
+        )}
+        <div className={s.goal}>
+          <div className={s.goalLogo}>
+            <p className={s.goalName}> Mоя ціль: </p>
+            <button
+              type="button"
+              className={percent < 100 ? s.goalBtn : s.goalBtnActive}
+              onClick={getPrize}
+              disabled={buttonOff}
+            >
+              {myGoal}
+            </button>
+          </div>
+        </div>
+      </>
+    );
+  } else {
+    return (
+      <>
+        <div className={s.goal}>
+          <div className={s.goalLogo}>
+            <p className={s.goalName}> Обери ціль: </p>
+          </div>
+        </div>
+      </>
+    );
+  }
+};
 export default CurrentGoal;
+// <>
+// <p >Моя мета:<button className={s.buttonCurrent} onClick={getPrize}>{myGoal}</button></p>
+// </>
+// )
