@@ -3,29 +3,26 @@
     height: 262px;
     display: flex;
     flex-direction: column;
-    margin-right: 70px;
     justify-content: center;
     align-items: center;
-    cursor: pointer;
     background-color: #f5d53b;
     border-radius: 5px;
     position: relative;
   }
 
   .goal_text {
-    width: 100px;
+    max-width: 180px;
     text-align: center;
-    font-size: 30px;
-    color: #000000;
+    font-size: 26px;
+    color: #383838;
     font-family: 'Montserrat', sans-serif;
     font-weight: 800
-    /* margin: 0 0 0 20px; */
   }
   .points {
     width: 240px;
     text-align: center;
     font-size: 18px;
-    color: #0f0592;
+    color: #383838;
     font-family: 'Montserrat', sans-serif;
     font-weight: 600;
     padding-top: 25px;
@@ -34,7 +31,12 @@
     position: absolute;
     top: 8px;
     right: 8px;
-   /* margin : 0 0 80px 170px;  */
+    width: 25px;
+    height: 25px;
+    border: none;
+    border-radius: 5px;
+    background-color: rgba(245, 245, 245, 0.397);
+    cursor: pointer;
   }
 
   @media (max-width: 767px) {
