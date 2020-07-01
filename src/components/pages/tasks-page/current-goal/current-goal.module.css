@@ -16,25 +16,28 @@
     font-weight: bold;
     color: #858598;
     font-size: 12px;
-    line-height: 32px;
+    line-height: 56px;
     margin: 0;
-    width: 75px;
+    width: 80px;
+    height: 56px;
   }
   
   .goalBtn {
     display: block;
     font-family: 'Montserrat';
-    font-weight: bold;
+    font-weight: 600;
+    color: #626269;
+    font-size: 18px;
     text-transform: uppercase;
-    min-width: 180px;
+    min-width: 160px;
     height: 32px;
     line-height: 32px;
     background-color: #e0e0e0;
     border-radius: 16px;
-    margin: 0 20px;
+    margin-left: 10px;
     border: none;
     pointer-events: none;
-    padding: 0 15px;
+    padding: 0 6px;
   }
   
   .goalBtnActive {

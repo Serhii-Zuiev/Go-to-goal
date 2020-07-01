@@ -5,7 +5,7 @@ import { useSelector } from 'react-redux';
 
 const ProgressBar = () => {
     const pointsOfGoal=useSelector(state=>state.goalAndTaskReducer.progressPoints) //вместо  индекса может быть id goal
-    console.log('pointsOfGoal', pointsOfGoal)
+    // console.log('pointsOfGoal', pointsOfGoal)
     const donePointsStateInfo=useSelector(state=>state.goalAndTaskReducer.score)
     return(
         <>
