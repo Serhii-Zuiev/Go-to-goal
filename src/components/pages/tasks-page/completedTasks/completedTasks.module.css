@@ -1,4 +1,8 @@
-.CompletedTasksTittle {
+.container {
+  width: 320px;
+  margin: 0 auto;
+}
+.completedTasksTittle {
   font-family: "Montserrat", sans-serif;
   color: #42414b;
   font-weight: 800;
@@ -62,6 +66,10 @@ hr {
 }
 
 @media (min-width: 767px) {
+  .container {
+    width: 767px;
+    margin: 0 auto;
+  }
   .CompletedTasksTittle {
     text-align: left;
   }
@@ -83,6 +91,10 @@ hr {
 } */
 
 @media (min-width: 1200px) {
+  .container {
+    width: 90%;
+    margin: 0 auto;
+  }
   hr {
     width: 50%;
   }

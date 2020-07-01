@@ -46,6 +46,7 @@ class TasksPage extends Component {
   handleFormforUsers = (tasks) => {
     const { newTask } = this.props;
     const { token } = this.props;
+    console.log((token, tasks));
     newTask(token, tasks);
   };
 
