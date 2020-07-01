@@ -1,6 +1,8 @@
 import React from 'react';
 import s from "./congratulation.module.css"
 import { NavLink } from 'react-router-dom';
+import ModalBackDrop from '../../../modalBackDrop/ModalBackDrop'
+
 const Congratulation = ({target, token, goalOperation, tasks}) => {
     return(
         <div className={s.container}>
@@ -22,4 +24,4 @@ const Congratulation = ({target, token, goalOperation, tasks}) => {
     )
 };
 
-export default Congratulation;
+export default ModalBackDrop(Congratulation);

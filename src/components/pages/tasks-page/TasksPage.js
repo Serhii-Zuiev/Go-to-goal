@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import AddTaskBtn from "./add-button/AddTaskBtn";
 import TaskModal from "./task-modal/TaskModal";
-import Congratulation from "./congratulation/Congratulation";
+// import Congratulation from "./congratulation/Congratulation";
 import CurrentTasks from "./currentTasks/сurrentTasks";
 import CompletedTasks from "./completedTasks/CompletedTasks";
 import ModalDeleteTask from "./ModalDeleteTask/ModalDeleteTask";
@@ -98,7 +98,7 @@ class TasksPage extends Component {
           cardlist={this.currentTasksFilter()}
           handleModalWindow={this.handleModalDeleteTask}
         />
-        {isTake && <Congratulation target={"ckjy"} />}
+        {/* {isTake && <Congratulation target={"ckjy"} />} */}
         <CompletedTasks
           cardlist={this.completeTasksFilter()}
           loadMore={this.loadMoreCompleteTasks}
