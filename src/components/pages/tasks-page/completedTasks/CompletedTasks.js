@@ -1,7 +1,12 @@
 import React from "react";
 import css from "./completedTasks.module.css";
 import Card from "../card/Card";
-const CompletedTasks = ({ cardlist, loadMore, loadMoreFlag }) => {
+const CompletedTasks = ({
+  cardlist,
+  loadMore,
+  loadMoreFlag,
+  handleModalWindow,
+}) => {
   cardlist.sort((a, b) => {
     let dateA = new Date(a.createdAt),
       dateB = new Date(b.createdAt);
@@ -41,6 +46,7 @@ const CompletedTasks = ({ cardlist, loadMore, loadMoreFlag }) => {
                     isDone={isDone}
                     id={_id}
                     isComplete={isComplete}
+                    handleModalWindow={() => handleModalWindow(_id)}
                   />
                 )
               )}

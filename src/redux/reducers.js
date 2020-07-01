@@ -10,7 +10,7 @@ const initialState = {
 const initialGoalState = {
   goals: [],
   tasks: [],
-  score:0
+  score: 0,
 };
 const initialFlagState = {
   isLoading: false,
@@ -50,10 +50,10 @@ export const goalAndTaskReducer = createReducer(initialGoalState, {
     return { ...state, goals: payload };
   },
   [action.modifyTask]: (state, { payload }) => {
-    const sum=state.score+ payload.task.points
+    const sum = state.score + payload.points;
     return {
       ...state,
-      score:sum,
+      score: sum,
       tasks: state.tasks.map((task) => {
         if (task._id === payload._id) {
           task = payload;
@@ -74,21 +74,21 @@ export const goalAndTaskReducer = createReducer(initialGoalState, {
     };
   },
   [action.deleteGoal]: (state, { payload }) => {
-    console.log('payload.goalId', payload.goalId)
+    console.log("payload.goalId", payload.goalId);
     return {
       ...state,
       goals: state.goals.filter((goal) => goal._id !== payload.goalId),
     };
   },
   [action.deleteTask]: (state, { payload }) => {
-    console.log('payload.goalId', payload.taskId)
+    console.log("payload.goalId", payload.taskId);
     return {
       ...state,
       tasks: state.tasks.filter((task) => task._id !== payload.taskId),
     };
   },
-  [action.score]: (state, {payload}) => {
-    return {...state, score:payload };
+  [action.score]: (state, { payload }) => {
+    return { ...state, score: payload };
   },
 });
 
@@ -100,12 +100,4 @@ export const flag = createReducer(initialFlagState, {
   [action.isAlert]: (state, payload) => {
     return { ...state, isAlert: payload };
   },
-
-  
-
 });
-
-
-
-
-

@@ -3,7 +3,7 @@ import css from "./currentTasks.module.css";
 import StartTaskMessage from "./startTaskMessage/startTaskMessage";
 import Card from "../card/Card";
 
-const currentTasks = ({ cardlist, handleModalWindow }) => {
+const currentTasks = ({ cardlist, handleModalWindow, handleTaskDone }) => {
   return (
     <>
       <div className={css.container}>
@@ -36,6 +36,7 @@ const currentTasks = ({ cardlist, handleModalWindow }) => {
                 isComplete={isComplete}
                 deadline={deadline}
                 handleModalWindow={() => handleModalWindow(_id)}
+                handleTaskDone={() => handleTaskDone(_id, isDone, points)}
               />
             )
           )}

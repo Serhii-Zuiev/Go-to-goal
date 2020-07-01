@@ -12,6 +12,7 @@ import {
   newTask,
   getTasks,
   deleteTaskInner,
+  modifyTaskInner,
 } from "./../../../redux/operations";
 
 class TasksPage extends Component {
@@ -82,6 +83,18 @@ class TasksPage extends Component {
     deleteTaskInner(token, taskId);
     this.handleModalDeleteTask();
   };
+  handleTaskDone = (id, isDone, points) => {
+    console.log(id, isDone);
+    // let togglePoints = -100;
+    // if (isDone) {
+    //   togglePoints = -points;
+    // }
+    // console.log(togglePoints);
+    const { token } = this.props;
+    const { modifyTaskInner } = this.props;
+    const payload = { isDone: !isDone, points: points, isComplete: true };
+    modifyTaskInner(token, id, payload);
+  };
 
   render() {
     const { isOpenModalWindow, isTake, isOpenModalDeleteTask } = this.state;
@@ -98,11 +111,13 @@ class TasksPage extends Component {
         <CurrentTasks
           cardlist={this.currentTasksFilter()}
           handleModalWindow={this.handleModalDeleteTask}
+          handleTaskDone={this.handleTaskDone}
         />
         {isTake && <Congratulation target={"ckjy"} />}
         <CompletedTasks
           cardlist={this.completeTasksFilter()}
           loadMore={this.loadMoreCompleteTasks}
+          handleModalWindow={this.handleModalDeleteTask}
           loadMoreFlag={this.state.loadMoreCompletedTasks}
         />
         {isOpenModalDeleteTask && (
@@ -121,5 +136,5 @@ const mapsStateToProps = (state) => ({
   token: state.userAuthReducer.token,
   tasksFromRedux: state.goalAndTaskReducer.tasks,
 });
-const tasksNew = { newTask, getTasks, deleteTaskInner };
+const tasksNew = { newTask, getTasks, deleteTaskInner, modifyTaskInner };
 export default connect(mapsStateToProps, tasksNew)(TasksPage);
