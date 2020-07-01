@@ -1,5 +1,5 @@
 .new_goal_section {
-    width: 840px;
+    width: 1198px;
     margin: 0 auto 50px;
     padding-top: 50px;
     font-family: 'Montserrat';
@@ -37,7 +37,6 @@
     justify-content: flex-end;
     width: 280px;
     height: 262px;
-    margin-right: 70px;
     border: none;
     border-radius: 5px;
     padding: 0;
@@ -96,7 +95,26 @@
     margin-bottom: 10px;
     vertical-align: middle;
   }
+
+  .GoalsList{
+    max-width: 1198px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: start;
+    align-items: center;
+  }
   
+  
+  @media (min-width: 768px) {
+    .GoalListItem:not(:nth-child(4n)){
+    margin-right: 26px;
+  }
+  .GoalListItem{
+    margin-bottom: 26px;
+  }
+    }
+
   /* MEDIA PAD 768PX */
   
   @media (max-width: 1279px) {
@@ -114,7 +132,6 @@
   
     .container {
       width: 738px;
-      /* margin: 0 auto; */
       flex-direction: column-reverse;
       align-items: center;
       text-align: center;
@@ -150,6 +167,21 @@
       background-image: url(../../../../assets/images/decor.png);
       background-repeat: no-repeat;
       background-position: 100% 0%;
+    }
+
+    .GoalsList{
+      max-width: 674px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+    }
+    .GoalListItem:nth-child(2n){
+      margin-right: 0px;
+    }
+    .GoalListItem{
+      margin-bottom: 36px;
     }
   }
   
@@ -209,6 +241,10 @@
     .new_goal_info {
       font-size: 16px;
       line-height: 26px;
+    }
+
+    .GoalListItem{
+      margin-bottom: 26px;
     }
   }
   
