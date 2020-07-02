@@ -58,14 +58,14 @@ const CurrentGoal = () => {
       <>
         {isMenuOpen && (
           <Congratulation
-            target={"писюн и чипсы"}
+            target={myGoal}
             goalOperation={goalOperation}
           />
         )}
 
         <div className={s.goal}>
           <div className={s.goalLogo}>
-            <p className={s.goalName}> Mоя ціль: </p>
+            <p className={s.goalName}>Mоя ціль: </p>
             <button
               type="button"
               className={percent < 100 ? s.goalBtn : s.goalBtnActive}
@@ -89,7 +89,7 @@ const CurrentGoal = () => {
       <>
         <div className={s.goal}>
           <div className={s.goalLogo}>
-            <p className={s.goalName}> Обери ціль: </p>
+            <p className={s.goalName}>Обери ціль: </p>
           </div>
         <CustomizedMenus goalsList={allGoalsState} getGoal={getGoal}/>
         </div>

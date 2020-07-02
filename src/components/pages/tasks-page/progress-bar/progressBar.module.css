@@ -1,6 +1,7 @@
+
 .progress {
-    width: 360px;
-    padding-left: 30px;
+    width: 300px;
+    padding-left: 25px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -11,7 +12,7 @@
     font-family: 'Montserrat';
     font-weight: 700;
     font-size: 14px;
-    width: 100px;
+    /* width: 100px; */
     margin: 0;
   }
   
@@ -19,7 +20,7 @@
     width: 250px;
     color: #000;
     overflow: hidden;
-    margin: 10px;
+    margin: 15px;
   }
   
   .total {

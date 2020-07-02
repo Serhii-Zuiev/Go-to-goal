@@ -13,7 +13,8 @@ const Header = ({ pageOfHeader }) => {
   const AUTH_PAGE = "auth";
   const GOALS_PAGE = "goals";
   const TSASKS_PAGE = "tasks";
-  const IS_BIG_VERSION = window.innerWidth > 767;
+  const IS_BIG_VERSION = window.innerWidth >= 768;
+  const IS_MOBILE_VERSION = window.innerWidth < 767
 
   let content = (
     <>
@@ -46,13 +47,12 @@ const Header = ({ pageOfHeader }) => {
       </>
     );
   }
-
   if ((pageOfHeader === TSASKS_PAGE) && IS_BIG_VERSION) {
     content = (
       <>
         <img src={logo} alt="Лого" />
-        <CurrentGoal />
-        <ProgressBar />
+          <CurrentGoal />
+          <ProgressBar />
         <div className={styles.goalPageNavContainer}>
         <NavLinkToTasks pageOfHeader={pageOfHeader}/>
         <UserInfoCard />
@@ -60,7 +60,6 @@ const Header = ({ pageOfHeader }) => {
       </>
     );
   }
-
   if ((pageOfHeader === TSASKS_PAGE || pageOfHeader === GOALS_PAGE) && !IS_BIG_VERSION) {
     content = (
       <>
