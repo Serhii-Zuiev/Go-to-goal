@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import moment from 'moment';
+import moment from "moment";
 import { connect } from "react-redux";
 import AddTaskBtn from "./add-button/AddTaskBtn";
 import TaskModal from "./task-modal/TaskModal";
@@ -29,7 +29,7 @@ class TasksPage extends Component {
   componentDidMount() {
     this.props.getTasks(this.props.token);
     this.setState({ tasks: this.props.tasksFromRedux });
-    this.completingTasksAt0000()
+    this.completingTasksAt0000();
   }
 
   handleOpenModalWindow = (e) => {
@@ -86,12 +86,6 @@ class TasksPage extends Component {
     this.handleModalDeleteTask();
   };
   handleTaskDone = (id, isDone, points) => {
-    // console.log(id, isDone);
-    // let togglePoints = -100;
-    // if (isDone) {
-    //   togglePoints = -points;
-    // }
-    // console.log(togglePoints);
     const { token } = this.props;
     const { modifyTaskInner } = this.props;
     const payload = { isDone: !isDone, points: points };
@@ -104,15 +98,19 @@ class TasksPage extends Component {
   };
 
   completingTasksAt0000 = () => {
-    const tasks = this.props.tasksFromRedux
-    const DATE_NOW = moment().format().slice(0, 10)
-    const completedTasks = tasks.filter((t)=> t.isDone === true && t.createdAt.slice(0, 10) !== DATE_NOW)
-    if(completedTasks.length > 0){
+    const tasks = this.props.tasksFromRedux;
+    const DATE_NOW = moment().format().slice(0, 10);
+    const completedTasks = tasks.filter(
+      (t) => t.isDone === true && t.createdAt.slice(0, 10) !== DATE_NOW
+    );
+    if (completedTasks.length > 0) {
       const { token } = this.props;
       const { modifyTaskInner } = this.props;
       const payload = { isComplete: true };
 
-      completedTasks.forEach((task)=> modifyTaskInner(token, task._id, payload))
+      completedTasks.forEach((task) =>
+        modifyTaskInner(token, task._id, payload)
+      );
     }
   };
 
@@ -135,7 +133,7 @@ class TasksPage extends Component {
           isDoneToggle={this.state.isDoneToggle}
           handleIsDoneToggle={this.handleIsDoneToggle}
         />
-        
+
         <CompletedTasks
           cardlist={this.completeTasksFilter()}
           loadMore={this.loadMoreCompleteTasks}
