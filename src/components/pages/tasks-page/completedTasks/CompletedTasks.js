@@ -19,7 +19,13 @@ const CompletedTasks = ({
       <div className={css.container}>
         <div className={css.btnContainer}>
           <hr></hr>
+          hello
         </div>
+        {!cardlist.length ? (
+          <div className={css.emptyTaskWrapper}>
+            <div className={css.empty_task}></div>
+          </div>
+        ) : null}
         <h2 className={css.completedTasksTittle}>Виконано</h2>
         <ul className={css.cardList}>
           {loadMoreFlag

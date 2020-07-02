@@ -56,8 +56,8 @@ const Card = ({
                     onClick={handleTaskDone}
                     name="isDone"
                     type="checkbox"
-                    checked={isDone}
-                    onChange={handleIsDoneToggle}
+                    defaultChecked={isDone}
+                    // onChange={handleIsDoneToggle}
                   />
                   <span className={css.span}>Виконано</span>
                 </label>

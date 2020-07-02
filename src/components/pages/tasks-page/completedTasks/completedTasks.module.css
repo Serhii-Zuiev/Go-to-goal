@@ -64,6 +64,24 @@ hr {
   flex-wrap: wrap;
   justify-content: center;
 }
+.emptyTaskWrapper {
+  display: flex;
+  justify-content: flex-start;
+}
+.empty_task {
+  margin: 0 auto;
+  background: repeating-linear-gradient(
+    135deg,
+    #ffffff 0px,
+    #ffffff 2px,
+    #e0e0e0 2px,
+    #e0e0e0 4px
+  );
+  border-radius: 6px;
+  opacity: 0.7;
+  width: 220px;
+  height: 200px;
+}
 
 @media (min-width: 767px) {
   .container {
