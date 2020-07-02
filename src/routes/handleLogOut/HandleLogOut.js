@@ -9,8 +9,12 @@ const HandleLogOut = () => {
   const dispatch = useDispatch();
   const token = useSelector((state) => state.userAuthReducer.token);
   function handleLogOut() {
+    localStorage.clear();
     dispatch(logoutUser(token));
     history.push("/");
+ 
+
+    
   }
 // eslint-disable-next-line
   return handleLogOut(), (<></>);

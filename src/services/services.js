@@ -52,6 +52,7 @@ async function logoutUser(token) {
           "content-type": "application/json",
           "Authorization" : `Bearer ${token}` },
       });
+   
       return response.data;
    } catch (error) {
     console.warn(error);
@@ -72,6 +73,7 @@ try {
           "Authorization" : `Bearer ${token}`
          },
       });
+      console.log('resonse', response)
       return response.data;
    } catch (error) {
     console.warn(error);
