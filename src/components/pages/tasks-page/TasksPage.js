@@ -9,6 +9,7 @@ import ModalDeleteTask from "./ModalDeleteTask/ModalDeleteTask";
 import Header from "../../header/Header";
 import Footer from "../../footer/Footer";
 import {
+
   newTask,
   getTasks,
   deleteTaskInner,
@@ -31,7 +32,10 @@ class TasksPage extends Component {
     this.setState({ tasks: this.props.tasksFromRedux });
     this.completingTasksAt0000()
   }
+// componentDidUpdate(){
+//   this.props.getTasks(this.props.token);
 
+// }
   handleOpenModalWindow = (e) => {
     this.setState({ isOpenModalWindow: true });
   };
