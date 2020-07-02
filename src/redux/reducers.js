@@ -101,7 +101,7 @@ export const goalAndTaskReducer = createReducer(initialGoalState, {
 });
 
 export const flag = createReducer(initialFlagState, {
-  [action.isLoading]: (state, payload) => {
+  [action.isLoading]: (state, { payload }) => {
     return { ...state, isLoading: payload };
   },
 
