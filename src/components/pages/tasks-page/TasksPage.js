@@ -1,8 +1,8 @@
 import React, { Component } from "react";
+import moment from 'moment';
 import { connect } from "react-redux";
 import AddTaskBtn from "./add-button/AddTaskBtn";
 import TaskModal from "./task-modal/TaskModal";
-// import Congratulation from "./congratulation/Congratulation";
 import CurrentTasks from "./currentTasks/сurrentTasks";
 import CompletedTasks from "./completedTasks/CompletedTasks";
 import ModalDeleteTask from "./ModalDeleteTask/ModalDeleteTask";
@@ -19,7 +19,6 @@ class TasksPage extends Component {
   state = {
     isOpenModalWindow: false,
     addTasks: [],
-    isTake: false,
     tasks: [],
     taskIdForDelete: null,
     loadMoreCompletedTasks: false,
@@ -30,6 +29,7 @@ class TasksPage extends Component {
   componentDidMount() {
     this.props.getTasks(this.props.token);
     this.setState({ tasks: this.props.tasksFromRedux });
+    this.completingTasksAt0000()
   }
 
   handleOpenModalWindow = (e) => {
@@ -103,8 +103,21 @@ class TasksPage extends Component {
     }));
   };
 
+  completingTasksAt0000 = () => {
+    const tasks = this.props.tasksFromRedux
+    const DATE_NOW = moment().format().slice(0, 10)
+    const completedTasks = tasks.filter((t)=> t.isDone === true && t.createdAt.slice(0, 10) !== DATE_NOW)
+    if(completedTasks.length > 0){
+      const { token } = this.props;
+      const { modifyTaskInner } = this.props;
+      const payload = { isComplete: true };
+
+      completedTasks.forEach((task)=> modifyTaskInner(token, task._id, payload))
+    }
+  };
+
   render() {
-    const { isOpenModalWindow, isTake, isOpenModalDeleteTask } = this.state;
+    const { isOpenModalWindow, isOpenModalDeleteTask } = this.state;
     return (
       <>
         <Header pageOfHeader={"tasks"} />
@@ -122,7 +135,7 @@ class TasksPage extends Component {
           isDoneToggle={this.state.isDoneToggle}
           handleIsDoneToggle={this.handleIsDoneToggle}
         />
-        {/* {isTake && <Congratulation target={"ckjy"} />} */}
+        
         <CompletedTasks
           cardlist={this.completeTasksFilter()}
           loadMore={this.loadMoreCompleteTasks}
