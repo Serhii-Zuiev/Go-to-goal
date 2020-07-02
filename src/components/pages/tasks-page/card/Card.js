@@ -42,13 +42,17 @@ const Card = ({
             ></button>
           )}
           <div>
-            <img className={css.giftBox} alt="giftpic" src={gift} />
+            <div className={css.giftWrapper}>
+              <img className={css.giftBox} alt="giftpic" src={gift} />
+            </div>
             <p className={css.points}>
               <span className={css.numberPoints}>{points}</span> балів
             </p>
-            <p className={css.date}>
-              {isComplete ? new Date(createdAt).toLocaleDateString() : null}
-            </p>
+            {isComplete ? (
+              <p className={css.date}>
+                {new Date(createdAt).toLocaleDateString()}
+              </p>
+            ) : null}
             {!isComplete ? (
               <div className={css.label}>
                 <label className={css.checkbox}>
