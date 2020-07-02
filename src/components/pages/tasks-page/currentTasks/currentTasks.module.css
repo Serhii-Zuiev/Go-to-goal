@@ -1,3 +1,7 @@
+.container {
+  width: 320px;
+  margin: 0 auto;
+}
 .cardList {
   display: flex;
   width: 300px;
@@ -26,6 +30,10 @@
 }
 
 @media (min-width: 767px) {
+  .container {
+    width: 767px;
+    margin: 0 auto;
+  }
   .myTasksTittle {
     text-align: left;
   }
@@ -42,6 +50,10 @@
   }
 }
 @media (min-width: 1200px) {
+  .container {
+    width: 1190px;
+    margin: 0 auto;
+  }
   .myTaskWrapper {
     order: -2;
     flex-basis: 100%;

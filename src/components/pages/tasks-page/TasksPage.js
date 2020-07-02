@@ -12,6 +12,7 @@ import {
   newTask,
   getTasks,
   deleteTaskInner,
+  modifyTaskInner,
 } from "./../../../redux/operations";
 
 class TasksPage extends Component {
@@ -23,6 +24,7 @@ class TasksPage extends Component {
     taskIdForDelete: null,
     loadMoreCompletedTasks: false,
     isOpenModalDeleteTask: false,
+    isDoneToggle: false,
   };
 
   componentDidMount() {
@@ -46,6 +48,7 @@ class TasksPage extends Component {
   handleFormforUsers = (tasks) => {
     const { newTask } = this.props;
     const { token } = this.props;
+    console.log((token, tasks));
     newTask(token, tasks);
   };
 
@@ -75,11 +78,29 @@ class TasksPage extends Component {
   };
 
   handleDeleteTask = () => {
+    this.setState({ taskIdForDelete: 1 });
     const { token } = this.props;
     const { deleteTaskInner } = this.props;
     const taskId = this.state.taskIdForDelete;
     deleteTaskInner(token, taskId);
     this.handleModalDeleteTask();
+  };
+  handleTaskDone = (id, isDone, points) => {
+    // console.log(id, isDone);
+    // let togglePoints = -100;
+    // if (isDone) {
+    //   togglePoints = -points;
+    // }
+    // console.log(togglePoints);
+    const { token } = this.props;
+    const { modifyTaskInner } = this.props;
+    const payload = { isDone: !isDone, points: points };
+    modifyTaskInner(token, id, payload);
+  };
+  handleIsDoneToggle = () => {
+    this.setState((prevState) => ({
+      isDoneToggle: !prevState.isDoneToggle,
+    }));
   };
 
   render() {
@@ -97,11 +118,15 @@ class TasksPage extends Component {
         <CurrentTasks
           cardlist={this.currentTasksFilter()}
           handleModalWindow={this.handleModalDeleteTask}
+          handleTaskDone={this.handleTaskDone}
+          isDoneToggle={this.state.isDoneToggle}
+          handleIsDoneToggle={this.handleIsDoneToggle}
         />
         {/* {isTake && <Congratulation target={"ckjy"} />} */}
         <CompletedTasks
           cardlist={this.completeTasksFilter()}
           loadMore={this.loadMoreCompleteTasks}
+          handleModalWindow={this.handleModalDeleteTask}
           loadMoreFlag={this.state.loadMoreCompletedTasks}
         />
         {isOpenModalDeleteTask && (
@@ -120,5 +145,5 @@ const mapsStateToProps = (state) => ({
   token: state.userAuthReducer.token,
   tasksFromRedux: state.goalAndTaskReducer.tasks,
 });
-const tasksNew = { newTask, getTasks, deleteTaskInner };
+const tasksNew = { newTask, getTasks, deleteTaskInner, modifyTaskInner };
 export default connect(mapsStateToProps, tasksNew)(TasksPage);
