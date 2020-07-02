@@ -12,6 +12,8 @@ const Card = ({
   deadline,
   handleModalWindow,
   handleTaskDone,
+  isDoneToggle,
+  handleIsDoneToggle,
 }) => {
   // const [checked, setChecked] = useState(true);
 
@@ -44,10 +46,19 @@ const Card = ({
             <p className={css.points}>
               <span className={css.numberPoints}>{points}</span> балів
             </p>
+            <p className={css.date}>
+              {isComplete ? new Date(createdAt).toLocaleDateString() : null}
+            </p>
             {!isComplete ? (
               <div className={css.label}>
                 <label className={css.checkbox}>
-                  <input onClick={handleTaskDone} type="checkbox" />
+                  <input
+                    onClick={handleTaskDone}
+                    name="isDone"
+                    type="checkbox"
+                    checked={isDone}
+                    onChange={handleIsDoneToggle}
+                  />
                   <span className={css.span}>Виконано</span>
                 </label>
               </div>
@@ -57,10 +68,8 @@ const Card = ({
         <div className={css.description}>
           <div>
             <p className={css.title}>{title}</p>
-            <p className={css.time}>
-              {isComplete ? new Date(createdAt).toLocaleDateString() : null}
-            </p>
-            <p>{!isComplete ? deadline : null}</p>
+
+            <p className={css.time}>{!isComplete ? deadline : null}</p>
           </div>
         </div>
       </div>

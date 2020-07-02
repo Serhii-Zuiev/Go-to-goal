@@ -2,67 +2,58 @@ import React, { useState } from "react";
 import s from "./current-goal.module.css";
 import { useSelector, useDispatch } from "react-redux";
 import { deleteGoal } from "../../../../redux/operations";
-
-import { newScoreCreater } from "../../../../redux/operations";
+import CustomizedMenus from './CustomizedMenus'
+import { newScoreCreater, progressPoints } from "../../../../redux/operations";
 
 import Congratulation from "./../congratulation/Congratulation";
+
 
 const CurrentGoal = () => {
   const dispatch = useDispatch();
   const [isMenuOpen, setMenuState] = useState(false);
+  const [goalNumber, setGoalNumber] = useState();
   const token = useSelector((state) => state.userAuthReducer.token);
   const donePointsStateInfo = useSelector(
     (state) => state.goalAndTaskReducer.score
   );
 
-  const myGoalState = useSelector(
-    (state) => state.goalAndTaskReducer?.goals[0]
-  );
+  const myGoalState = goalNumber;
+  
+  const allGoalsState = useSelector((state) => state.goalAndTaskReducer.goals);
+
   if (myGoalState) {
     const myGoal = myGoalState.title;
     const goalPoints = myGoalState.points;
     const goalId = myGoalState._id;
-
     const userValuePoints = donePointsStateInfo;
     const newScore = userValuePoints - goalPoints;
-
-    async function createNewScore() {
-      if (token) {
-        const data = await dispatch(newScoreCreater(newScore));
-      }
-    }
     const openModal = () => {
       setMenuState(!isMenuOpen);
     };
 
     let buttonOff;
     let percent = (userValuePoints / goalPoints) * 100;
-    // if (percent > 100) {
-    //   buttonOff = "disabled";
-    // }
 
-    const getPrize = () => {
+    const getPrize = async () => {
       if (userValuePoints < goalPoints) {
         alert("need more points");
       } else {
-        createNewScore();
+        await dispatch(newScoreCreater(newScore));
         openModal();
       }
     };
-
-    console.log("isMenuOpen", isMenuOpen);
-    if (userValuePoints < goalPoints) {
-      //  alert('Недостатня кількість балів')
-    } else {
-      //  alert('you win')
-    }
-
     const goalOperation = async () => {
       if (token) {
         const data = await dispatch(deleteGoal(token, goalId));
-        console.log("dataDELETEGOAL TESTREDUX", data);
       }
     };
+
+    const getGoal = async (id) => {
+      const targetGoal = allGoalsState.find((goal) => goal._id === id);
+      await setGoalNumber(targetGoal);
+      await dispatch(progressPoints(targetGoal?.points));
+    };
+
     return (
       <>
         {isMenuOpen && (
@@ -71,6 +62,7 @@ const CurrentGoal = () => {
             goalOperation={goalOperation}
           />
         )}
+
         <div className={s.goal}>
           <div className={s.goalLogo}>
             <p className={s.goalName}> Mоя ціль: </p>
@@ -83,23 +75,27 @@ const CurrentGoal = () => {
               {myGoal}
             </button>
           </div>
+        <CustomizedMenus goalsList={allGoalsState} getGoal={getGoal}/>
         </div>
+
       </>
     );
   } else {
+    const getGoal = (id) => {
+      const targetGoal = allGoalsState.find((goal) => goal._id === id);
+      setGoalNumber(targetGoal);
+    };
     return (
       <>
         <div className={s.goal}>
           <div className={s.goalLogo}>
             <p className={s.goalName}> Обери ціль: </p>
           </div>
+        <CustomizedMenus goalsList={allGoalsState} getGoal={getGoal}/>
         </div>
+
       </>
     );
   }
 };
 export default CurrentGoal;
-// <>
-// <p >Моя мета:<button className={s.buttonCurrent} onClick={getPrize}>{myGoal}</button></p>
-// </>
-// )

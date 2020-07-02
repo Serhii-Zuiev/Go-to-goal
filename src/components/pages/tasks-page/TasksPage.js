@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import AddTaskBtn from "./add-button/AddTaskBtn";
 import TaskModal from "./task-modal/TaskModal";
-import Congratulation from "./congratulation/Congratulation";
+// import Congratulation from "./congratulation/Congratulation";
 import CurrentTasks from "./currentTasks/сurrentTasks";
 import CompletedTasks from "./completedTasks/CompletedTasks";
 import ModalDeleteTask from "./ModalDeleteTask/ModalDeleteTask";
@@ -24,6 +24,7 @@ class TasksPage extends Component {
     taskIdForDelete: null,
     loadMoreCompletedTasks: false,
     isOpenModalDeleteTask: false,
+    isDoneToggle: false,
   };
 
   componentDidMount() {
@@ -77,6 +78,7 @@ class TasksPage extends Component {
   };
 
   handleDeleteTask = () => {
+    this.setState({ taskIdForDelete: 1 });
     const { token } = this.props;
     const { deleteTaskInner } = this.props;
     const taskId = this.state.taskIdForDelete;
@@ -84,7 +86,7 @@ class TasksPage extends Component {
     this.handleModalDeleteTask();
   };
   handleTaskDone = (id, isDone, points) => {
-    console.log(id, isDone);
+    // console.log(id, isDone);
     // let togglePoints = -100;
     // if (isDone) {
     //   togglePoints = -points;
@@ -92,8 +94,13 @@ class TasksPage extends Component {
     // console.log(togglePoints);
     const { token } = this.props;
     const { modifyTaskInner } = this.props;
-    const payload = { isDone: !isDone, points: points, isComplete: true };
+    const payload = { isDone: !isDone, points: points };
     modifyTaskInner(token, id, payload);
+  };
+  handleIsDoneToggle = () => {
+    this.setState((prevState) => ({
+      isDoneToggle: !prevState.isDoneToggle,
+    }));
   };
 
   render() {
@@ -112,8 +119,10 @@ class TasksPage extends Component {
           cardlist={this.currentTasksFilter()}
           handleModalWindow={this.handleModalDeleteTask}
           handleTaskDone={this.handleTaskDone}
+          isDoneToggle={this.state.isDoneToggle}
+          handleIsDoneToggle={this.handleIsDoneToggle}
         />
-        {isTake && <Congratulation target={"ckjy"} />}
+        {/* {isTake && <Congratulation target={"ckjy"} />} */}
         <CompletedTasks
           cardlist={this.completeTasksFilter()}
           loadMore={this.loadMoreCompleteTasks}
