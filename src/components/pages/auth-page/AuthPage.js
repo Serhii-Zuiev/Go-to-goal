@@ -9,8 +9,8 @@ import Footer from "../../footer/Footer";
 import Alerts from '../../alert/Alerts'
 
 const AuthPage = () => {
-  const isAlertSown = useSelector((state) => state.flag.isAlert);
-  // console.log('isAlertSown', isAlertSown)
+  const isAlertSown = useSelector((state) => state.flag.isAlert?.payload);
+ 
   return (
     <>
       <Route path="/auth/register" component={RegisterForm} />
