@@ -17,8 +17,8 @@ const Card = ({
 }) => {
   return (
     <li className={css.listItem}>
-      {console.log("isDone :>> ", isDone)}
-      {console.log("iscomplete :>> ", isComplete)}
+      {/* {console.log("isDone :>> ", isDone)}
+      {console.log("iscomplete :>> ", isComplete)} */}
       <div className={css.container}>
         {/* <p>{isDoneToggle ? "true" : "false"}</p> */}
         <div
