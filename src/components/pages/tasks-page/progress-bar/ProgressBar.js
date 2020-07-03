@@ -7,7 +7,7 @@ const ProgressBar = () => {
     (state) => state.goalAndTaskReducer.progressPoints
   );
   const donePointsStateInfo = useSelector(
-    (state) => state.userAuthReducer?.userData?.scores
+    (state) => state.userAuthReducer?.userData?.userData?.scores
   );
   const donePoints = useSelector((state) => state.goalAndTaskReducer.score);
   const pointFlag = useSelector((state) => state.goalAndTaskReducer.flag);
