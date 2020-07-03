@@ -40,14 +40,22 @@ class TasksPage extends Component {
         t.createdAt.slice(0, 10) !== DATE_NOW &&
         t.isDone === false
     );
+    const { token } = this.props;
     if (completedTasks.length > 0) {
-      const { token } = this.props;
+      // const { token } = this.props;
       const { modifyTaskInner } = this.props;
+      console.log(completedTasks);
       const payload = { isDone: true };
       completedTasks.forEach((task) =>
-        // console.log(task.isDone)
         modifyTaskInner(token, task._id, payload)
       );
+    }
+    const taskForDelete = tasks.filter(
+      (t) => t.isComplete === false && t.createdAt.slice(0, 10) !== DATE_NOW
+    );
+    if (taskForDelete.length > 0) {
+      const { deleteTaskInner } = this.props;
+      taskForDelete.forEach((task) => deleteTaskInner(token, task._id));
     }
   };
 
@@ -125,7 +133,7 @@ class TasksPage extends Component {
 
   render() {
     const { isOpenModalWindow, isOpenModalDeleteTask } = this.state;
-    console.log('this.props.tasksFromRedux', this.props.tasksFromRedux)
+    console.log("this.props.tasksFromRedux", this.props.tasksFromRedux);
     return (
       <>
         <Header pageOfHeader={"tasks"} />
