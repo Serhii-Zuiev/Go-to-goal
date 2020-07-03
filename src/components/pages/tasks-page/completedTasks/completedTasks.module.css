@@ -43,14 +43,22 @@ hr {
   mask-image: url(../../../../assets/images/icons/dropdowndouble/thin-arrowheads-pointing-down.svg);
   -webkit-mask-size: cover;
   mask-size: cover; */
+  transition: all 1s;
 }
 .btnRotate {
   transform: rotate(180deg);
+  transition: all 1s;
 }
 
 .btnContainer {
   text-align: center;
   margin-bottom: 32px;
+}
+.cardList {
+  display: flex;
+  width: 300px;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 @media (min-width: 767px) {
@@ -61,10 +69,36 @@ hr {
   hr {
     width: 75%;
   }
+  .cardList {
+    width: 760px;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+  }
+  .cardList li {
+    margin-right: 20px;
+  }
 }
+/* .cardList li:nth-child(3n) {
+  margin-right: 0;
+} */
 
 @media (min-width: 1200px) {
   hr {
     width: 50%;
+  }
+  .cardList {
+    width: 1000px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+  }
+  .cardList li {
+    justify-self: start;
+  }
+  .cardList li:nth-child(4n) {
+    margin-right: 0px;
+  }
+  .cardList li:nth-child(3n) {
+    margin-right: 20px;
   }
 }

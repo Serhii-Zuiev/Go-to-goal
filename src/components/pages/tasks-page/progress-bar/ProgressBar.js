@@ -1,16 +1,15 @@
 import React from 'react'
-import style from "./progressBar.module.css"
+import ProgressBarRender from './ProgressBarRender'
+import { useSelector } from 'react-redux';
 
-const ProgressBar = ({fact, planing}) => {
+
+const ProgressBar = () => {
+    const pointsOfGoal=useSelector(state=>state.goalAndTaskReducer.progressPoints) //вместо  индекса может быть id goal
+    // console.log('pointsOfGoal', pointsOfGoal)
+    const donePointsStateInfo=useSelector(state=>state.goalAndTaskReducer.score)
     return(
         <>
-        <div >
-            <span className={style.progressNumber}>Фактично набраних балів: {fact}</span>
-            <span className={style.progressNumber}>/</span>
-            <span className={style.progressNumber}>Заплановано балів: {planing}</span>
-            <progress max={planing} value={fact}/>
-
-        </div>
+     <ProgressBarRender fact={ donePointsStateInfo} planing={pointsOfGoal}/>
         </>
     )
 };

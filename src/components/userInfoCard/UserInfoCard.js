@@ -1,11 +1,9 @@
 import React from "react";
 import styles from "./userInfoCard.module.css";
-import { useDispatch, useSelector } from "react-redux";
-import { logoutUser } from "../../redux/operations";
+import { useSelector } from "react-redux";
+import { NavLink } from "react-router-dom";
 
 const UserInfoCard = () => {
-  const dispatch = useDispatch();
-  const token = useSelector((state) => state.userAuthReducer.userData.token);
   const avatarURL = useSelector(
     (state) => state.userAuthReducer.userData.userData.avatar
   );
@@ -15,10 +13,6 @@ const UserInfoCard = () => {
   const userAge = useSelector(
     (state) => state.userAuthReducer.userData.userData.age
   );
-
-  function handleLogOut() {
-    dispatch(logoutUser(token));
-  }
 
   let content = (
     <>
@@ -34,14 +28,13 @@ const UserInfoCard = () => {
         <div className={styles.userInfo}>
           {userName},{userAge} років
         </div>
-        <button
-          onClick={handleLogOut}
-          type="button"
+        <NavLink
+          to="/auth/logout"
           className={styles.logOutBtn}
           title="Вийти з акаунту"
         >
           <span hidden>натисність для виходу з акаунту</span>
-        </button>
+        </NavLink>
       </>
     );
   }

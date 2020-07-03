@@ -1,0 +1,64 @@
+  .card {
+    width: 280px;
+    height: 262px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #f5d53b;
+    border-radius: 5px;
+    position: relative;
+  }
+
+  .goal_text {
+    max-width: 180px;
+    text-align: center;
+    font-size: 26px;
+    color: #383838;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800
+  }
+  .points {
+    width: 240px;
+    text-align: center;
+    font-size: 18px;
+    color: #383838;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    padding-top: 25px;
+  }
+  .button {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    width: 25px;
+    height: 25px;
+    border: none;
+    border-radius: 5px;
+    background-color: rgba(245, 245, 245, 0.397);
+    cursor: pointer;
+  }
+
+  @media (max-width: 767px) {
+      .card {
+        width: 220px;
+        height: 200px;
+        margin: 0;
+  }
+  .goal_text {
+    font-size: 22px;
+    margin: 0 0 20px;
+    width: 220px;
+  }
+  .points {
+    font-size: 14px;
+  }
+}
+
+  @media (max-width: 1279px) {
+    .card {
+        width: 220px;
+        height: 200px;
+
+  }
+}

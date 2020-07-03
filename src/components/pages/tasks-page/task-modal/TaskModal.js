@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-// import shortid from "shortid";
+import ModalBackDrop from '../../../modalBackDrop/ModalBackDrop'
 import s from "./taskmodal.module.css";
 import Select from "react-select";
 // const keyforElement = shortid.generate();
@@ -23,26 +23,26 @@ const findOpt = (value) => options.find((opt) => opt.value === value);
 
 function TaskModal(props) {
   const handleFormforUsers = props.handleFormforUsers
+  const handleCloseModalWindow = props.handleCloseModalWindow
   const [state, setState] = useState({
     [IDS.INPUT_VALUE]: "",
     [IDS.INPUT_POINT]: "",
     [IDS.SELECT_DATA]: "",
   });
-  console.log("state", state);
 
   const handleForm = (e) => {
     e.preventDefault()
     const task ={
-      title: state.title,
-      points: state.points,
-      deadline: state.deadline,
+      title: state['title'],
+      points: state['points'],
+      deadline: state['deadline'],
     }
     handleFormforUsers(task)
+    handleCloseModalWindow()
   } 
 
   const handleChgange = (e) => {
     const { id, value } = e.target;
-
     setState((currentState) => ({
       ...currentState,
       [id]: value,
@@ -58,7 +58,7 @@ function TaskModal(props) {
   return (
     <div className={s.modal_container}>
       <form className={s.form} onSubmit={handleForm}>
-        <p className={s.title}>Що зробити?</p>
+        <p className={s.title_form}>Що зробити?</p>
         <input
           type="text"
           placeholder="(Оберіть завдання або додай нове)"
@@ -68,6 +68,7 @@ function TaskModal(props) {
           value={state[IDS.INPUT_VALUE]}
           onChange={handleChgange}
           className={s.input_task}
+          required
         />
         <div className={s.input_options_section}>
           <Select
@@ -85,12 +86,15 @@ function TaskModal(props) {
           placeholder="ВИНАГОРОДА (наприклад 1000)"
           maxLength="20"
           minLength="3"
+          max="1000"
+          min="1"
           id={IDS.INPUT_POINT}
           value={state[IDS.INPUT_POINT]}
           onChange={handleChgange}
-          className={s.input_task}
+          className={s.input_options_input}
+          required
         />
-        <button type="submit" className={s.buttonOk}>
+        <button type="submit" className={s.button}>
           OK
         </button>
       </form>
@@ -98,4 +102,4 @@ function TaskModal(props) {
   );
 }
 
-export default TaskModal;
+export default ModalBackDrop(TaskModal);

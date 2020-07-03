@@ -1,13 +1,12 @@
 import React from "react";
 import css from "./currentTasks.module.css";
-import CardList from "../cardList/CardList";
-import StartTaskMessage from "./startTaskMessage";
+import StartTaskMessage from "./startTaskMessage/startTaskMessage";
+import Card from "../card/Card";
 
-const currentTasks = (props) => {
-  console.log('props', props)
+const currentTasks = ({ cardlist, handleModalWindow }) => {
   return (
     <>
-      {props.cardlist ? (
+      {!cardlist.length ? (
         <StartTaskMessage />
       ) : (
         <div className={css.myTaskWrapper}>
@@ -15,9 +14,24 @@ const currentTasks = (props) => {
           <p className={css.dailyTaskListTittle}>СЬОГОДНІ</p>
         </div>
       )}
-      <CardList />
+      <ul className={css.cardList}>
+        {cardlist.map(
+          ({ title, points, isDone, createdAt, _id, isComplete, deadline }) => (
+            <Card
+              key={_id}
+              title={title}
+              points={points}
+              createdAt={createdAt}
+              isDone={isDone}
+              id={_id}
+              isComplete={isComplete}
+              deadline={deadline}
+              handleModalWindow={() => handleModalWindow(_id)}
+            />
+          )
+        )}
+      </ul>
     </>
   );
 };
-
 export default currentTasks;

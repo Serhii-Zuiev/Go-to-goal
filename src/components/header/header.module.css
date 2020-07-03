@@ -5,6 +5,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  position: relative;
 }
 
 .registerBtn {
@@ -18,8 +19,14 @@
   font-weight: 600;
   letter-spacing: 1px;
   color: #858598;
+  outline-color: #cfcfcf;
 }
 
+.dropDownMenu{
+  position: absolute;
+  top: 75px;
+  right: -56px;
+}
 
 @media (max-width: 767px) {
   .header {
@@ -48,9 +55,15 @@
   }
 
   .authContainer{
-    /* width: 500px; */
+    width: 580px;
     display: flex;
     justify-content: space-between;
     align-items: center;
+  }
+
+  .goalPageNavContainer{
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 }

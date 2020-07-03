@@ -1,4 +1,6 @@
 .reg_container {
+    position: absolute;
+    z-index: 2;
     width: 80%;
     margin: 0 auto;
     padding: 40px;
@@ -7,8 +9,12 @@
     align-items: center;
     justify-content: space-between;
     border-radius: 5px;
-    background-color: #ffffff;
+    background-color: rgba(226, 225, 164);
+    top: 11%;
+    left: 10%;
+
   }
+
   
   .title_h1 {
     margin: 0;
@@ -122,6 +128,10 @@
   
   
   @media (max-width: 1979px) {
+    .reg_container {
+      top: 19%;
+    left: 10%;
+    }
     .title_h1 {
       font-size: 22px;
     }
@@ -143,8 +153,11 @@
   /* TABLET */
   @media (max-width: 1279px) {
     .reg_container {
+      position: absolute;
       width: 90%;
       padding: 10px;
+      top: 20%;
+      left: 5%;
     }
   
     .box_input {
@@ -183,6 +196,7 @@
       border-radius: 0;
       overflow-y: auto;
       padding-bottom: 10px;
+      background-color: #ffffff
     }
   
   
