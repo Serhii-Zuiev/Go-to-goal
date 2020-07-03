@@ -51,7 +51,7 @@ export const goalAndTaskReducer = createReducer(initialGoalState, {
     return { ...state, tasks: payload };
   },
   [action.getAllGoals]: (state, { payload }) => {
-    return { ...state, goals: payload };
+    return { ...state, goals: payload.goals };
   },
   [action.modifyTask]: (state, { payload }) => {
 

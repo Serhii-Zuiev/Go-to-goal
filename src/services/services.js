@@ -44,7 +44,6 @@ async function loginUser(user) {
 }
 
 async function logoutUser(token) {
-  console.log('token', token)
    try {
     const response = await axios({
         url: `${BASE_URL}/auth/logout`,
