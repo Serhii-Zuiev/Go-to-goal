@@ -199,7 +199,6 @@ async function isDoneGoal(token,goalId,isDone){
         data: isDone,
       }
       );
- console.log('response', response)
       return response.data;
    } catch (error) {
     console.warn(error);
