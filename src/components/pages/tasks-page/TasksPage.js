@@ -29,13 +29,12 @@ class TasksPage extends Component {
   componentDidMount() {
     this.props.getTasks(this.props.token);
     this.setState({ tasks: this.props.tasksFromRedux });
-    this.completingTasksAt0000();
   }
 
-  handleOpenModalWindow = (e) => {
+  handleOpenModalWindow = () => {
     this.setState({ isOpenModalWindow: true });
   };
-  handleCloseModalWindow = (e) => {
+  handleCloseModalWindow = () => {
     this.setState({ isOpenModalWindow: false });
   };
 
@@ -55,7 +54,10 @@ class TasksPage extends Component {
   currentTasksFilter() {
     const tasks = this.props.tasksFromRedux;
     if (tasks.length > 0) {
-      const currentTasks = tasks.filter((task) => task.isComplete === false);
+      const DATE_NOW = moment().format().slice(0, 10);
+      const currentTasks = tasks.filter(
+        (t) => t.createdAt.slice(0, 10) === DATE_NOW
+      );
       return currentTasks;
     }
     return [];
@@ -64,8 +66,11 @@ class TasksPage extends Component {
   completeTasksFilter() {
     const tasks = this.props.tasksFromRedux;
     if (tasks.length > 0) {
-      const completeTasks = tasks.filter((task) => task.isComplete === true);
-      return completeTasks;
+      const DATE_NOW = moment().format().slice(0, 10);
+      const completedTasks = tasks.filter(
+        (t) => t.isComplete === true && t.createdAt.slice(0, 10) !== DATE_NOW
+      );
+      return completedTasks;
     }
     return [];
   }
@@ -85,33 +90,19 @@ class TasksPage extends Component {
     deleteTaskInner(token, taskId);
     this.handleModalDeleteTask();
   };
-  handleTaskDone = (id, isDone, points) => {
+  handleTaskDone = (id, isDone) => {
     const { token } = this.props;
     const { modifyTaskInner } = this.props;
-    const payload = { isDone: !isDone, points: points };
+    ////////////////////////////////////////////////////////
+    const payload = { isDone: !isDone, isComplete: !isDone };
+    ////////////////////////////////////////////////////////
+    console.log("payload Task of handler", payload);
     modifyTaskInner(token, id, payload);
   };
   handleIsDoneToggle = () => {
     this.setState((prevState) => ({
       isDoneToggle: !prevState.isDoneToggle,
     }));
-  };
-
-  completingTasksAt0000 = () => {
-    const tasks = this.props.tasksFromRedux;
-    const DATE_NOW = moment().format().slice(0, 10);
-    const completedTasks = tasks.filter(
-      (t) => t.isDone === true && t.createdAt.slice(0, 10) !== DATE_NOW
-    );
-    if (completedTasks.length > 0) {
-      const { token } = this.props;
-      const { modifyTaskInner } = this.props;
-      const payload = { isComplete: true };
-
-      completedTasks.forEach((task) =>
-        modifyTaskInner(token, task._id, payload)
-      );
-    }
   };
 
   render() {
