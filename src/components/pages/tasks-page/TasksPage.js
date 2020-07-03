@@ -45,7 +45,6 @@ class TasksPage extends Component {
       const { modifyTaskInner } = this.props;
       const payload = { isDone: true };
       completedTasks.forEach((task) =>
-        // console.log(task.isDone)
         modifyTaskInner(token, task._id, payload)
       );
     }
@@ -67,7 +66,6 @@ class TasksPage extends Component {
   handleFormforUsers = (tasks) => {
     const { newTask } = this.props;
     const { token } = this.props;
-    console.log((token, tasks));
     newTask(token, tasks);
   };
 
@@ -109,12 +107,7 @@ class TasksPage extends Component {
   handleTaskDone = (id, isDone, isComplete) => {
     const { token } = this.props;
     const { modifyTaskInner } = this.props;
-    ////////////////////////////////////////////////////////
-    console.log(isComplete);
-    // const payload = { isComplete: !isComplete };
     const payload = { isComplete: !isComplete };
-    ////////////////////////////////////////////////////////
-    console.log("payload Task of handler", payload);
     modifyTaskInner(token, id, payload);
   };
   handleIsDoneToggle = () => {
@@ -125,7 +118,6 @@ class TasksPage extends Component {
 
   render() {
     const { isOpenModalWindow, isOpenModalDeleteTask } = this.state;
-    console.log('this.props.tasksFromRedux', this.props.tasksFromRedux)
     return (
       <>
         <Header pageOfHeader={"tasks"} />
