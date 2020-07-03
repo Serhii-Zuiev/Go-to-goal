@@ -42,7 +42,7 @@ const currentTasks = ({
                 isComplete={isComplete}
                 deadline={deadline}
                 handleModalWindow={() => handleModalWindow(_id)}
-                handleTaskDone={() => handleTaskDone(_id, isDone, points)}
+                handleTaskDone={() => handleTaskDone(_id, isDone, isComplete)}
                 isDoneToggle={isDoneToggle}
                 handleIsDoneToggle={handleIsDoneToggle}
               />

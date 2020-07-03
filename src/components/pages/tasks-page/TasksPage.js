@@ -29,7 +29,28 @@ class TasksPage extends Component {
   componentDidMount() {
     this.props.getTasks(this.props.token);
     this.setState({ tasks: this.props.tasksFromRedux });
+    this.doneTasksAt0000();
   }
+  doneTasksAt0000 = () => {
+    const tasks = this.props.tasksFromRedux;
+    const DATE_NOW = moment().format().slice(0, 10);
+    const completedTasks = tasks.filter(
+      (t) =>
+        t.isComplete === true &&
+        t.createdAt.slice(0, 10) !== DATE_NOW &&
+        t.isDone === false
+    );
+    console.log(completedTasks);
+    if (completedTasks.length > 0) {
+      const { token } = this.props;
+      const { modifyTaskInner } = this.props;
+      const payload = { isDone: true };
+      completedTasks.forEach((task) =>
+        // console.log(task.isDone)
+        modifyTaskInner(token, task._id, payload)
+      );
+    }
+  };
 
   handleOpenModalWindow = () => {
     this.setState({ isOpenModalWindow: true });
@@ -54,10 +75,8 @@ class TasksPage extends Component {
   currentTasksFilter() {
     const tasks = this.props.tasksFromRedux;
     if (tasks.length > 0) {
-      const DATE_NOW = moment().format().slice(0, 10);
-      const currentTasks = tasks.filter(
-        (t) => t.createdAt.slice(0, 10) === DATE_NOW
-      );
+      // const DATE_NOW = moment().format().slice(0, 10);
+      const currentTasks = tasks.filter((t) => t.isDone === false);
       return currentTasks;
     }
     return [];
@@ -66,10 +85,8 @@ class TasksPage extends Component {
   completeTasksFilter() {
     const tasks = this.props.tasksFromRedux;
     if (tasks.length > 0) {
-      const DATE_NOW = moment().format().slice(0, 10);
-      const completedTasks = tasks.filter(
-        (t) => t.isComplete === true && t.createdAt.slice(0, 10) !== DATE_NOW
-      );
+      // const DATE_NOW = moment().format().slice(0, 10);
+      const completedTasks = tasks.filter((t) => t.isDone === true);
       return completedTasks;
     }
     return [];
@@ -90,11 +107,13 @@ class TasksPage extends Component {
     deleteTaskInner(token, taskId);
     this.handleModalDeleteTask();
   };
-  handleTaskDone = (id, isDone) => {
+  handleTaskDone = (id, isDone, isComplete) => {
     const { token } = this.props;
     const { modifyTaskInner } = this.props;
     ////////////////////////////////////////////////////////
-    const payload = { isDone: !isDone, isComplete: !isDone };
+    console.log(isComplete);
+    // const payload = { isComplete: !isComplete };
+    const payload = { isComplete: !isComplete };
     ////////////////////////////////////////////////////////
     console.log("payload Task of handler", payload);
     modifyTaskInner(token, id, payload);

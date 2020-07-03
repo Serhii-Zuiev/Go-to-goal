@@ -15,25 +15,18 @@ const Card = ({
   isDoneToggle,
   handleIsDoneToggle,
 }) => {
-  // const [checked, setChecked] = useState(true);
-
-  // const onClick = () => {
-  //   if (checked === true) {
-  //     setChecked(false);
-  //   } else {
-  //     setChecked(true);
-  //   }
-  // };
-  // console.log(isComplete, createdAt, isDone);
   return (
     <li className={css.listItem}>
+      {console.log("isDone :>> ", isDone)}
+      {console.log("iscomplete :>> ", isComplete)}
       <div className={css.container}>
+        {/* <p>{isDoneToggle ? "true" : "false"}</p> */}
         <div
           className={
-            isDone ? css.checkBoxContainerGreen : css.checkBoxContainerGray
+            isComplete ? css.checkBoxContainerGreen : css.checkBoxContainerGray
           }
         >
-          {isComplete ? null : (
+          {isDone ? null : (
             <button
               id={id}
               className={css.deleteCard}
@@ -48,19 +41,19 @@ const Card = ({
             <p className={css.points}>
               <span className={css.numberPoints}>{points}</span> балів
             </p>
-            {isComplete ? (
+            {isDone ? (
               <p className={css.date}>
                 {new Date(createdAt).toLocaleDateString()}
               </p>
             ) : null}
-            {!isComplete ? (
+            {!isDone ? (
               <div className={css.label}>
                 <label className={css.checkbox}>
                   <input
                     onClick={handleTaskDone}
                     name="isDone"
                     type="checkbox"
-                    defaultChecked={isDone}
+                    defaultChecked={isComplete}
                     // onChange={handleIsDoneToggle}
                   />
                   <span className={css.span}>Виконано</span>
@@ -73,7 +66,7 @@ const Card = ({
           <div>
             <p className={css.title}>{title}</p>
 
-            <p className={css.time}>{!isComplete ? deadline : null}</p>
+            <p className={css.time}>{!isDone ? deadline : null}</p>
           </div>
         </div>
       </div>
