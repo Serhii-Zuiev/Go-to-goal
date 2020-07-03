@@ -40,13 +40,21 @@ class TasksPage extends Component {
         t.createdAt.slice(0, 10) !== DATE_NOW &&
         t.isDone === false
     );
+    const { token } = this.props;
     if (completedTasks.length > 0) {
-      const { token } = this.props;
+      // const { token } = this.props;
       const { modifyTaskInner } = this.props;
-      const payload = { isDone: true };
+      console.log(completedTasks);
       completedTasks.forEach((task) =>
-        modifyTaskInner(token, task._id, payload)
+        modifyTaskInner(token, task._id, { ...task, isDone: true })
       );
+    }
+    const taskForDelete = tasks.filter(
+      (t) => t.isComplete === false && t.createdAt.slice(0, 10) !== DATE_NOW
+    );
+    if (taskForDelete.length > 0) {
+      const { deleteTaskInner } = this.props;
+      taskForDelete.forEach((task) => deleteTaskInner(token, task._id));
     }
   };
 
