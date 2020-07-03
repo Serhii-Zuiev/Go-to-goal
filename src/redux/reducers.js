@@ -28,7 +28,6 @@ export const userAuthReducer = createReducer(initialState, {
     };
   },
   [action.loginUser]: (state, { payload }) => {
-    console.log('payload', payload)
     return {
       ...state,
       userData: payload.user,
