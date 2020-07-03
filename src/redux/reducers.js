@@ -54,19 +54,18 @@ export const goalAndTaskReducer = createReducer(initialGoalState, {
     return { ...state, goals: payload };
   },
   [action.modifyTask]: (state, { payload }) => {
-    console.log('Task payload from back-end', payload)
+
     return {
       ...state,
       score:payload.user.scores,
-      flag:true
-  
+      flag:true,
+      tasks: state.tasks.map((t)=>t._id !== payload.task._id ? t : payload.task)
     };
   },
  
   [action.doneGoal]: (state, { payload }) => {
     return {
       ...state,
-      
       score:payload.data.user.scores,
       progressPoints:0,
       flag:true,

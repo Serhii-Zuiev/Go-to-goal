@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import moment from 'moment';
+import moment from "moment";
 import { connect } from "react-redux";
 import AddTaskBtn from "./add-button/AddTaskBtn";
 import TaskModal from "./task-modal/TaskModal";
@@ -9,7 +9,6 @@ import ModalDeleteTask from "./ModalDeleteTask/ModalDeleteTask";
 import Header from "../../header/Header";
 import Footer from "../../footer/Footer";
 import {
-
   newTask,
   getTasks,
   deleteTaskInner,
@@ -30,7 +29,26 @@ class TasksPage extends Component {
   componentDidMount() {
     this.props.getTasks(this.props.token);
     this.setState({ tasks: this.props.tasksFromRedux });
+    this.doneTasksAt0000();
   }
+  doneTasksAt0000 = () => {
+    const tasks = this.props.tasksFromRedux;
+    const DATE_NOW = moment().format().slice(0, 10);
+    const completedTasks = tasks.filter(
+      (t) =>
+        t.isComplete === true &&
+        t.createdAt.slice(0, 10) !== DATE_NOW &&
+        t.isDone === false
+    );
+    if (completedTasks.length > 0) {
+      const { token } = this.props;
+      const { modifyTaskInner } = this.props;
+      const payload = { isDone: true };
+      completedTasks.forEach((task) =>
+        modifyTaskInner(token, task._id, payload)
+      );
+    }
+  };
 
   handleOpenModalWindow = () => {
     this.setState({ isOpenModalWindow: true });
@@ -48,15 +66,14 @@ class TasksPage extends Component {
   handleFormforUsers = (tasks) => {
     const { newTask } = this.props;
     const { token } = this.props;
-    console.log((token, tasks));
     newTask(token, tasks);
   };
 
   currentTasksFilter() {
     const tasks = this.props.tasksFromRedux;
     if (tasks.length > 0) {
-      const DATE_NOW = moment().format().slice(0, 10)
-      const currentTasks = tasks.filter((t) => t.createdAt.slice(0, 10) === DATE_NOW);
+      // const DATE_NOW = moment().format().slice(0, 10);
+      const currentTasks = tasks.filter((t) => t.isDone === false);
       return currentTasks;
     }
     return [];
@@ -65,8 +82,8 @@ class TasksPage extends Component {
   completeTasksFilter() {
     const tasks = this.props.tasksFromRedux;
     if (tasks.length > 0) {
-      const DATE_NOW = moment().format().slice(0, 10)
-      const completedTasks = tasks.filter((t)=> t.isComplete === true && t.createdAt.slice(0, 10) !== DATE_NOW)
+      // const DATE_NOW = moment().format().slice(0, 10);
+      const completedTasks = tasks.filter((t) => t.isDone === true);
       return completedTasks;
     }
     return [];
@@ -87,13 +104,10 @@ class TasksPage extends Component {
     deleteTaskInner(token, taskId);
     this.handleModalDeleteTask();
   };
-  handleTaskDone = ( id, isDone ) => {
+  handleTaskDone = (id, isDone, isComplete) => {
     const { token } = this.props;
     const { modifyTaskInner } = this.props;
-    ////////////////////////////////////////////////////////
-    const payload = { isDone: !isDone, isComplete: !isDone };
-    ////////////////////////////////////////////////////////
-    console.log('payload Task of handler', payload)
+    const payload = { isComplete: !isComplete };
     modifyTaskInner(token, id, payload);
   };
   handleIsDoneToggle = () => {
@@ -101,7 +115,6 @@ class TasksPage extends Component {
       isDoneToggle: !prevState.isDoneToggle,
     }));
   };
-
 
   render() {
     const { isOpenModalWindow, isOpenModalDeleteTask } = this.state;
@@ -122,7 +135,7 @@ class TasksPage extends Component {
           isDoneToggle={this.state.isDoneToggle}
           handleIsDoneToggle={this.handleIsDoneToggle}
         />
-        
+
         <CompletedTasks
           cardlist={this.completeTasksFilter()}
           loadMore={this.loadMoreCompleteTasks}
