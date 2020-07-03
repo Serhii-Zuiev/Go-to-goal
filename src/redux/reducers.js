@@ -28,7 +28,6 @@ export const userAuthReducer = createReducer(initialState, {
     };
   },
   [action.loginUser]: (state, { payload }) => {
-    console.log('payload', payload)
     return {
       ...state,
       userData: payload.user,
@@ -81,9 +80,11 @@ export const goalAndTaskReducer = createReducer(initialGoalState, {
     };
   },
   [action.deleteTask]: (state, { payload }) => {
+    const scOre = payload?.data?.user?.scores
     return {
       ...state,
       tasks: state.tasks.filter((task) => task._id !== payload.taskId),
+      score: scOre ? scOre : state.score,
     };
   },
   [action.score]: (state, { payload }) => {
