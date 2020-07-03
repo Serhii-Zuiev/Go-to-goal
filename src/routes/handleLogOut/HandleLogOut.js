@@ -11,6 +11,7 @@ const HandleLogOut = () => {
   function handleLogOut() {
     dispatch(logoutUser(token));
     history.push("/");
+    localStorage.clear();
   }
 // eslint-disable-next-line
   return handleLogOut(), (<></>);

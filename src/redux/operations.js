@@ -11,6 +11,7 @@ export const registerUser = (param) => async (dispatch) => {
   return data;
 };
 export const loginUser = (param) => async (dispatch) => {
+  console.log('param', param)
   const data = await services.loginUser(param);
   if (!data) {
     dispatch({ type: Type.LOGOUT_USER, payload: {} });
@@ -70,6 +71,6 @@ export const deleteTaskInner = (token, taskId) => async (dispatch) => {
 export const newScoreCreater = (newScore) => async (dispatch) => {
   dispatch({ type: Type.SCORE, payload: newScore });
 };
-export const progressPoints = (points) => async (dispatch) => {
-  dispatch({ type: Type.PROGRESS_BAR_POINTS, payload: points });
+export const progressPoints = (data) => async (dispatch) => {
+  dispatch({ type: Type.PROGRESS_BAR_POINTS, payload: data });
 };

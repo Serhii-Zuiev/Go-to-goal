@@ -69,7 +69,7 @@ const CreateGoalModal = ({ handleCloseModal}) => {
               }
               type="number"
               min="1"
-              max="9999"
+              max="10000"
               name="goalPoints"
               placeholder="Наприклад: 1000"
               required

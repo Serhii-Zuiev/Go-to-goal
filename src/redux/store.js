@@ -12,13 +12,22 @@ import {
 import { configureStore, getDefaultMiddleware } from "@reduxjs/toolkit";
 import { userAuthReducer,goalAndTaskReducer,flag} from "./reducers";
 import thunk from "redux-thunk";
-const rootReducer = combineReducers({
+
+const appReducer = combineReducers({
   userAuthReducer,
   flag,
 goalAndTaskReducer,
+  /* your app’s top-level reducers */
+})
 
-});
+const rootReducer = (state, action) => {
 
+  if (action.type === "LOGOUT_USER") {
+    state = undefined
+  }
+
+  return appReducer(state, action)
+}
 
 const persistConfig = {
   key: "root",

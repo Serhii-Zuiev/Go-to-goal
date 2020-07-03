@@ -44,6 +44,7 @@ async function loginUser(user) {
 }
 
 async function logoutUser(token) {
+  console.log('token', token)
    try {
     const response = await axios({
         url: `${BASE_URL}/auth/logout`,
@@ -52,6 +53,7 @@ async function logoutUser(token) {
           "content-type": "application/json",
           "Authorization" : `Bearer ${token}` },
       });
+   
       return response.data;
    } catch (error) {
     console.warn(error);
@@ -72,6 +74,7 @@ try {
           "Authorization" : `Bearer ${token}`
          },
       });
+   
       return response.data;
    } catch (error) {
     console.warn(error);
@@ -184,18 +187,19 @@ async function getGoalById(token, goalId) {
 
 async function isDoneGoal(token,goalId,isDone){
   try {
+
     const response = await axios({
         url: `${BASE_URL}/goals/${goalId}`,
         method: "patch",
         headers: { 
           "content-type": "application/json",
-          Authorization : `${token}`
+          Authorization : `Bearer ${token}`
          },
 
         data: isDone,
       }
       );
-      console.log('responce', response)
+ console.log('response', response)
       return response.data;
    } catch (error) {
     console.warn(error);
@@ -203,6 +207,7 @@ async function isDoneGoal(token,goalId,isDone){
 }
    
 async function updateGoal(token, goalId, goal) {
+
    try {
     const response = await axios({
         url: `${BASE_URL}/goals/${goalId}`,
@@ -247,6 +252,7 @@ async function updateTask(token, taskid, task) {
       },
       data: task,
     });
+  
     return response.data;
   } catch (error) {
     console.warn(error);
