@@ -124,14 +124,14 @@ const CurrentGoal = () => {
     );
   } else {
     return (
-      <>
+      <div className={s.fon}>
         <div className={s.goal}>
           <div className={s.goalLogo}>
             <p className={s.goalName}>Обери ціль: </p>
+            <CustomizedMenus goalsList={allGoalsState} getGoal={getGoal} />
           </div>
-          <CustomizedMenus goalsList={allGoalsState} getGoal={getGoal} />
         </div>
-      </>
+      </div>
     );
   }
 };

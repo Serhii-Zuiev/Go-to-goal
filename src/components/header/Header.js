@@ -14,7 +14,6 @@ const Header = ({ pageOfHeader }) => {
   const GOALS_PAGE = "goals";
   const TSASKS_PAGE = "tasks";
   const IS_BIG_VERSION = window.innerWidth >= 768;
-  const IS_MOBILE_VERSION = window.innerWidth < 767
 
   let content = (
     <>

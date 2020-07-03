@@ -14,6 +14,8 @@ import {
   deleteTaskInner,
   modifyTaskInner,
 } from "./../../../redux/operations";
+import Current_progress from "../../mergeCurrent-Progress/Current_progress";
+const IS_MOBILE_VERSION = window.innerWidth < 767
 
 class TasksPage extends Component {
   state = {
@@ -156,7 +158,9 @@ class TasksPage extends Component {
             handleDeleteTask={this.handleDeleteTask}
           />
         )}
+        {IS_MOBILE_VERSION && (<Current_progress/>)}
         <Footer />
+        
       </>
     );
   }

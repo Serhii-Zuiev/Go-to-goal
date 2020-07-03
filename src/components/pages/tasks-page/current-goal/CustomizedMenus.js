@@ -6,6 +6,7 @@ import MenuItem from "@material-ui/core/MenuItem";
 import ListItemText from "@material-ui/core/ListItemText";
 import IconButton from "@material-ui/core/IconButton";
 import MenuIcon from '@material-ui/icons/Menu';
+import style from './current-goal.module.css'
 
 const StyledMenu = withStyles({
   paper: {
@@ -44,7 +45,7 @@ export default function CustomizedMenus({ goalsList, getGoal }) {
   };
 
   return (
-    <div>
+    <div className={style.menuBurger}>
       <IconButton
         aria-controls="customized-menu"
         aria-haspopup="true"
