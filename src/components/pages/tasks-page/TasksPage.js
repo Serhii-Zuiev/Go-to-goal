@@ -40,7 +40,6 @@ class TasksPage extends Component {
         t.createdAt.slice(0, 10) !== DATE_NOW &&
         t.isDone === false
     );
-    console.log(completedTasks);
     if (completedTasks.length > 0) {
       const { token } = this.props;
       const { modifyTaskInner } = this.props;
@@ -126,6 +125,7 @@ class TasksPage extends Component {
 
   render() {
     const { isOpenModalWindow, isOpenModalDeleteTask } = this.state;
+    console.log('this.props.tasksFromRedux', this.props.tasksFromRedux)
     return (
       <>
         <Header pageOfHeader={"tasks"} />
