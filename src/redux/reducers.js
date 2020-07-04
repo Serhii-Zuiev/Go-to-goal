@@ -73,10 +73,12 @@ export const goalAndTaskReducer = createReducer(initialGoalState, {
     };
   },
   [action.deleteGoal]: (state, { payload }) => {
+    const isDeletedGoalWasSaved = state.saveGoal._id === payload.goalId
     return {
       ...state,
       goals: state.goals.filter((goal) => goal._id !== payload.goalId),
-      saveGoal:null
+      saveGoal: isDeletedGoalWasSaved ? null: state.saveGoal,
+      progressPoints: isDeletedGoalWasSaved ? 0: state.progressPoints,
     };
   },
   [action.deleteTask]: (state, { payload }) => {
