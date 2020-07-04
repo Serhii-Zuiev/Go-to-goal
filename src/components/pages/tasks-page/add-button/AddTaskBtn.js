@@ -1,20 +1,14 @@
-import React, { Component } from 'react'
+import React from 'react'
 import s from "./style.module.css"
 
-class AddTaskBtn extends Component {
-    state = { 
-     }
-     
-    render() {
+export const AddTaskBtn = ({ handleOpenModalWindow }) => {
 
-        return (
-            <div>
-            <button type="button" 
-            className={s.button} 
-            onClick={this.props.handleOpenModalWindow}>+</button>
-           </div>
-        );
-    }
-}
+    return (
+    <>
+        <button onClick={handleOpenModalWindow} className={s.addTaskBtn}>
+            +
+        </button>
+    </>)
+  };
 
-export default AddTaskBtn;
+  export default AddTaskBtn;

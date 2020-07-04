@@ -2,7 +2,7 @@ import React from 'react'
 import CurrentGoal from '../pages/tasks-page/current-goal/CurrentGoal'
 import ProgressBar from '../pages/tasks-page/progress-bar/ProgressBar'
 import s from "./merge-two-page.module.css"
-const Current_progress = () => {
+const CurrentProgress = () => {
     return(
         <div className={s.fon}>
         <ProgressBar/>
@@ -11,4 +11,4 @@ const Current_progress = () => {
     )
 }
 
-export default Current_progress;
+export default CurrentProgress;

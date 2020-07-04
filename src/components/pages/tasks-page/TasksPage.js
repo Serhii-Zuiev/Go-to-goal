@@ -8,14 +8,16 @@ import CompletedTasks from "./completedTasks/CompletedTasks";
 import ModalDeleteTask from "./ModalDeleteTask/ModalDeleteTask";
 import Header from "../../header/Header";
 import Footer from "../../footer/Footer";
+import ProgressBar from './progress-bar/ProgressBar';
 import {
   newTask,
   getTasks,
   deleteTaskInner,
   modifyTaskInner,
 } from "./../../../redux/operations";
-import Current_progress from "../../mergeCurrent-Progress/Current_progress";
-const IS_MOBILE_VERSION = window.innerWidth < 767
+import CurrentProgress from "../../mergeCurrent-Progress/CurrentProgress";
+const IS_MOBILE_VERSION = window.innerWidth < 768
+const IS_TABLET_VERSION = (window.innerWidth > 767) && (window.innerWidth < 1200);
 
 class TasksPage extends Component {
   state = {
@@ -127,14 +129,15 @@ class TasksPage extends Component {
     const { isOpenModalWindow, isOpenModalDeleteTask } = this.state;
     return (
       <>
-        <Header pageOfHeader={"tasks"} />
+        <Header pageOfHeader={"tasks"} handleOpenModalWindow={this.handleOpenModalWindow}/>
+        {IS_TABLET_VERSION && <ProgressBar/>}
         {isOpenModalWindow && (
           <TaskModal
             handleFormforUsers={this.handleFormforUsers}
             handleCloseModalWindow={this.handleCloseModalWindow}
           />
         )}
-        <AddTaskBtn handleOpenModalWindow={this.handleOpenModalWindow} />
+        {IS_MOBILE_VERSION && <AddTaskBtn handleOpenModalWindow={this.handleOpenModalWindow} />}
         <CurrentTasks
           cardlist={this.currentTasksFilter()}
           handleModalWindow={this.handleModalDeleteTask}
@@ -155,9 +158,11 @@ class TasksPage extends Component {
             handleDeleteTask={this.handleDeleteTask}
           />
         )}
-        {IS_MOBILE_VERSION && (<Current_progress/>)}
+        {IS_MOBILE_VERSION && (<CurrentProgress/>)}
+        {IS_MOBILE_VERSION ? <div style={{paddingBottom:'106px'}}>
         <Footer />
-        
+        </div> : <Footer />}
+       
       </>
     );
   }
