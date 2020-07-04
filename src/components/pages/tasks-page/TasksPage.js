@@ -44,11 +44,10 @@ class TasksPage extends Component {
     );
     const { token } = this.props;
     if (completedTasks.length > 0) {
-      // const { token } = this.props;
       const { modifyTaskInner } = this.props;
       console.log(completedTasks);
       completedTasks.forEach((task) =>
-        modifyTaskInner(token, task._id, { ...task, isDone: true })
+        modifyTaskInner(token, task._id, { isDone: true })
       );
     }
     const taskForDelete = tasks.filter(
@@ -82,7 +81,6 @@ class TasksPage extends Component {
   currentTasksFilter() {
     const tasks = this.props.tasksFromRedux;
     if (tasks.length > 0) {
-      // const DATE_NOW = moment().format().slice(0, 10);
       const currentTasks = tasks.filter((t) => t.isDone === false);
       return currentTasks;
     }
@@ -92,7 +90,6 @@ class TasksPage extends Component {
   completeTasksFilter() {
     const tasks = this.props.tasksFromRedux;
     if (tasks.length > 0) {
-      // const DATE_NOW = moment().format().slice(0, 10);
       const completedTasks = tasks.filter((t) => t.isDone === true);
       return completedTasks;
     }
