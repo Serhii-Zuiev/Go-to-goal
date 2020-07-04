@@ -1,71 +1,127 @@
 .header {
-  width: 250px;
-  margin: 0 auto;
-  background-color: rgb(255, 255, 255);
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
-  position: relative;
 }
 
-.registerBtn {
+/* ------AUTH------- */
+.authContainer {
+  width: 250px;
+  height: 120px;
+  margin: 0 auto;
+  padding-top: 52px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+/* ------AUTH------- */
+
+
+/* =====GOAL + TASKS===== */
+.goalAndTasksContainer{
+  height: 80px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.shadowContainer{
+  width: 100%;
+  height: 56px;
+  box-shadow: 2px 3.464px 23.2px 5.8px rgba(29, 29, 27, 0.1);
   display: flex;
   align-items: center;
-  height: 20px;
-  background-color: transparent;
-  border: none;
-  font-family: "Montserrat";
-  font-size: 12px;
-  font-weight: 600;
-  letter-spacing: 1px;
-  color: #858598;
-  outline-color: #cfcfcf;
+  justify-content: space-between;
+}
+.widthContainer{
+  width: 260px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
 }
 
 .dropDownMenu{
   position: absolute;
-  top: 75px;
-  right: -56px;
+  right: -54px;
 }
+/* =====GOAL + TASKS===== */
+
+
+
 
 @media (max-width: 767px) {
-  .header {
-    padding-top: 75px;
-    padding-bottom: 30px;
-
-  }
-  
 }
 
 @media (min-width: 768px) {
+  /* ------AUTH------- */
   .header {
-    height: 56px;
-    width: 90%;
-    
+    height: 106px;
+  }
+  .authBackGroundContainer {
+    width: 100%;
+    height: 100%;
     display: flex;
+    justify-content: center;
     align-items: center;
-    justify-content: space-between;
+    background-color: #f5d53b;
+  }
+  .authContainer {
+    width: 720px;
+    height: 56px;
+    padding: 0px 25px;
     border-top-left-radius: 15px;
     border-top-right-radius: 15px;
-    padding: 0px 25px;
+    background-color: #fff;
     box-shadow: 2px 3.464px 23.2px 5.8px rgba(29, 29, 27, 0.1);
-    
-    position: absolute;
-    top: 24px;
-    left: 50%;
-    margin-left: -45%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
   }
 
-  .authContainer{
-    width: 580px;
+  .registerBtn {
+    display: flex;
+    align-items: center;
+    height: 24px;
+    background-color: transparent;
+    border: none;
+    font-family: "Montserrat";
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    color: #858598;
+    outline-color: #cfcfcf;
+  }
+
+  .authFormContainer {
+    width: 504px;
     display: flex;
     justify-content: space-between;
     align-items: center;
   }
+  /* ------AUTH------- */
 
+
+  /* =====GOAL + TASKS===== */
+  .goalsAndTasksPageContainer{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
   .goalPageNavContainer{
     display: flex;
     align-items: center;
     justify-content: center;
+    position: relative;
+  }
+  /* =====GOAL + TASKS===== */
+}
+
+@media (min-width: 1200px){
+  .authContainer {
+    width: 1200px;
   }
 }

@@ -24,6 +24,7 @@ useEffect(() => {
 
   return (
     <>
+    <div className={styles.content}>
       <Header pageOfHeader={"goals"} />
 
       {isModalOpen && <CreateGoalModal handleCloseModal={handleCloseModal} />}
@@ -71,7 +72,11 @@ useEffect(() => {
           )}
         </div>
       </div>
+      </div>
+
+      <div className={styles.footer}>
       <Footer />
+      </div>
     </>
   );
 };

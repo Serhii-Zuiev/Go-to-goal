@@ -2,6 +2,10 @@
     .fon{
         margin: 0 auto;
         background-color: #e0e0e0;
+        position: fixed;
+        width: 100%;
+        bottom: 0;
+        left: 0;
     }
 
 }
