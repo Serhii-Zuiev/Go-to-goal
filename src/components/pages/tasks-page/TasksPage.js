@@ -12,6 +12,7 @@ import ProgressBar from './progress-bar/ProgressBar';
 import {
   newTask,
   getTasks,
+  getGoals,
   deleteTaskInner,
   modifyTaskInner,
 } from "./../../../redux/operations";
@@ -23,7 +24,6 @@ class TasksPage extends Component {
   state = {
     isOpenModalWindow: false,
     addTasks: [],
-    tasks: [],
     taskIdForDelete: null,
     loadMoreCompletedTasks: false,
     isOpenModalDeleteTask: false,
@@ -32,9 +32,11 @@ class TasksPage extends Component {
 
   componentDidMount() {
     this.props.getTasks(this.props.token);
-    this.setState({ tasks: this.props.tasksFromRedux });
+    this.props.getGoals(this.props.token);
     this.doneTasksAt0000();
+    this.deleteUncompleteTasksAt0000();
   }
+
   doneTasksAt0000 = () => {
     const tasks = this.props.tasksFromRedux;
     const DATE_NOW = moment().format().slice(0, 10);
@@ -44,18 +46,23 @@ class TasksPage extends Component {
         t.createdAt.slice(0, 10) !== DATE_NOW &&
         t.isDone === false
     );
-    const { token } = this.props;
     if (completedTasks.length > 0) {
+      const { token } = this.props;
       const { modifyTaskInner } = this.props;
-      console.log(completedTasks);
       completedTasks.forEach((task) =>
         modifyTaskInner(token, task._id, { isDone: true })
       );
     }
+  };
+
+  deleteUncompleteTasksAt0000 = () => {
+    const tasks = this.props.tasksFromRedux;
+    const DATE_NOW = moment().format().slice(0, 10);
     const taskForDelete = tasks.filter(
       (t) => t.isComplete === false && t.createdAt.slice(0, 10) !== DATE_NOW
-    );
-    if (taskForDelete.length > 0) {
+      );
+      if (taskForDelete.length > 0) {
+      const { token } = this.props;
       const { deleteTaskInner } = this.props;
       taskForDelete.forEach((task) => deleteTaskInner(token, task._id));
     }
@@ -168,9 +175,9 @@ class TasksPage extends Component {
   }
 }
 
-const mapsStateToProps = (state) => ({
+const MSTP = (state) => ({
   token: state.userAuthReducer.token,
   tasksFromRedux: state.goalAndTaskReducer.tasks,
 });
-const tasksNew = { newTask, getTasks, deleteTaskInner, modifyTaskInner };
-export default connect(mapsStateToProps, tasksNew)(TasksPage);
+const MDP = { newTask, getTasks, deleteTaskInner, modifyTaskInner, getGoals };
+export default connect(MSTP, MDP)(TasksPage);
