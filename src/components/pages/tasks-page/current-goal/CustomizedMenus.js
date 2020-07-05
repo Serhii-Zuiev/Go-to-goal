@@ -70,9 +70,11 @@ export default function CustomizedMenus({ goalsList, getGoal }) {
           </div>
         ))}
         {goalsList.length === 0 && 
+            <div onClick={() => handleClose()} >
             <MenuItem>
               <ListItemText secondary={'Немає цілей'} />
             </MenuItem>
+            </div>
         }
       </StyledMenu>
     </div>

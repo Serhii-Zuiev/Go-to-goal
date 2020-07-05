@@ -18,6 +18,9 @@ const CurrentGoal = () => {
   const donePointsStateInfo = useSelector(
     (state) => state.goalAndTaskReducer.score
   );
+  const donePointsOfAuth = useSelector(
+    (state) => state.userAuthReducer?.userData?.userData?.scores
+  );
   const allGoalsState = useSelector((state) => state.goalAndTaskReducer.goals);
   const goalToggle = useSelector((state) => state.goalAndTaskReducer.saveGoal);
 
@@ -33,12 +36,9 @@ const CurrentGoal = () => {
 
   if (myGoalState) {
     const myGoal = myGoalState.title;
-    // ||goalToggle?.title;
     const goalPoints = myGoalState.points;
-    // ||goalToggle?.points;
     const goalId = myGoalState._id;
-    // ||goalToggle?._id;
-    const userValuePoints = donePointsStateInfo;
+    const userValuePoints = donePointsStateInfo ? donePointsStateInfo : donePointsOfAuth;
     const openModal = () => {
       setMenuState(!isMenuOpen);
     };
@@ -71,8 +71,8 @@ const CurrentGoal = () => {
             >
               {myGoal}
             </button>
-          </div>
           <CustomizedMenus goalsList={allGoalsState} getGoal={getGoal} />
+          </div>
         </div>
       </>
     );
@@ -116,8 +116,8 @@ const CurrentGoal = () => {
             >
               {myGoal}
             </button>
-          </div>
           <CustomizedMenus goalsList={allGoalsState} getGoal={getGoal} />
+          </div>
         </div>
       </>
     );
@@ -127,6 +127,7 @@ const CurrentGoal = () => {
         <div className={s.goal}>
           <div className={s.goalLogo}>
             <p className={s.goalName}>Обери ціль: </p>
+            <button type="button" className={ s.goalBtn } disabled={buttonOff}></button>
             <CustomizedMenus goalsList={allGoalsState} getGoal={getGoal} />
           </div>
         </div>

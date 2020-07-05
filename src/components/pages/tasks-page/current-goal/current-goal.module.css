@@ -76,6 +76,7 @@
     }
     .fon{
       width: 320px;
+      margin: 0 auto;
     }
     .menuBurger{
       display: flex;
@@ -83,6 +84,14 @@
     .goalBtnActive{
       margin: 0;
       padding: 0;
+    }
+    .goalLogo {
+      justify-content: space-between;
+      width: 300px;
+      margin: 0;
+    }
+    .goalName {
+      width: 78px;
     }
   }
   @media  (min-width: 1200px) {
@@ -99,7 +108,7 @@
       min-width: 180px;
     }
     .goalLogo {
-      width: 260px;
+      width: 324px;
     
     }
   }
