@@ -2,21 +2,29 @@ import React from "react";
 import styles from "./NewGoal.module.css";
 import { ReactComponent as AddPlusButton } from "../../../../assets/images/icons/plus/add-plus-button.svg";
 import Header from "../../../header/Header";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import CreateGoalModal from "../CreateGoalModal/CreateGoalModal";
 import GoalCard from "../goalCard/GoalCard";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import Footer from "../../../footer/Footer";
+import { getGoals } from "../../../../redux/operations";
 
 const NewGoal = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const dispatch = useDispatch();
+  const token = useSelector((state) => state.userAuthReducer.token);
   const goals = useSelector((state) => state.goalAndTaskReducer.goals);
   const handleCloseModal = () => {
     setIsModalOpen(false);
   };
 
+useEffect(() => {
+  dispatch(getGoals(token));
+}, [])
+
   return (
     <>
+    <div className={styles.content}>
       <Header pageOfHeader={"goals"} />
 
       {isModalOpen && <CreateGoalModal handleCloseModal={handleCloseModal} />}
@@ -64,7 +72,11 @@ const NewGoal = () => {
           )}
         </div>
       </div>
+      </div>
+
+      <div className={styles.footer}>
       <Footer />
+      </div>
     </>
   );
 };

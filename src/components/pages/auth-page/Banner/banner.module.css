@@ -6,16 +6,16 @@
 
 @media (min-width: 768px) {
   .bannerSection {
-    height: 424px;
-    background-position-y: 118px;
+    height: 318px;
+    background-position-y: 8px;
     background-image: url(../../../../assets/images/cards-t.png);
   }
 }
 
 @media (min-width: 1200px) {
   .bannerSection {
-    height: 338px;
-    background-position-y: 75px;
+    height: 240px;
+    background-position-y: -26px;
     background-image: url(../../../../assets/images/cards-d.png);
   }
 }

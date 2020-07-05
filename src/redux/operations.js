@@ -11,7 +11,6 @@ export const registerUser = (param) => async (dispatch) => {
   return data;
 };
 export const loginUser = (param) => async (dispatch) => {
-  console.log('param', param)
   const data = await services.loginUser(param);
   if (!data) {
     dispatch({ type: Type.LOGOUT_USER, payload: {} });
@@ -61,7 +60,6 @@ export const deleteGoal = (token, goalId) => async (dispatch) => {
 export const deleteTaskInner = (token, taskId) => async (dispatch) => {
   const data = await services.deleteTask(token, taskId);
   dispatch({ type: Type.DELETE_TASK, payload: { data, taskId } });
-  console.log("dataDELETE GOAL", data);
 };
 export const newScoreCreater = (newScore) => async (dispatch) => {
   dispatch({ type: Type.SCORE, payload: newScore });

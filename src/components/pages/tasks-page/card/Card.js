@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import css from "../card/Card.module.css";
 import gift from "../../../../assets/images/icons/present box/gift-box.svg";
 

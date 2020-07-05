@@ -6,7 +6,6 @@ import CustomizedMenus from "./CustomizedMenus";
 import {
   doneGoal,
   progressPoints,
-  loginUser,
 } from "../../../../redux/operations";
 
 import Congratulation from "./../congratulation/Congratulation";
@@ -51,7 +50,7 @@ const CurrentGoal = () => {
     };
     const goalOperation = async () => {
       if (token) {
-        const data = await dispatch(deleteGoal(token, goalId));
+        await dispatch(deleteGoal(token, goalId));
       }
     };
 
@@ -93,7 +92,7 @@ const CurrentGoal = () => {
     };
     const goalOperation = async () => {
       if (token) {
-        const data = await dispatch(deleteGoal(token, goalId));
+        await dispatch(deleteGoal(token, goalId));
       }
     };
 
@@ -124,14 +123,14 @@ const CurrentGoal = () => {
     );
   } else {
     return (
-      <>
+      <div className={s.fon}>
         <div className={s.goal}>
           <div className={s.goalLogo}>
             <p className={s.goalName}>Обери ціль: </p>
+            <CustomizedMenus goalsList={allGoalsState} getGoal={getGoal} />
           </div>
-          <CustomizedMenus goalsList={allGoalsState} getGoal={getGoal} />
         </div>
-      </>
+      </div>
     );
   }
 };

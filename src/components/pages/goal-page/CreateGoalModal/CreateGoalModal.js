@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useState } from "react";
 import styles from "./CreateGoalModal.module.css";
 import { useSelector, useDispatch }  from "react-redux";
 import { newGoal } from "../../../../redux/operations";
@@ -11,29 +11,10 @@ const initialState = {
 };
 
 const CreateGoalModal = ({ handleCloseModal}) => {
-  // const backdropRef = useRef(null);
+
   const [state, setState] = useState(initialState);
   const dispatch = useDispatch();
   const token = useSelector((state) => state.userAuthReducer.token);
-
-  // const keyDownHandler = e => {
-  //   if (e.code === "Escape") {
-  //       handleCloseModal();
-  //   }
-
-  //   if (e.target !== e.currentTarget) {
-  //     return;
-  //   }
-  //   handleCloseModal();
-  // };
-
-  // useEffect(() => {
-  //   window.addEventListener("keydown", keyDownHandler);
-
-  //   return () => {
-  //     window.removeEventListener("keydown", keyDownHandler);
-  //   };
-  // });
 
   const handleSubmit = e => {
     e.preventDefault()
