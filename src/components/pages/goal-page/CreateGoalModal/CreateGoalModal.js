@@ -11,30 +11,9 @@ const initialState = {
 };
 
 const CreateGoalModal = ({ handleCloseModal}) => {
-  // const backdropRef = useRef(null);
   const [state, setState] = useState(initialState);
   const dispatch = useDispatch();
   const token = useSelector((state) => state.userAuthReducer.token);
-
-  // const keyDownHandler = e => {
-  //   if (e.code === "Escape") {
-  //       handleCloseModal();
-  //   }
-
-  //   if (e.target !== e.currentTarget) {
-  //     return;
-  //   }
-  //   handleCloseModal();
-  // };
-
-  // useEffect(() => {
-  //   window.addEventListener("keydown", keyDownHandler);
-
-  //   return () => {
-  //     window.removeEventListener("keydown", keyDownHandler);
-  //   };
-  // });
-
   const handleSubmit = e => {
     e.preventDefault()
     dispatch(newGoal(token, state));
@@ -52,7 +31,7 @@ const CreateGoalModal = ({ handleCloseModal}) => {
               onChange={e => setState({ ...state, title: e.target.value })}
               type="text"
               required
-              pattern="^[A-Za-zА-Яа-яЁё\s]+$"
+              // pattern="^[A-Za-zА-Яа-яЁё\s]+$"
               name="goal"
               placeholder="Дай своїй цілі назву"
               value={state.title}

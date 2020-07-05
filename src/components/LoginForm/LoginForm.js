@@ -15,14 +15,14 @@ const LoginForm = () => {
   const validate = () => {
     const errors = {};
     if (!email) {
-      errors.email = "Required email";
+      errors.email = "Потрібен email";
     } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(email)) {
-      errors.email = "Invalid email address";
+      errors.email = "Невірна email адреса...";
     }
     if (!password) {
-      errors.password = "Required password";
+      errors.password = "Потрібен пароль";
     } else if (password.length < 6) {
-      errors.password = "Must be 6 characters or more";
+      errors.password = "Невірний пароль";
     }
     if (Object.keys(errors).length === 0) {
       mainerror = false;
