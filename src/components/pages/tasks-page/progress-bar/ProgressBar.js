@@ -11,14 +11,21 @@ const ProgressBar = () => {
   );
   const donePoints = useSelector((state) => state.goalAndTaskReducer.score);
   const pointFlag = useSelector((state) => state.goalAndTaskReducer.flag);
+
+  const donePointsWithSelectedGoalToRender = donePoints ? donePoints : donePointsStateInfo
+
   return (
     <>
-      {pointFlag ? (
-        <ProgressBarRender fact={donePoints} planing={pointsOfGoal} />
-      ) : (
-        <ProgressBarRender fact={donePointsStateInfo} planing={pointsOfGoal} />
-      )}
+      <ProgressBarRender fact={donePointsWithSelectedGoalToRender} planing={pointsOfGoal} />
     </>
+
+    // <>
+    //   {pointFlag ? (
+    //     <ProgressBarRender fact={donePointsWithSelectedGoalToRender} planing={pointsOfGoal} />
+    //   ) : (
+    //     <ProgressBarRender fact={donePointsStateInfo} planing={pointsOfGoal} />
+    //   )}
+    // </>
   );
 };
 
