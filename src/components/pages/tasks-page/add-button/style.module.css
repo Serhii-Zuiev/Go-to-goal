@@ -1,30 +1,47 @@
-.button{
-  display: flex;
-  justify-content: center;
+.addTaskBtn {
   width: 54px;
   height: 54px;
   border-radius: 50%;
-  position: fixed;
-  margin: 0 auto;
-  top: 125px;
-  right: 10%;
-  outline: none;
-  font-size: 45px;  
-  font-weight: 900 ;
   border: none;
-  color: #ffffff;
-  text-align: center;
-  z-index: 1;
+  background-image: linear-gradient(
+    90deg,
+    rgb(245, 213, 59) 0%,
+    rgb(241, 195, 65) 55%,
+    rgb(236, 177, 70) 100%
+  );
+  box-shadow: 0px 8px 29px 0px rgba(178, 138, 61, 0.31);
   padding: 0;
-  background-color: #d8ad3b;
   cursor: pointer;
-
-
+  font-size: 43px;
+  line-height: 52px;
+  font-family: "Montserrat";
+  color: rgb(255, 255, 255);
 }
 
+
 @media (max-width: 767px) {
-  .button{
-    top: 85%;
-    right: 10%;
+  .addTaskBtn {
+    position: fixed;
+    top: 87%;
+    left: 90%;
+    transform: translate(-50%, -50%);
+    z-index: 777;
+  }
+}
+
+@media (min-width: 768px) {
+  .addTaskBtn {
+    position: absolute;
+    top: 106px;
+    right: -26px;
+    transform: translate(-50%, -50%);
+    z-index: 777;
+  }
+}
+
+@media (min-width: 1200px) {
+  .addTaskBtn {
+    top: 112px;
+    right: -20px;
   }
 }

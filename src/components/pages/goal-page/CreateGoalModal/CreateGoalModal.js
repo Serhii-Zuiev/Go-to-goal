@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useState } from "react";
 import styles from "./CreateGoalModal.module.css";
 import { useSelector, useDispatch }  from "react-redux";
 import { newGoal } from "../../../../redux/operations";
@@ -11,9 +11,11 @@ const initialState = {
 };
 
 const CreateGoalModal = ({ handleCloseModal}) => {
+
   const [state, setState] = useState(initialState);
   const dispatch = useDispatch();
   const token = useSelector((state) => state.userAuthReducer.token);
+
   const handleSubmit = e => {
     e.preventDefault()
     dispatch(newGoal(token, state));
@@ -48,7 +50,7 @@ const CreateGoalModal = ({ handleCloseModal}) => {
               }
               type="number"
               min="1"
-              max="9999"
+              max="10000"
               name="goalPoints"
               placeholder="Наприклад: 1000"
               required

@@ -9,12 +9,14 @@
   box-shadow: 2px 3.464px 26.1px 2.9px rgba(29, 29, 27, 0.1);
   width: 220px;
   height: 200px;
+  transition: 0.3s;
 }
-
+.giftWrapper {
+  margin-bottom: 10px;
+}
 .giftBox {
   filter: invert(1);
   margin: 0 auto;
-  opacity: 44%;
   width: 30px;
   height: 30px;
 }
@@ -87,8 +89,8 @@
   font-size: 15px;
   font-weight: 400;
   color: #fff;
-  /* padding-top: 4px;
-  padding-left: 17px; */
+  padding-top: 15px;
+
   text-align: center;
 }
 .time {
@@ -169,6 +171,36 @@ input:checked[type="checkbox"]:before {
 }
 
 .label {
+  padding-top: 15px;
   display: flex;
   justify-content: center;
+}
+
+@media (min-width: 767px) {
+}
+@media (min-width: 1200px) {
+  .container {
+    width: 280px;
+    height: 260px;
+  }
+  .checkBoxContainerGreen {
+    width: 280px;
+    height: 194px;
+  }
+  .checkBoxContainerGray {
+    width: 280px;
+    height: 194px;
+  }
+  .giftBox {
+    margin: 0 auto;
+    /* opacity: 44%; */
+    width: 40px;
+    height: 40px;
+  }
+  .numberPoints {
+    font-size: 31px;
+  }
+  .date {
+    padding-top: 20px;
+  }
 }

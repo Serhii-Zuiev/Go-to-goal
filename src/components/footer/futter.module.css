@@ -1,17 +1,44 @@
-footer{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: 50px;
-    background-color: #f5d53b;
-
-    font-family: "Montserrat";
-    font-size: 10px;
-    font-weight: 600;
-    letter-spacing: 1px;
-    color: #858598;
-    position: fixed;
-    left: 0;
-    bottom: 0; 
+@media (max-width: 767px){
+    .footer{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 50px;
+        background-color: #f5d53b;
+    
+        font-family: "Montserrat";
+        font-size: 10px;
+        font-weight: 600;
+        letter-spacing: 1px;
+        color: #858598;
+    }
+    .progressCurrentMobile{
+        width: 250px;        
+        bottom: 85%;
+        margin: 0 auto;
+      }
+      .foncolor{
+          background-color: #e0e0e0;
+      }
 }
+
+  @media (min-width: 768px){
+    .progressCurrentMobile{
+        display: none;
+    }
+    .footer{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 50px;
+        background-color: #f5d53b;
+    
+        font-family: "Montserrat";
+        font-size: 10px;
+        font-weight: 600;
+        letter-spacing: 1px;
+        color: #858598;
+    }
+  }

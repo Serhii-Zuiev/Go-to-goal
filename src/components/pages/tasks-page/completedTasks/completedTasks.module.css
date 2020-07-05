@@ -1,6 +1,7 @@
 .container {
   width: 320px;
   margin: 0 auto;
+  margin-bottom: 100px;
 }
 .completedTasksTittle {
   font-family: "Montserrat", sans-serif;
@@ -37,21 +38,15 @@ hr {
   border: none;
   border-radius: 50%;
   box-shadow: 0px 3px 8.7px 1.3px rgba(3, 3, 3, 0.13);
-  /* background-image: url(../../../../assets/images/icons/dropdowndouble/thin-arrowheads-pointing-down.svg); */
   background: url(../../../../assets/images/icons/dropdowndouble/thin-arrowheads-pointing-down.svg)
     white no-repeat;
   background-position: center;
   background-size: 60%;
-  /* background-color: #e0e0e0; */
-  /* -webkit-mask-image: url(../../../../assets/images/icons/dropdowndouble/thin-arrowheads-pointing-down.svg);
-  mask-image: url(../../../../assets/images/icons/dropdowndouble/thin-arrowheads-pointing-down.svg);
-  -webkit-mask-size: cover;
-  mask-size: cover; */
-  transition: all 1s;
+  transition: all 0.5s;
 }
 .btnRotate {
   transform: rotate(180deg);
-  transition: all 1s;
+  transition: all 0.5s;
 }
 
 .btnContainer {
@@ -60,17 +55,35 @@ hr {
 }
 .cardList {
   display: flex;
-  width: 300px;
+  width: 320px;
   flex-wrap: wrap;
   justify-content: center;
+}
+.emptyTaskWrapper {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 60px;
+}
+.empty_task {
+  background: repeating-linear-gradient(
+    135deg,
+    #ffffff 0px,
+    #ffffff 2px,
+    #e0e0e0 2px,
+    #e0e0e0 4px
+  );
+  border-radius: 6px;
+  opacity: 0.7;
+  width: 220px;
+  height: 200px;
 }
 
 @media (min-width: 767px) {
   .container {
-    width: 767px;
-    margin: 0 auto;
+    width: 720px;
+    margin-bottom: 100px;
   }
-  .CompletedTasksTittle {
+  .completedTasksTittle {
     text-align: left;
   }
 
@@ -78,28 +91,27 @@ hr {
     width: 75%;
   }
   .cardList {
-    width: 760px;
+    width: 720px;
     flex-wrap: wrap;
     justify-content: flex-start;
   }
   .cardList li {
     margin-right: 20px;
   }
+  .emptyTaskWrapper {
+    justify-content: flex-start;
+  }
 }
-/* .cardList li:nth-child(3n) {
-  margin-right: 0;
-} */
-
 @media (min-width: 1200px) {
   .container {
-    width: 90%;
-    margin: 0 auto;
+    width: 1200px;
+    margin-bottom: 100px;
   }
   hr {
     width: 50%;
   }
   .cardList {
-    width: 1000px;
+    width: 1200px;
     display: flex;
     flex-wrap: wrap;
     justify-content: flex-start;
@@ -112,5 +124,9 @@ hr {
   }
   .cardList li:nth-child(3n) {
     margin-right: 20px;
+  }
+  .empty_task {
+    width: 280px;
+    height: 260px;
   }
 }

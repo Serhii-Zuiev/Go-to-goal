@@ -9,6 +9,8 @@
     display: flex;
     text-align: center;
     align-items: center;
+    width: 232px;
+    margin-left: 4px;
   }
   
   .goalName {
@@ -16,10 +18,13 @@
     font-weight: bold;
     color: #858598;
     font-size: 12px;
-    line-height: 56px;
+    line-height: 23px;
     margin: 0;
-    width: 80px;
+    width: 64px;
     height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
   
   .goalBtn {
@@ -27,12 +32,12 @@
     font-family: 'Montserrat';
     font-weight: 600;
     color: #626269;
-    font-size: 18px;
+    font-size: 16px;
     text-transform: uppercase;
-    min-width: 160px;
+    min-width: 150px;
     height: 32px;
     line-height: 32px;
-    background-color: #e0e0e0;
+    background-color: #e6e6e6;
     border-radius: 16px;
     margin-left: 10px;
     border: none;
@@ -43,32 +48,67 @@
   .goalBtnActive {
     display: block;
     font-family: 'Montserrat';
-    font-weight: bold;
+    font-weight: 600;
+    font-size: 16px;
     text-transform: uppercase;
-    min-width: 180px;
+    min-width: 150px;
     height: 32px;
     line-height: 32px;
     border-radius: 16px;
     margin-left: 10px;
-    padding: 0px 15px;
-    margin: 0 20px;
+    padding: 0px 6px;
     border: none;
     background: linear-gradient(
       rgb(236, 177, 70) 0%,
       rgb(241, 195, 65) 55%,
       rgb(245, 213, 59) 100%
     );
-    box-shadow: 0px 8px 29px 0px rgba(178, 138, 61, 0.31);
-    transform: scale(1.05);
-    transition: all 0.5s ease-out;
     outline: none;
   }
-  
-  
- 
+
   @media screen and (max-width: 767px) {
-     
+    .goalBtn{
+      background-color:#ffff;
+    }
+    .goal{
+      width: 300px;
+      margin: 0 auto;
+    }
+    .fon{
+      width: 320px;
+      margin: 0 auto;
+    }
+    .menuBurger{
+      display: flex;
+    }
+    .goalBtnActive{
+      margin: 0;
+      padding: 0;
+    }
+    .goalLogo {
+      justify-content: space-between;
+      width: 300px;
+      margin: 0;
+    }
     .goalName {
-      display: none;
+      width: 78px;
+    }
+  }
+  @media  (min-width: 1200px) {
+    .goalName {
+      width: 80px;
+    }
+    .goalBtn {
+      font-size: 18px;
+      min-width: 180px;
+    }
+    
+    .goalBtnActive {
+      font-size: 18px;
+      min-width: 180px;
+    }
+    .goalLogo {
+      width: 324px;
+    
     }
   }

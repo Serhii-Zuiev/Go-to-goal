@@ -15,8 +15,10 @@ const NewGoal = () => {
     setIsModalOpen(false);
   };
 
+
   return (
     <>
+    <div className={styles.content}>
       <Header pageOfHeader={"goals"} />
 
       {isModalOpen && <CreateGoalModal handleCloseModal={handleCloseModal} />}
@@ -64,7 +66,11 @@ const NewGoal = () => {
           )}
         </div>
       </div>
+      </div>
+
+      <div className={styles.footer}>
       <Footer />
+      </div>
     </>
   );
 };

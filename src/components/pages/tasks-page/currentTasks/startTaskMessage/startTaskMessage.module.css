@@ -7,7 +7,7 @@
   font-size: 18px;
   text-align: center;
   /* margin: 50px 0 0 0; */
-  padding: 50px 20px 0 20px;
+  padding: 14px 20px 0 20px;
   letter-spacing: 1px;
 }
 
@@ -120,7 +120,7 @@
   }
 }
 @media (min-width: 1200px) {
-  .epmty_task {
+  .empty_task {
     width: 280px;
     height: 260px;
   }

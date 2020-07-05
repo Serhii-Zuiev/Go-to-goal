@@ -4,7 +4,7 @@
 }
 .cardList {
   display: flex;
-  width: 300px;
+  width: 320px;
   flex-wrap: wrap;
   justify-content: center;
 }
@@ -14,7 +14,7 @@
   font-size: 12px;
   color: #858598;
   text-align: center;
-  padding: 30px 0 0 0;
+  padding: 8px 0 0 0;
   letter-spacing: 1px;
 }
 .dailyTaskListTittle {
@@ -31,8 +31,9 @@
 
 @media (min-width: 767px) {
   .container {
-    width: 767px;
-    margin: 0 auto;
+    
+    width: 720px;
+    /* margin: 0 auto; */
   }
   .myTasksTittle {
     text-align: left;
@@ -41,7 +42,7 @@
     text-align: left;
   }
   .cardList {
-    width: 760px;
+    width: 720px;
     flex-wrap: wrap;
     justify-content: flex-start;
   }
@@ -51,8 +52,7 @@
 }
 @media (min-width: 1200px) {
   .container {
-    width: 1190px;
-    margin: 0 auto;
+    width: 1200px;
   }
   .myTaskWrapper {
     order: -2;
@@ -65,7 +65,7 @@
     letter-spacing: 1px;
   }
   .cardList {
-    width: 1000px;
+    width: 1200px;
     display: flex;
     flex-wrap: wrap;
     justify-content: flex-start;

@@ -1,11 +1,11 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
 import { withStyles } from "@material-ui/core/styles";
 import Menu from "@material-ui/core/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
 import ListItemText from "@material-ui/core/ListItemText";
 import IconButton from "@material-ui/core/IconButton";
 import MenuIcon from '@material-ui/icons/Menu';
+import style from './current-goal.module.css'
 
 const StyledMenu = withStyles({
   paper: {
@@ -44,7 +44,7 @@ export default function CustomizedMenus({ goalsList, getGoal }) {
   };
 
   return (
-    <div>
+    <div className={style.menuBurger}>
       <IconButton
         aria-controls="customized-menu"
         aria-haspopup="true"
@@ -62,13 +62,20 @@ export default function CustomizedMenus({ goalsList, getGoal }) {
         open={Boolean(anchorEl)}
         onClose={handleClose}
       >
-        {goalsList.map((goal) => (
+        {goalsList.length > 0 && goalsList.map((goal) => (
           <div onClick={() => getOneGoal(goal._id)} key={goal._id}>
             <MenuItem>
               <ListItemText secondary={goal.title} />
             </MenuItem>
           </div>
         ))}
+        {goalsList.length === 0 && 
+            <div onClick={() => handleClose()} >
+            <MenuItem>
+              <ListItemText secondary={'Немає цілей'} />
+            </MenuItem>
+            </div>
+        }
       </StyledMenu>
     </div>
   );
