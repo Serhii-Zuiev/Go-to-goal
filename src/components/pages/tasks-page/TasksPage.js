@@ -15,7 +15,6 @@ import {
   getGoals,
   deleteTaskInner,
   modifyTaskInner,
-  modifyTaskDone,
 } from "./../../../redux/operations";
 import CurrentProgress from "../../mergeCurrent-Progress/CurrentProgress";
 const IS_MOBILE_VERSION = window.innerWidth < 768;
@@ -41,7 +40,6 @@ class TasksPage extends Component {
   doneTasksAt0000 = () => {
     const tasks = this.props.tasksFromRedux;
     const DATE_NOW = moment().format().slice(0, 10);
-    console.log(DATE_NOW);
     const completedTasks = tasks.filter(
       (t) =>
         t.isComplete === true &&

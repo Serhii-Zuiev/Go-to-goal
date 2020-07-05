@@ -9,8 +9,11 @@ const startTaskMessage = () => {
           <h2 className={css.startTaskTitle}>
             Немає завдань? Тоді їх треба створити!
           </h2>
-          <p className={css.startTaskQuestion}>Бачиш кнопку внизу?</p>
-          {/* <div className={css.arrow}></div> */}
+          <p className={css.startTaskQuestion}>
+            Бачиш кнопку <span className={css.titleDown}>внизу</span>
+            <span className={css.titleRight}>праворуч</span>?
+          </p>
+          <div className={css.arrow}></div>
           <p className={css.startTaskText}>
             Натискай її, вибирай, що і коли треба зробити і&nbsp;
             <span className={css.goalLine}>вперед до мети</span>!

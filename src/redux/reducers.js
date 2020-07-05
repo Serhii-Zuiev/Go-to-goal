@@ -61,10 +61,6 @@ export const goalAndTaskReducer = createReducer(initialGoalState, {
       ),
     };
   },
-  [action.modifyTaskToDone]: (state, { payload }) => {
-    console.log(payload);
-    return { ...state, tasks: payload };
-  },
 
   [action.doneGoal]: (state, { payload }) => {
     return {

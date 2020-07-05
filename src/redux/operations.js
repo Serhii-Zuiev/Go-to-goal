@@ -46,11 +46,6 @@ export const modifyTaskInner = (token, taskId, task) => async (dispatch) => {
   dispatch({ type: Type.MODIFY_TASK, payload: data });
 };
 
-export const modifyTaskDone = (token, taskId, task) => async (dispatch) => {
-  const data = await services.updateTask(token, taskId, task);
-  dispatch({ type: Type.MODIFY_TASK_TO_DONE, payload: data });
-};
-
 export const doneGoal = (token, goalId, isDone) => async (dispatch) => {
   const data = await services.isDoneGoal(token, goalId, isDone);
   dispatch({

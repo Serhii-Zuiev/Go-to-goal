@@ -18,7 +18,6 @@ const Card = ({
   return (
     <li className={css.listItem}>
       <div className={css.container}>
-        {console.log(isComplete, isDone, title)}
         <div
           className={
             isComplete ? css.checkBoxContainerGreen : css.checkBoxContainerGray
