@@ -6,14 +6,14 @@
 }
 
 .userAvatar {
-  width: 66px;
+  width: 64px;
   height: 56px;
 }
 
 .userInfo {
   font-family: "Montserrat";
   font-size: 12px;
-  line-height: 36px;
+  line-height: 26px;
   font-weight: 600;
   letter-spacing: 1px;
   color: #858598;
@@ -38,9 +38,13 @@
 
 @media (min-width: 767px) {
   .userAvatar {
-    margin-right: 12px;
+    margin-right: 4px;
   }
   .userInfo {
-    margin-right: 12px;
+    margin-right: 6px;
+    height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 }

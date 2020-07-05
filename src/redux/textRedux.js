@@ -8,14 +8,14 @@ import { NavLink } from 'react-router-dom'
 export  const TestRedux=()=>{
 
  
-  const taskId="5efc491de28c7f0d9802408d"
-  const goalId="5efb3ec8a38c720d8b98381f"
+  const taskId="5efe1ea8e28c7f0d98024103"
+  const goalId="5efe1ed6e28c7f0d98024104"
     const dispatch=useDispatch()
     const token = useSelector((state) => state.userAuthReducer.token);
     const testUserRegister={
       name: "ffffaaassssa",
       age: 33,
-      email: "first1234@gmail.com",
+      email: "first123456@gmail.com",
       password:"qwerty",
       isChild: true,
       scores: 0,
@@ -23,7 +23,7 @@ export  const TestRedux=()=>{
   
     }
     const testUserLogin={
-      email:"first1234@gmail.com",
+      email:"first12345@gmail.com",
       password:'qwerty'
     }
      async function testRegisterUser(){
@@ -46,12 +46,12 @@ export  const TestRedux=()=>{
         }
     }
     const goal={
-        title: "Что то ssadasdas",
+        title: "gggdsadasg",
         description: "gjkk?",
         dates: [
           "2020-07-18T19:45:34.946Z"
         ],
-        points:10
+        points:1020
       
 
     }

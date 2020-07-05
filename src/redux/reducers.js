@@ -10,8 +10,10 @@ const initialState = {
 const initialGoalState = {
   goals: [],
   tasks: [],
-  score: 0,
+  score: null,
   progressPoints: 0,
+  flag:false,
+  saveGoal:''
 };
 const initialFlagState = {
   isLoading: false,
@@ -36,6 +38,7 @@ export const userAuthReducer = createReducer(initialState, {
   [action.logoutUser]: (state, { payload }) => {
     return { ...state, userData: payload, token: "" };
   },
+ 
 });
 export const goalAndTaskReducer = createReducer(initialGoalState, {
   [action.createGoal]: (state, { payload }) => {
@@ -48,55 +51,48 @@ export const goalAndTaskReducer = createReducer(initialGoalState, {
     return { ...state, tasks: payload };
   },
   [action.getAllGoals]: (state, { payload }) => {
-    return { ...state, goals: payload };
+    return { ...state, goals: payload.goals };
   },
   [action.modifyTask]: (state, { payload }) => {
-    console.log("payload.task.isDone", payload.isDone);
-    let sum;
-    if (payload.isDone) {
-      sum = state.score + payload.points;
-    } else {
-      sum = state.score - payload.points;
-    }
+
     return {
       ...state,
-      score: sum,
-      tasks: state.tasks.map((task) => {
-        if (task._id === payload._id) {
-          task = payload;
-        }
-        return task;
-      }),
+      score: payload?.user?.scores ? payload.user.scores : state.score,
+      tasks: state.tasks.map((t)=>t._id !== payload?.task?._id ? t : payload.task)
     };
   },
+ 
   [action.doneGoal]: (state, { payload }) => {
     return {
       ...state,
-      goals: state.goals.map((goal) => {
-        if (goal._id === payload.goalId) {
-          goal = payload.data;
-        }
-        return goal;
-      }),
+      score:payload.data.user.scores,
+      progressPoints:0,
+      flag:false,
     };
   },
   [action.deleteGoal]: (state, { payload }) => {
+    const isDeletedGoalWasSaved = state?.saveGoal?._id === payload.goalId
     return {
       ...state,
       goals: state.goals.filter((goal) => goal._id !== payload.goalId),
+      saveGoal: isDeletedGoalWasSaved ? null: state.saveGoal,
+      progressPoints: isDeletedGoalWasSaved ? 0: state.progressPoints,
+      flag: isDeletedGoalWasSaved ? false : state.flag
     };
   },
   [action.deleteTask]: (state, { payload }) => {
+    const scOre = payload?.data?.user?.scores
     return {
       ...state,
       tasks: state.tasks.filter((task) => task._id !== payload.taskId),
+      score: scOre ? scOre : state.score,
     };
   },
   [action.score]: (state, { payload }) => {
     return { ...state, score: payload };
   },
   [action.progressBarPoints]: (state, { payload }) => {
-    return { ...state, progressPoints: payload };
+    return { ...state, progressPoints: payload.points, saveGoal:payload, flag:true};
   },
 });
 

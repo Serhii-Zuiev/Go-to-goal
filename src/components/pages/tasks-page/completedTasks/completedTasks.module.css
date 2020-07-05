@@ -38,17 +38,11 @@ hr {
   border: none;
   border-radius: 50%;
   box-shadow: 0px 3px 8.7px 1.3px rgba(3, 3, 3, 0.13);
-  /* background-image: url(../../../../assets/images/icons/dropdowndouble/thin-arrowheads-pointing-down.svg); */
   background: url(../../../../assets/images/icons/dropdowndouble/thin-arrowheads-pointing-down.svg)
     white no-repeat;
   background-position: center;
   background-size: 60%;
-  /* background-color: #e0e0e0; */
-  /* -webkit-mask-image: url(../../../../assets/images/icons/dropdowndouble/thin-arrowheads-pointing-down.svg);
-  mask-image: url(../../../../assets/images/icons/dropdowndouble/thin-arrowheads-pointing-down.svg);
-  -webkit-mask-size: cover;
-  mask-size: cover; */
-  transition: all 1s;
+  transition: all 0.5s;
 }
 .btnRotate {
   transform: rotate(180deg);
@@ -71,7 +65,6 @@ hr {
   margin-bottom: 60px;
 }
 .empty_task {
-  /* margin: 0 auto; */
   background: repeating-linear-gradient(
     135deg,
     #ffffff 0px,
@@ -109,10 +102,6 @@ hr {
     justify-content: flex-start;
   }
 }
-/* .cardList li:nth-child(3n) {
-  margin-right: 0;
-} */
-
 @media (min-width: 1200px) {
   .container {
     width: 1200px;

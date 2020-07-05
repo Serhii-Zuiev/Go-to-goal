@@ -9,10 +9,12 @@ import Footer from "../../footer/Footer";
 const AuthPage = () => {
   return (
     <>
-      <Route path="/auth/register" component={RegisterForm} />
-      <Header pageOfHeader={"auth"} />
-      <Banner />
-      <Greeting />
+      <div style={{minHeight: 'calc(100vh - 50px)'}}>
+        <Route path="/auth/register" component={RegisterForm} />
+        <Header pageOfHeader={"auth"} />
+        <Banner />
+        <Greeting />
+      </div>
       <Footer />
     </>
   );
