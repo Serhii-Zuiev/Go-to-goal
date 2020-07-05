@@ -21,9 +21,7 @@ const Card = ({
         {console.log(isComplete, isDone, title)}
         <div
           className={
-            isComplete || (isComplete && isDone)
-              ? css.checkBoxContainerGreen
-              : css.checkBoxContainerGray
+            isComplete ? css.checkBoxContainerGreen : css.checkBoxContainerGray
           }
         >
           {isDone ? null : (

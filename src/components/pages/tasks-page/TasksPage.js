@@ -14,6 +14,7 @@ import {
   getTasks,
   deleteTaskInner,
   modifyTaskInner,
+  modifyTaskDone,
 } from "./../../../redux/operations";
 import CurrentProgress from "../../mergeCurrent-Progress/CurrentProgress";
 const IS_MOBILE_VERSION = window.innerWidth < 768;
@@ -32,8 +33,8 @@ class TasksPage extends Component {
 
   componentDidMount() {
     this.props.getTasks(this.props.token);
-    this.setState({ tasks: this.props.tasksFromRedux });
     this.doneTasksAt0000();
+    this.setState({ tasks: this.props.tasksFromRedux });
   }
   doneTasksAt0000 = () => {
     const tasks = this.props.tasksFromRedux;
@@ -47,20 +48,21 @@ class TasksPage extends Component {
     );
     const { token } = this.props;
     if (completedTasks.length > 0) {
-      const { modifyTaskInner } = this.props;
+      // const { modifyTaskInner } = this.props;
+      const { modifyTaskDone } = this.props;
       console.log(completedTasks);
       const payload = { isDone: true };
       completedTasks.forEach((task) =>
-        modifyTaskInner(token, task._id, payload)
+        modifyTaskDone(token, task._id, payload)
       );
     }
-    // const taskForDelete = tasks.filter(
-    //   (t) => t.isComplete === false && t.createdAt.slice(0, 10) !== DATE_NOW
-    // );
-    // if (taskForDelete.length > 0) {
-    //   const { deleteTaskInner } = this.props;
-    //   taskForDelete.forEach((task) => deleteTaskInner(token, task._id));
-    // }
+    const taskForDelete = tasks.filter(
+      (t) => t.isComplete === false && t.createdAt.slice(0, 10) !== DATE_NOW
+    );
+    if (taskForDelete.length > 0) {
+      const { deleteTaskInner } = this.props;
+      taskForDelete.forEach((task) => deleteTaskInner(token, task._id));
+    }
   };
 
   handleOpenModalWindow = () => {
@@ -182,5 +184,11 @@ const mapsStateToProps = (state) => ({
   token: state.userAuthReducer.token,
   tasksFromRedux: state.goalAndTaskReducer.tasks,
 });
-const tasksNew = { newTask, getTasks, deleteTaskInner, modifyTaskInner };
+const tasksNew = {
+  newTask,
+  getTasks,
+  deleteTaskInner,
+  modifyTaskInner,
+  modifyTaskDone,
+};
 export default connect(mapsStateToProps, tasksNew)(TasksPage);
