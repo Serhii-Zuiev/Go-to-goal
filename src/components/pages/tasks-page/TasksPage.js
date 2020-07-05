@@ -34,6 +34,7 @@ class TasksPage extends Component {
   doneTasksAt0000 = () => {
     const tasks = this.props.tasksFromRedux;
     const DATE_NOW = moment().format().slice(0, 10);
+    console.log(DATE_NOW);
     const completedTasks = tasks.filter(
       (t) =>
         t.isComplete === true &&
@@ -45,17 +46,18 @@ class TasksPage extends Component {
       // const { token } = this.props;
       const { modifyTaskInner } = this.props;
       console.log(completedTasks);
+      const payload = { isDone: true };
       completedTasks.forEach((task) =>
-        modifyTaskInner(token, task._id, { ...task, isDone: true })
+        modifyTaskInner(token, task._id, payload)
       );
     }
-    const taskForDelete = tasks.filter(
-      (t) => t.isComplete === false && t.createdAt.slice(0, 10) !== DATE_NOW
-    );
-    if (taskForDelete.length > 0) {
-      const { deleteTaskInner } = this.props;
-      taskForDelete.forEach((task) => deleteTaskInner(token, task._id));
-    }
+    // const taskForDelete = tasks.filter(
+    //   (t) => t.isComplete === false && t.createdAt.slice(0, 10) !== DATE_NOW
+    // );
+    // if (taskForDelete.length > 0) {
+    //   const { deleteTaskInner } = this.props;
+    //   taskForDelete.forEach((task) => deleteTaskInner(token, task._id));
+    // }
   };
 
   handleOpenModalWindow = () => {

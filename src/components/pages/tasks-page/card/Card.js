@@ -17,13 +17,13 @@ const Card = ({
 }) => {
   return (
     <li className={css.listItem}>
-      {/* {console.log("isDone :>> ", isDone)}
-      {console.log("iscomplete :>> ", isComplete)} */}
       <div className={css.container}>
-        {/* <p>{isDoneToggle ? "true" : "false"}</p> */}
+        {console.log(isComplete, isDone, title)}
         <div
           className={
-            isComplete ? css.checkBoxContainerGreen : css.checkBoxContainerGray
+            isComplete || (isComplete && isDone)
+              ? css.checkBoxContainerGreen
+              : css.checkBoxContainerGray
           }
         >
           {isDone ? null : (
