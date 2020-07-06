@@ -1,4 +1,7 @@
 import axios from "axios";
+import { isAlert } from '../redux/actions'
+import {store} from '../redux/store'
+
 
 const BASE_URL = "https://go-to-goal.goit.co.ua/api";
 
@@ -40,6 +43,9 @@ async function loginUser(user) {
       return response.data;
   } catch (error) {
     console.warn(error);
+    setTimeout(() => {
+      store.dispatch(isAlert(false))
+    }, 3000);
   }
 }
 

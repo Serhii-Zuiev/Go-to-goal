@@ -13,7 +13,7 @@ export const registerUser = (param) => async (dispatch) => {
 export const loginUser = (param) => async (dispatch) => {
   const data = await services.loginUser(param);
   if (!data) {
-    dispatch({ type: Type.LOGOUT_USER, payload: {} });
+    dispatch({ type: Type.ALERT_FLAG, payload: true });
   } else {
     dispatch({ type: Type.LOGIN_USER, payload: data });
   }

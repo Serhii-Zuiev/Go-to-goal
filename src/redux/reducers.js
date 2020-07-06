@@ -102,6 +102,7 @@ export const flag = createReducer(initialFlagState, {
   },
 
   [action.isAlert]: (state, payload) => {
-    return { ...state, isAlert: payload };
+    const flag = payload.payload
+    return { ...state, isAlert: state.isAlert === flag ? state.isAlert : flag};
   },
 });

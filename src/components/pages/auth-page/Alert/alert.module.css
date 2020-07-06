@@ -1,0 +1,22 @@
+.alertContainer {
+  height: 86px;
+  position: absolute;
+  border: 1px solid #999;
+}
+
+@media (max-width: 767px) {
+  .alertContainer {
+    width: 340px;
+    top: 16px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
+
+@media (min-width: 768px) {
+  .alertContainer {
+    width: 360px;
+    top: 8px;
+    right: 8px;
+  }
+}
