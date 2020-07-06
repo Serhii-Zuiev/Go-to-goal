@@ -5,6 +5,10 @@ import AvatarPicker from '../AvatarPicker/AvatarPicker'
 import { registerUser } from '../../../../../redux/operations'
 import ModalBackDrop from "../../../../modalBackDrop/ModalBackDrop";
 
+
+
+
+
 class RegisterForm extends Component {
   
 
@@ -167,7 +171,7 @@ class RegisterForm extends Component {
                   placeholder="Вкажи своє iм'я..."
                 />
                 <div className={s.error_name}>
-                  {!formValid && !nameValid && <i>{formErrors.name}</i>}
+                  {!formValid && !nameValid && <p className={s.registerAlert}>{formErrors.name}</p>}
                 </div>
               </div>
 
@@ -182,7 +186,7 @@ class RegisterForm extends Component {
                   placeholder="Вкажи свій вік..."
                 />
                 <div className={s.error_age}>
-                  {!formValid && !ageValid && <i>{formErrors.age}</i>}
+                  {!formValid && !ageValid && <p className={s.registerAlert}>{formErrors.age}</p>}
                 </div>
               </div>
 
@@ -197,7 +201,7 @@ class RegisterForm extends Component {
                   placeholder="Введи свiй email/логiн..."
                 />
                 <div className={s.error}>
-                  {!formValid && !emailValid && <i>{formErrors.email}</i>}
+                  {!formValid && !emailValid && <p className={s.registerAlert}>{formErrors.email}</p>}
                 </div>
               </div>
 
@@ -212,7 +216,7 @@ class RegisterForm extends Component {
                     placeholder="Введи свiй пароль..."
                   />
                 <div className={s.error}>
-                  {!formValid && !passwordValid && <i>{formErrors.password}</i>}
+                  {!formValid && !passwordValid && <p className={s.registerAlert}>{formErrors.password}</p>}
                 </div>
               </div>
 
@@ -229,7 +233,7 @@ class RegisterForm extends Component {
               </div>
             </div>
             <div className={s.error}>
-              <i>{errorRePassword || ''}</i>
+              <p>{errorRePassword || ''}</p>
             </div>
 
             {windowWidth < 768 && (

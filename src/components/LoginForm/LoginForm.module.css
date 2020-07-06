@@ -62,8 +62,16 @@
   }
 }
 
-@media (min-width: 1279px) {
+@media (min-width: 1200px) {
   .authContainer {
-    width: 400px;
+    width: 520px;
+  }
+  .authContainer {
+    width: 640px;
+    font-size: 9px
+  }
+  .input {
+    width: 190px;
+    font-size: 12px
   }
 }

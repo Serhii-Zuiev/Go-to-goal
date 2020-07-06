@@ -124,4 +124,7 @@
   .authContainer {
     width: 1200px;
   }
+  .authFormContainer {
+    width: 640px;
+  }
 }
