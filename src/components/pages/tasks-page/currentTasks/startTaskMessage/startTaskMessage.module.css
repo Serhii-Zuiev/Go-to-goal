@@ -6,7 +6,6 @@
   font-weight: 700;
   font-size: 18px;
   text-align: center;
-  /* margin: 50px 0 0 0; */
   padding: 14px 20px 0 20px;
   letter-spacing: 1px;
 }
@@ -33,7 +32,6 @@
   font-weight: 900;
   font-size: 14px;
   text-align: center;
-  /* margin: 50px 0 0 0; */
   padding: 28px 0 0 0;
   letter-spacing: 1px;
 }
@@ -105,10 +103,21 @@
     text-align: center;
     padding: 38px 0 0 0;
   }
-  /* .emptyTaskWrapper {
-    display: flex;
-    justify-content: start;
-  } */
+  .titleDown:not(:focus):not(:active),
+  input[type="checkbox"].visually-hidden,
+  input[type="radio"].visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    border: 0;
+    padding: 0;
+    white-space: nowrap;
+    clip-path: inset(100%);
+    clip: rect(0 0 0 0);
+    overflow: hidden;
+  }
+  
   .empty_task {
     margin: 0;
   }
@@ -124,6 +133,10 @@
     width: 280px;
     height: 260px;
   }
+  .titleDown {
+    display: block;
+  }
+
   .startTaskWrapper {
     display: flex;
     flex-wrap: wrap;
@@ -139,5 +152,22 @@
     padding: 15px 0 0 0;
     margin-bottom: 33px;
     letter-spacing: 1px;
+  }
+}
+
+@media (max-width: 767px) {
+  .titleRight:not(:focus):not(:active),
+  input[type="checkbox"].visually-hidden,
+  input[type="radio"].visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    border: 0;
+    padding: 0;
+    white-space: nowrap;
+    clip-path: inset(100%);
+    clip: rect(0 0 0 0);
+    overflow: hidden;
   }
 }
