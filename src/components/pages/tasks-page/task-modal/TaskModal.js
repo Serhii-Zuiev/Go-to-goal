@@ -36,8 +36,8 @@ function TaskModal(props) {
       points: state["points"],
       deadline: state["deadline"],
     };
-    if(!task.deadline){
-      return
+    if (!task.deadline) {
+      return;
     }
     handleFormforUsers(task);
     handleCloseModalWindow();
@@ -89,9 +89,9 @@ function TaskModal(props) {
           <input
             type="number"
             placeholder="Винагорода (наприклад 1000)"
-            maxLength="20"
+            maxLength="5"
             minLength="1"
-            max="1000"
+            max="9999"
             min="1"
             id={IDS.INPUT_POINT}
             value={state[IDS.INPUT_POINT]}

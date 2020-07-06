@@ -3,8 +3,6 @@ import css from "./ModalDeleteTask.module.css";
 import ModalBackDrop from "../../../modalBackDrop/ModalBackDrop";
 
 const ModalDeleteTask = ({ handleModalWindow, handleDeleteTask }) => {
-  // console.log(props);
-  // let id, deleteTask, onClose, token;
   return (
     <div className={css.basicLightbox}>
       <div className={css.modalContent}>

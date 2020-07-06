@@ -10,24 +10,23 @@ import {
   REGISTER,
 } from "redux-persist";
 import { configureStore, getDefaultMiddleware } from "@reduxjs/toolkit";
-import { userAuthReducer,goalAndTaskReducer,flag} from "./reducers";
+import { userAuthReducer, goalAndTaskReducer, flag } from "./reducers";
 import thunk from "redux-thunk";
 
 const appReducer = combineReducers({
   userAuthReducer,
   flag,
-goalAndTaskReducer,
+  goalAndTaskReducer,
   /* your app’s top-level reducers */
-})
+});
 
 const rootReducer = (state, action) => {
-
   if (action.type === "LOGOUT_USER") {
-    state = undefined
+    state = undefined;
   }
 
-  return appReducer(state, action)
-}
+  return appReducer(state, action);
+};
 
 const persistConfig = {
   key: "root",
@@ -38,17 +37,14 @@ const persistConfig = {
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 
-
-
-
 export const store = configureStore({
   reducer: persistedReducer,
-    middleware: getDefaultMiddleware({
-      serializableCheck: {
-        ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
-      },
-      thunk,
-    }),
-  });
+  middleware: getDefaultMiddleware({
+    serializableCheck: {
+      ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+    },
+    thunk,
+  }),
+});
 
 export const persistor = persistStore(store);

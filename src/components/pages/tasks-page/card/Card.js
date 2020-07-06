@@ -17,10 +17,7 @@ const Card = ({
 }) => {
   return (
     <li className={css.listItem}>
-      {/* {console.log("isDone :>> ", isDone)}
-      {console.log("iscomplete :>> ", isComplete)} */}
       <div className={css.container}>
-        {/* <p>{isDoneToggle ? "true" : "false"}</p> */}
         <div
           className={
             isComplete ? css.checkBoxContainerGreen : css.checkBoxContainerGray
@@ -54,7 +51,6 @@ const Card = ({
                     name="isDone"
                     type="checkbox"
                     defaultChecked={isComplete}
-                    // onChange={handleIsDoneToggle}
                   />
                   <span className={css.span}>Виконано</span>
                 </label>

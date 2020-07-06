@@ -1,26 +1,20 @@
-import React, { Component } from 'react';
-import s from './RegisterForm.module.css';
-import { connect } from 'react-redux';
-import AvatarPicker from '../AvatarPicker/AvatarPicker'
-import { registerUser } from '../../../../../redux/operations'
+import React, { Component } from "react";
+import s from "./RegisterForm.module.css";
+import { connect } from "react-redux";
+import AvatarPicker from "../AvatarPicker/AvatarPicker";
+import { registerUser } from "../../../../../redux/operations";
 import ModalBackDrop from "../../../../modalBackDrop/ModalBackDrop";
 
-
-
-
-
 class RegisterForm extends Component {
-  
-
   state = {
-    name: '',
-    age: '',
-    email: '',
-    password: '',
-    rePassword: '',
-    errorRePassword: '',
-    avatar: 'https://go-to-goal.goit.co.ua/image/avatar_001.png',
-    formErrors: { name: '', age: '', email: '', password: '' },
+    name: "",
+    age: "",
+    email: "",
+    password: "",
+    rePassword: "",
+    errorRePassword: "",
+    avatar: "https://go-to-goal.goit.co.ua/image/avatar_001.png",
+    formErrors: { name: "", age: "", email: "", password: "" },
     formValid: false,
     nameValid: false,
     ageValid: false,
@@ -34,7 +28,7 @@ class RegisterForm extends Component {
     this.setState({ [name]: value }, () => this.validateField(name, value));
   };
 
-  handleSubmitForm = e => {
+  handleSubmitForm = (e) => {
     e.preventDefault();
 
     const { name, age, email, password, rePassword, avatar } = this.state;
@@ -50,7 +44,7 @@ class RegisterForm extends Component {
       });
     } else {
       this.setState({
-        errorRePassword: 'Паролі не співпадають!!!',
+        errorRePassword: "Паролі не співпадають!!!",
       });
     }
   };
@@ -69,40 +63,40 @@ class RegisterForm extends Component {
     let fieldEmailValid = emailValid;
     let fieldPasswordValid = passwordValid;
     switch (fieldName) {
-      case 'name':
+      case "name":
         fieldNameValid =
           // eslint-disable-next-line no-useless-escape
           /^[a-zA-Zа-яА-Я\s]+[a-zA-Zа-яА-ЯёЁ'іІїЇ]{1,16}$/.test(value);
         fieldValidationErrors.name = fieldNameValid
-          ? ''
+          ? ""
           : "Вибач, але нам потрiбне iм'я вiд 2 до 12 символiв, яке мiстить тiльки лiтери...";
         break;
 
-      case 'age':
+      case "age":
         fieldAgeValid =
           // eslint-disable-next-line no-useless-escape
           /^\d+$/.test(value) && value >= 3 && value <= 99;
         fieldValidationErrors.age = fieldAgeValid
-          ? ''
+          ? ""
           : `Вибач, але тобi має бути вiд 3 до 99 рокiв :)`;
         break;
 
-      case 'email':
+      case "email":
         fieldEmailValid =
           // eslint-disable-next-line no-useless-escape
           /^([a-zA-Z0-9_\.-]+)@([a-zA-Z0-9_\.-]+)\.([a-zA-Z\.]{2,6})$/.test(
-            value,
+            value
           );
         fieldValidationErrors.email = fieldEmailValid
-          ? ''
-          : 'Нажаль, таких email адрес не iснує...';
+          ? ""
+          : "Нажаль, таких email адрес не iснує...";
         break;
 
-      case 'password':
+      case "password":
         fieldPasswordValid = value.length >= 6 && value.length <= 12;
         fieldValidationErrors.password = fieldPasswordValid
-          ? ''
-          : 'Вибач, але нам потрiбен пароль вiд 6 до 12 символiв...';
+          ? ""
+          : "Вибач, але нам потрiбен пароль вiд 6 до 12 символiв...";
         break;
       default:
         break;
@@ -115,7 +109,7 @@ class RegisterForm extends Component {
         emailValid: fieldEmailValid,
         passwordValid: fieldPasswordValid,
       },
-      this.validateForm,
+      this.validateForm
     );
   };
 
@@ -127,14 +121,13 @@ class RegisterForm extends Component {
   };
 
   handleCloseModal = () => {
-    this.props.history.push('/')
+    this.props.history.push("/");
   };
 
-  changeUserPic = avatar => {
+  changeUserPic = (avatar) => {
     return this.setState({ avatar });
   };
 
-  
   render() {
     const {
       name,
@@ -171,7 +164,9 @@ class RegisterForm extends Component {
                   placeholder="Вкажи своє iм'я..."
                 />
                 <div className={s.error_name}>
-                  {!formValid && !nameValid && <p className={s.registerAlert}>{formErrors.name}</p>}
+                  {!formValid && !nameValid && (
+                    <p className={s.registerAlert}>{formErrors.name}</p>
+                  )}
                 </div>
               </div>
 
@@ -186,7 +181,9 @@ class RegisterForm extends Component {
                   placeholder="Вкажи свій вік..."
                 />
                 <div className={s.error_age}>
-                  {!formValid && !ageValid && <p className={s.registerAlert}>{formErrors.age}</p>}
+                  {!formValid && !ageValid && (
+                    <p className={s.registerAlert}>{formErrors.age}</p>
+                  )}
                 </div>
               </div>
 
@@ -201,39 +198,43 @@ class RegisterForm extends Component {
                   placeholder="Введи свiй email/логiн..."
                 />
                 <div className={s.error}>
-                  {!formValid && !emailValid && <p className={s.registerAlert}>{formErrors.email}</p>}
+                  {!formValid && !emailValid && (
+                    <p className={s.registerAlert}>{formErrors.email}</p>
+                  )}
                 </div>
               </div>
 
               {/* password */}
               <div className={s.current_input_box}>
-                  <input
-                    required
-                    type="password"
-                    name="password"
-                    value={password}
-                    onChange={this.handleChange}
-                    placeholder="Введи свiй пароль..."
-                  />
+                <input
+                  required
+                  type="password"
+                  name="password"
+                  value={password}
+                  onChange={this.handleChange}
+                  placeholder="Введи свiй пароль..."
+                />
                 <div className={s.error}>
-                  {!formValid && !passwordValid && <p className={s.registerAlert}>{formErrors.password}</p>}
+                  {!formValid && !passwordValid && (
+                    <p className={s.registerAlert}>{formErrors.password}</p>
+                  )}
                 </div>
               </div>
 
               {/* rePassword */}
               <div className={s.current_input_box}>
-                  <input
-                    required
-                    type="password"
-                    name="rePassword"
-                    value={rePassword}
-                    onChange={this.handleChange}
-                    placeholder="Підтверди пароль..."
-                  />
+                <input
+                  required
+                  type="password"
+                  name="rePassword"
+                  value={rePassword}
+                  onChange={this.handleChange}
+                  placeholder="Підтверди пароль..."
+                />
               </div>
             </div>
             <div className={s.error}>
-              <p>{errorRePassword || ''}</p>
+              <p>{errorRePassword || ""}</p>
             </div>
 
             {windowWidth < 768 && (
@@ -265,10 +266,8 @@ class RegisterForm extends Component {
   }
 }
 
-
-
 const mapDTP = {
-  registerUser
-}
+  registerUser,
+};
 
 export default ModalBackDrop(connect(null, mapDTP)(RegisterForm));

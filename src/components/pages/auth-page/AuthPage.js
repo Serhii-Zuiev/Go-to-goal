@@ -6,17 +6,16 @@ import RegisterForm from "./AuthModal/RegisterForm/RegisterForm";
 import Greeting from "./Greeting/Greeting";
 import Banner from "./Banner/Banner";
 import Footer from "../../footer/Footer";
-import Alerts from './Alert/Alerts'
+import Alerts from "./Alert/Alerts";
 
 const AuthPage = () => {
-
   const isAlertSown = useSelector((state) => state.flag.isAlert);
 
   return (
     <>
-      <div style={{minHeight: 'calc(100vh - 50px)'}}>
+      <div style={{ minHeight: "calc(100vh - 50px)" }}>
         <Route path="/auth/register" component={RegisterForm} />
-        {isAlertSown && <Alerts/>}
+        {isAlertSown && <Alerts />}
         <Header pageOfHeader={"auth"} />
         <Banner />
         <Greeting />

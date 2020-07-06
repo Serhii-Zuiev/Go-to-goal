@@ -12,8 +12,8 @@ const initialGoalState = {
   tasks: [],
   score: null,
   progressPoints: 0,
-  flag:false,
-  saveGoal:''
+  flag: false,
+  saveGoal: "",
 };
 const initialFlagState = {
   isLoading: false,
@@ -38,7 +38,6 @@ export const userAuthReducer = createReducer(initialState, {
   [action.logoutUser]: (state, { payload }) => {
     return { ...state, userData: payload, token: "" };
   },
- 
 });
 export const goalAndTaskReducer = createReducer(initialGoalState, {
   [action.createGoal]: (state, { payload }) => {
@@ -57,30 +56,32 @@ export const goalAndTaskReducer = createReducer(initialGoalState, {
     return {
       ...state,
       score: payload?.user ? payload.user.scores : state.score,
-      tasks: state.tasks.map((t)=>t._id !== payload?.task?._id ? t : payload.task)
+      tasks: state.tasks.map((t) =>
+        t._id !== payload?.task?._id ? t : payload.task
+      ),
     };
   },
- 
+
   [action.doneGoal]: (state, { payload }) => {
     return {
       ...state,
-      score:payload.data.user.scores,
-      progressPoints:0,
-      flag:false,
+      score: payload.data.user.scores,
+      progressPoints: 0,
+      flag: false,
     };
   },
   [action.deleteGoal]: (state, { payload }) => {
-    const isDeletedGoalWasSaved = state?.saveGoal?._id === payload.goalId
+    const isDeletedGoalWasSaved = state?.saveGoal?._id === payload.goalId;
     return {
       ...state,
       goals: state.goals.filter((goal) => goal._id !== payload.goalId),
-      saveGoal: isDeletedGoalWasSaved ? null: state.saveGoal,
-      progressPoints: isDeletedGoalWasSaved ? 0: state.progressPoints,
-      flag: isDeletedGoalWasSaved ? false : state.flag
+      saveGoal: isDeletedGoalWasSaved ? null : state.saveGoal,
+      progressPoints: isDeletedGoalWasSaved ? 0 : state.progressPoints,
+      flag: isDeletedGoalWasSaved ? false : state.flag,
     };
   },
   [action.deleteTask]: (state, { payload }) => {
-    const scOre = payload?.data?.user
+    const scOre = payload?.data?.user;
     return {
       ...state,
       tasks: state.tasks.filter((task) => task._id !== payload.taskId),
@@ -91,7 +92,12 @@ export const goalAndTaskReducer = createReducer(initialGoalState, {
     return { ...state, score: payload };
   },
   [action.progressBarPoints]: (state, { payload }) => {
-    return { ...state, progressPoints: payload.points, saveGoal:payload, flag:true};
+    return {
+      ...state,
+      progressPoints: payload.points,
+      saveGoal: payload,
+      flag: true,
+    };
   },
 });
 
@@ -101,7 +107,7 @@ export const flag = createReducer(initialFlagState, {
   },
 
   [action.isAlert]: (state, payload) => {
-    const flag = payload.payload
-    return { ...state, isAlert: state.isAlert === flag ? state.isAlert : flag};
+    const flag = payload.payload;
+    return { ...state, isAlert: state.isAlert === flag ? state.isAlert : flag };
   },
 });

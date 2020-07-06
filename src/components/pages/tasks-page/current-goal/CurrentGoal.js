@@ -3,10 +3,7 @@ import s from "./current-goal.module.css";
 import { useSelector, useDispatch } from "react-redux";
 import { deleteGoal } from "../../../../redux/operations";
 import CustomizedMenus from "./CustomizedMenus";
-import {
-  doneGoal,
-  progressPoints,
-} from "../../../../redux/operations";
+import { doneGoal, progressPoints } from "../../../../redux/operations";
 
 import Congratulation from "./../congratulation/Congratulation";
 
@@ -38,7 +35,9 @@ const CurrentGoal = () => {
     const myGoal = myGoalState.title;
     const goalPoints = myGoalState.points;
     const goalId = myGoalState._id;
-    const userValuePoints = donePointsStateInfo ? donePointsStateInfo : donePointsOfAuth;
+    const userValuePoints = donePointsStateInfo
+      ? donePointsStateInfo
+      : donePointsOfAuth;
     const openModal = () => {
       setMenuState(!isMenuOpen);
     };
@@ -71,7 +70,7 @@ const CurrentGoal = () => {
             >
               {myGoal}
             </button>
-          <CustomizedMenus goalsList={allGoalsState} getGoal={getGoal} />
+            <CustomizedMenus goalsList={allGoalsState} getGoal={getGoal} />
           </div>
         </div>
       </>
@@ -99,10 +98,7 @@ const CurrentGoal = () => {
     return (
       <>
         {isMenuOpen && (
-          <Congratulation
-            target={myGoal}
-            goalOperation={goalOperation}
-          />
+          <Congratulation target={myGoal} goalOperation={goalOperation} />
         )}
 
         <div className={s.goal}>
@@ -116,7 +112,7 @@ const CurrentGoal = () => {
             >
               {myGoal}
             </button>
-          <CustomizedMenus goalsList={allGoalsState} getGoal={getGoal} />
+            <CustomizedMenus goalsList={allGoalsState} getGoal={getGoal} />
           </div>
         </div>
       </>
@@ -127,7 +123,11 @@ const CurrentGoal = () => {
         <div className={s.goal}>
           <div className={s.goalLogo}>
             <p className={s.goalName}>Обери ціль: </p>
-            <button type="button" className={ s.goalBtn } disabled={buttonOff}></button>
+            <button
+              type="button"
+              className={s.goalBtn}
+              disabled={buttonOff}
+            ></button>
             <CustomizedMenus goalsList={allGoalsState} getGoal={getGoal} />
           </div>
         </div>

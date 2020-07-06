@@ -8,7 +8,7 @@ import CompletedTasks from "./completedTasks/CompletedTasks";
 import ModalDeleteTask from "./ModalDeleteTask/ModalDeleteTask";
 import Header from "../../header/Header";
 import Footer from "../../footer/Footer";
-import ProgressBar from './progress-bar/ProgressBar';
+import ProgressBar from "./progress-bar/ProgressBar";
 import {
   newTask,
   getTasks,
@@ -17,8 +17,8 @@ import {
   modifyTaskInner,
 } from "./../../../redux/operations";
 import CurrentProgress from "../../mergeCurrent-Progress/CurrentProgress";
-const IS_MOBILE_VERSION = window.innerWidth < 768
-const IS_TABLET_VERSION = (window.innerWidth > 767) && (window.innerWidth < 1200);
+const IS_MOBILE_VERSION = window.innerWidth < 768;
+const IS_TABLET_VERSION = window.innerWidth > 767 && window.innerWidth < 1200;
 
 class TasksPage extends Component {
   state = {
@@ -60,8 +60,8 @@ class TasksPage extends Component {
     const DATE_NOW = moment().format().slice(0, 10);
     const taskForDelete = tasks.filter(
       (t) => t.isComplete === false && t.createdAt.slice(0, 10) !== DATE_NOW
-      );
-      if (taskForDelete.length > 0) {
+    );
+    if (taskForDelete.length > 0) {
       const { token } = this.props;
       const { deleteTaskInner } = this.props;
       taskForDelete.forEach((task) => deleteTaskInner(token, task._id));
@@ -136,15 +136,20 @@ class TasksPage extends Component {
     const { isOpenModalWindow, isOpenModalDeleteTask } = this.state;
     return (
       <>
-        <Header pageOfHeader={"tasks"} handleOpenModalWindow={this.handleOpenModalWindow}/>
-        {IS_TABLET_VERSION && <ProgressBar/>}
+        <Header
+          pageOfHeader={"tasks"}
+          handleOpenModalWindow={this.handleOpenModalWindow}
+        />
+        {IS_TABLET_VERSION && <ProgressBar />}
         {isOpenModalWindow && (
           <TaskModal
             handleFormforUsers={this.handleFormforUsers}
             handleCloseModalWindow={this.handleCloseModalWindow}
           />
         )}
-        {IS_MOBILE_VERSION && <AddTaskBtn handleOpenModalWindow={this.handleOpenModalWindow} />}
+        {IS_MOBILE_VERSION && (
+          <AddTaskBtn handleOpenModalWindow={this.handleOpenModalWindow} />
+        )}
         <CurrentTasks
           cardlist={this.currentTasksFilter()}
           handleModalWindow={this.handleModalDeleteTask}
@@ -165,11 +170,14 @@ class TasksPage extends Component {
             handleDeleteTask={this.handleDeleteTask}
           />
         )}
-        {IS_MOBILE_VERSION && (<CurrentProgress/>)}
-        {IS_MOBILE_VERSION ? <div style={{paddingBottom:'106px'}}>
-        <Footer />
-        </div> : <Footer />}
-       
+        {IS_MOBILE_VERSION && <CurrentProgress />}
+        {IS_MOBILE_VERSION ? (
+          <div style={{ paddingBottom: "106px" }}>
+            <Footer />
+          </div>
+        ) : (
+          <Footer />
+        )}
       </>
     );
   }

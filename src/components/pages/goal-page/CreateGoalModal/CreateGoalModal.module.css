@@ -27,7 +27,7 @@
   .label {
     margin: 0;
     color: #858598;
-    font-family: Montserrat;
+    font-family: "Montserrat";
     font-size: 16px;
     font-weight: 500;
     line-height: 32px;
@@ -35,13 +35,14 @@
   }
   
   .input {
+    color: #42414b;
     border: 0;
     padding-top: 4px;
     padding-bottom: 4px;
     padding-left: 2px;
-    font-family: Montserrat;
-    font-size: 20px;
-    font-weight: 700;
+    font-family: "Montserrat";
+    font-size: 18px;
+    font-weight: 600;
     width: 514px;
     border-bottom: 1px solid #e0e0e0;
     outline: none;
@@ -49,7 +50,7 @@
   
   .input::placeholder {
     color: #a8a8b5;
-    font-family: Montserrat;
+    font-family: "Montserrat";
     font-size: 12px;
     font-weight: 400;
     letter-spacing: 0.84px;
@@ -58,7 +59,7 @@
   .text {
     margin: 0;
     color: #000;
-    font-family: Montserrat;
+    font-family: "Montserrat";
     font-size: 14px;
     font-weight: 400;
   }
@@ -70,7 +71,7 @@
     left: 50%;
     min-height: 48px;
     width: 200px;
-    font-family: Montserrat;
+    font-family: "Montserrat";
     font-size: 14px;
     font-weight: 700;
     text-transform: uppercase;
