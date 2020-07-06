@@ -29,8 +29,6 @@ function TaskModal(props) {
     [IDS.SELECT_DATA]: "",
   });
 
-  console.log("state", state);
-
   const handleForm = (e) => {
     e.preventDefault();
     const task = {
@@ -38,6 +36,9 @@ function TaskModal(props) {
       points: state["points"],
       deadline: state["deadline"],
     };
+    if(!task.deadline){
+      return
+    }
     handleFormforUsers(task);
     handleCloseModalWindow();
   };
@@ -57,19 +58,13 @@ function TaskModal(props) {
     }));
   };
 
-  // const onChangeSelect = (opt) => {
-  //   setState({
-  //     [IDS.SELECT_DATA]: opt.value,
-  //   });
-  // };
-
   return (
     <div className={s.modal_container}>
       <form className={s.form} onSubmit={handleForm}>
         <p className={s.title_form}>Що зробити?</p>
         <input
           type="text"
-          placeholder="(Оберіть завдання або додай нове)"
+          placeholder="(Додай нове завдання)"
           maxLength="20"
           minLength="3"
           name="title"
@@ -92,10 +87,10 @@ function TaskModal(props) {
             />
           </div>
           <input
-            type="text"
-            placeholder="ВИНАГОРОДА (наприклад 1000)"
+            type="number"
+            placeholder="Винагорода (наприклад 1000)"
             maxLength="20"
-            minLength="3"
+            minLength="1"
             max="1000"
             min="1"
             id={IDS.INPUT_POINT}
