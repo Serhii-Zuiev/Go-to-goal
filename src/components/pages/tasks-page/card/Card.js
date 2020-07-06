@@ -1,6 +1,6 @@
 import React from "react";
 import css from "../card/Card.module.css";
-import gift from "../../../../assets/images/icons/present box/gift-box.svg";
+import gift from "../../../../assets/images/icons/present-box/gift-box.svg";
 
 const Card = ({
   title,
