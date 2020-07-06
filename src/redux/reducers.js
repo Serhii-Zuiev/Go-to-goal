@@ -54,10 +54,9 @@ export const goalAndTaskReducer = createReducer(initialGoalState, {
     return { ...state, goals: payload.goals };
   },
   [action.modifyTask]: (state, { payload }) => {
-
     return {
       ...state,
-      score: payload?.user?.scores ? payload.user.scores : state.score,
+      score: payload?.user ? payload.user.scores : state.score,
       tasks: state.tasks.map((t)=>t._id !== payload?.task?._id ? t : payload.task)
     };
   },
@@ -81,11 +80,11 @@ export const goalAndTaskReducer = createReducer(initialGoalState, {
     };
   },
   [action.deleteTask]: (state, { payload }) => {
-    const scOre = payload?.data?.user?.scores
+    const scOre = payload?.data?.user
     return {
       ...state,
       tasks: state.tasks.filter((task) => task._id !== payload.taskId),
-      score: scOre ? scOre : state.score,
+      score: scOre ? scOre.scores : state.score,
     };
   },
   [action.score]: (state, { payload }) => {
