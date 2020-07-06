@@ -22,7 +22,7 @@ const LoginForm = () => {
     if (!password) {
       errors.password = "Потрібен пароль";
     } else if (password.length < 6) {
-      errors.password = "Невірний пароль";
+      errors.password = "Повнно бути більше 6 знаків";
     }
     if (Object.keys(errors).length === 0) {
       mainerror = false;
